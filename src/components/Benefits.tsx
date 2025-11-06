@@ -1,10 +1,10 @@
-import { Shield, Zap, CheckCircle, TrendingUp } from "lucide-react";
+import { Shield, Zap, CheckCircle, TrendingUp, BadgePercent } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const benefits = [
   {
     icon: Shield,
-    title: "Официальная гарантия",
+    title: "Гарантия 1 год",
     description: "На все устройства"
   },
   {
@@ -21,6 +21,11 @@ const benefits = [
     icon: TrendingUp,
     title: "Trade-in",
     description: "Обмен старого на новый"
+  },
+  {
+    icon: BadgePercent,
+    title: "Выгода до 50%",
+    description: "По сравнению с новыми"
   }
 ];
 
@@ -29,7 +34,7 @@ const Benefits = () => {
     <div className="mt-16 animate-fade-in [animation-delay:400ms]">
       <h2 className="text-2xl font-bold text-center mb-8">Почему выбирают нас?</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {benefits.map((benefit, index) => {
           const Icon = benefit.icon;
           return (
