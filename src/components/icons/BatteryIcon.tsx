@@ -4,6 +4,10 @@ interface BatteryIconProps {
 }
 
 const BatteryIcon = ({ bars, className = "" }: BatteryIconProps) => {
+  // Convert bars to fill percentage
+  const fillPercentage = bars === 4 ? 100 : bars === 3 ? 75 : 50;
+  const fillWidth = (14 * fillPercentage) / 100; // 14 is the inner width of battery
+  
   return (
     <svg
       width="24"
@@ -20,11 +24,16 @@ const BatteryIcon = ({ bars, className = "" }: BatteryIconProps) => {
       <rect x="2" y="7" width="18" height="10" rx="2" ry="2" />
       <line x1="22" y1="11" x2="22" y2="13" />
       
-      {/* Battery bars */}
-      {bars >= 1 && <rect x="5" y="10" width="2" height="4" fill="currentColor" />}
-      {bars >= 2 && <rect x="9" y="10" width="2" height="4" fill="currentColor" />}
-      {bars >= 3 && <rect x="13" y="10" width="2" height="4" fill="currentColor" />}
-      {bars >= 4 && <rect x="17" y="10" width="2" height="4" fill="currentColor" />}
+      {/* Battery fill */}
+      <rect 
+        x="4.5" 
+        y="9.5" 
+        width={fillWidth} 
+        height="5" 
+        rx="1"
+        fill="currentColor"
+        className="transition-all duration-300"
+      />
     </svg>
   );
 };
