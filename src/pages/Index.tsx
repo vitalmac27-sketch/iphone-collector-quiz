@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -7,7 +7,8 @@ import StorageSelector from "@/components/calculator/StorageSelector";
 import ConditionSelector from "@/components/calculator/ConditionSelector";
 import SimTypeSelector from "@/components/calculator/SimTypeSelector";
 import BatterySelector from "@/components/calculator/BatterySelector";
-import { Smartphone } from "lucide-react";
+import Hero from "@/components/Hero";
+import Benefits from "@/components/Benefits";
 
 export interface CalculatorData {
   model: string;
@@ -30,36 +31,37 @@ const Index = () => {
   const totalSteps = data.condition === "used" ? 5 : 4;
   const progress = (step / totalSteps) * 100;
 
-  const handleNext = () => {
-    if (step === 3 && data.condition === "new") {
-      setStep(5);
-    } else {
-      setStep(step + 1);
+  // Auto-advance when selection is made
+  useEffect(() => {
+    const shouldAdvance = () => {
+      switch (step) {
+        case 1: return data.model !== "";
+        case 2: return data.storage !== "";
+        case 3: return data.condition !== "";
+        case 4: return data.condition === "used" && data.battery !== "";
+        case 5: return false; // Last step, don't auto-advance
+        default: return false;
+      }
+    };
+
+    if (shouldAdvance()) {
+      const timer = setTimeout(() => {
+        if (step === 3 && data.condition === "new") {
+          setStep(5);
+        } else if (step < totalSteps) {
+          setStep(step + 1);
+        }
+      }, 300);
+      
+      return () => clearTimeout(timer);
     }
-  };
+  }, [data.model, data.storage, data.condition, data.battery, step, totalSteps]);
 
   const handleBack = () => {
     if (step === 5 && data.condition === "new") {
       setStep(3);
     } else {
       setStep(step - 1);
-    }
-  };
-
-  const canProceed = () => {
-    switch (step) {
-      case 1:
-        return data.model !== "";
-      case 2:
-        return data.storage !== "";
-      case 3:
-        return data.condition !== "";
-      case 4:
-        return data.battery !== "";
-      case 5:
-        return data.simType !== "";
-      default:
-        return false;
     }
   };
 
@@ -71,20 +73,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-blue-50 to-background flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
-            <Smartphone className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-            ЭПЛ-КОЛЛЕКЦИЯ
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            Подберите идеальный iPhone
-          </p>
-        </div>
+    <div className="min-h-screen flex items-center justify-center p-4 py-12">
+      <div className="w-full max-w-3xl">
+        <Hero />
 
         {/* Progress Bar */}
         <div className="mb-8">
@@ -96,7 +87,7 @@ const Index = () => {
         </div>
 
         {/* Calculator Card */}
-        <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10">
+        <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
           {step === 1 && (
             <ModelSelector
               value={data.model}
@@ -138,25 +129,16 @@ const Index = () => {
               <Button
                 variant="outline"
                 onClick={handleBack}
-                className="flex-1"
+                className="flex-1 hover:bg-muted"
               >
                 Назад
               </Button>
             )}
             
-            {step < totalSteps ? (
-              <Button
-                onClick={handleNext}
-                disabled={!canProceed()}
-                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all"
-              >
-                Далее
-              </Button>
-            ) : (
+            {step === totalSteps && data.simType && (
               <Button
                 onClick={handleWhatsApp}
-                disabled={!canProceed()}
-                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all"
+                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all animate-glow-pulse"
               >
                 Отправить в WhatsApp
               </Button>
@@ -165,9 +147,15 @@ const Index = () => {
         </Card>
 
         {/* Footer */}
-        <div className="text-center mt-6 text-sm text-muted-foreground">
-          Нажимая кнопку, вы будете перенаправлены в WhatsApp
+        <div className="text-center mt-6 text-sm text-muted-foreground animate-fade-in">
+          {step === totalSteps ? (
+            "Нажимая кнопку, вы будете перенаправлены в WhatsApp"
+          ) : (
+            "Выберите подходящий вариант для автоматического перехода"
+          )}
         </div>
+
+        <Benefits />
       </div>
     </div>
   );
