@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Battery, BatteryFull, BatteryMedium, BatteryLow } from "lucide-react";
+import { Battery, BatteryFull } from "lucide-react";
 
 interface BatterySelectorProps {
   value: string;
@@ -10,8 +10,8 @@ interface BatterySelectorProps {
 const batteryOptions = [
   { value: "100", label: "100%", icon: BatteryFull, color: "text-green-500" },
   { value: "95-99", label: "95-99%", icon: Battery, color: "text-green-500" },
-  { value: "90-94", label: "90-94%", icon: BatteryMedium, color: "text-yellow-500" },
-  { value: "87-89", label: "87-89%", icon: BatteryLow, color: "text-orange-500" },
+  { value: "90-94", label: "90-94%", icon: Battery, color: "text-green-500" },
+  { value: "87-89", label: "87-89%", icon: Battery, color: "text-blue-500" },
 ];
 
 const BatterySelector = ({ value, onChange }: BatterySelectorProps) => {

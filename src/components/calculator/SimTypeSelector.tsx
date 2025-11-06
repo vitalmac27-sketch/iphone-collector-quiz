@@ -8,7 +8,6 @@ interface SimTypeSelectorProps {
 }
 
 const simOptions = [
-  { value: "1 SIM", label: "1 SIM", icon: CreditCard },
   { value: "eSIM", label: "eSIM", icon: Smartphone },
   { value: "2 SIM", label: "2 SIM", icon: CreditCard },
   { value: "eSIM + SIM", label: "eSIM + SIM", icon: Smartphone },
