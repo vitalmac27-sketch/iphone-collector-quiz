@@ -24,8 +24,8 @@ const benefits = [
   },
   {
     icon: BadgePercent,
-    title: "Выгода до 50%",
-    description: "По сравнению с новыми"
+    title: "Выгода до 30%",
+    description: "По сравнению с другими магазинами"
   }
 ];
 
