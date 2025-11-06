@@ -1,0 +1,46 @@
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { HardDrive } from "lucide-react";
+
+interface StorageSelectorProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const storageOptions = ["128 ГБ", "256 ГБ", "512 ГБ", "1 ТБ"];
+
+const StorageSelector = ({ value, onChange }: StorageSelectorProps) => {
+  return (
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-foreground mb-2">
+          Выберите объем памяти
+        </h2>
+        <p className="text-muted-foreground">
+          Сколько памяти вам необходимо?
+        </p>
+      </div>
+
+      <RadioGroup value={value} onValueChange={onChange} className="grid grid-cols-2 gap-4">
+        {storageOptions.map((storage) => (
+          <div key={storage} className="relative">
+            <RadioGroupItem
+              value={storage}
+              id={storage}
+              className="peer sr-only"
+            />
+            <Label
+              htmlFor={storage}
+              className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+            >
+              <HardDrive className="w-8 h-8 text-primary" />
+              <span className="font-bold text-xl text-foreground">{storage}</span>
+            </Label>
+          </div>
+        ))}
+      </RadioGroup>
+    </div>
+  );
+};
+
+export default StorageSelector;

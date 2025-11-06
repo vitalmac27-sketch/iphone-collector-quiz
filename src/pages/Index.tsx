@@ -1,11 +1,173 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import ModelSelector from "@/components/calculator/ModelSelector";
+import StorageSelector from "@/components/calculator/StorageSelector";
+import ConditionSelector from "@/components/calculator/ConditionSelector";
+import SimTypeSelector from "@/components/calculator/SimTypeSelector";
+import BatterySelector from "@/components/calculator/BatterySelector";
+import { Smartphone } from "lucide-react";
+
+export interface CalculatorData {
+  model: string;
+  storage: string;
+  condition: "new" | "used" | "";
+  simType: string;
+  battery: string;
+}
 
 const Index = () => {
+  const [step, setStep] = useState(1);
+  const [data, setData] = useState<CalculatorData>({
+    model: "",
+    storage: "",
+    condition: "",
+    simType: "",
+    battery: "",
+  });
+
+  const totalSteps = data.condition === "used" ? 5 : 4;
+  const progress = (step / totalSteps) * 100;
+
+  const handleNext = () => {
+    if (step === 3 && data.condition === "new") {
+      setStep(5);
+    } else {
+      setStep(step + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (step === 5 && data.condition === "new") {
+      setStep(3);
+    } else {
+      setStep(step - 1);
+    }
+  };
+
+  const canProceed = () => {
+    switch (step) {
+      case 1:
+        return data.model !== "";
+      case 2:
+        return data.storage !== "";
+      case 3:
+        return data.condition !== "";
+      case 4:
+        return data.battery !== "";
+      case 5:
+        return data.simType !== "";
+      default:
+        return false;
+    }
+  };
+
+  const handleWhatsApp = () => {
+    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n📱 Модель: ${data.model}\n💾 Память: ${data.storage}\n✨ Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n🔋 Аккумулятор: ${data.battery}%` : ""}\n📡 SIM: ${data.simType}`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/79179997773?text=${encodedMessage}`, "_blank");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-background via-blue-50 to-background flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mb-4 shadow-lg">
+            <Smartphone className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+            ЭПЛ-КОЛЛЕКЦИЯ
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            Подберите идеальный iPhone
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between text-sm text-muted-foreground mb-2">
+            <span>Шаг {step} из {totalSteps}</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
+          <Progress value={progress} className="h-2" />
+        </div>
+
+        {/* Calculator Card */}
+        <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10">
+          {step === 1 && (
+            <ModelSelector
+              value={data.model}
+              onChange={(model) => setData({ ...data, model })}
+            />
+          )}
+
+          {step === 2 && (
+            <StorageSelector
+              value={data.storage}
+              onChange={(storage) => setData({ ...data, storage })}
+            />
+          )}
+
+          {step === 3 && (
+            <ConditionSelector
+              value={data.condition}
+              onChange={(condition) => setData({ ...data, condition })}
+            />
+          )}
+
+          {step === 4 && data.condition === "used" && (
+            <BatterySelector
+              value={data.battery}
+              onChange={(battery) => setData({ ...data, battery })}
+            />
+          )}
+
+          {step === 5 && (
+            <SimTypeSelector
+              value={data.simType}
+              onChange={(simType) => setData({ ...data, simType })}
+            />
+          )}
+
+          {/* Navigation */}
+          <div className="flex gap-4 mt-8">
+            {step > 1 && (
+              <Button
+                variant="outline"
+                onClick={handleBack}
+                className="flex-1"
+              >
+                Назад
+              </Button>
+            )}
+            
+            {step < totalSteps ? (
+              <Button
+                onClick={handleNext}
+                disabled={!canProceed()}
+                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all"
+              >
+                Далее
+              </Button>
+            ) : (
+              <Button
+                onClick={handleWhatsApp}
+                disabled={!canProceed()}
+                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all"
+              >
+                Отправить в WhatsApp
+              </Button>
+            )}
+          </div>
+        </Card>
+
+        {/* Footer */}
+        <div className="text-center mt-6 text-sm text-muted-foreground">
+          Нажимая кнопку, вы будете перенаправлены в WhatsApp
+        </div>
       </div>
     </div>
   );
