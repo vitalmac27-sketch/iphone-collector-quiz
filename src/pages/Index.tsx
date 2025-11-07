@@ -7,6 +7,7 @@ import StorageSelector from "@/components/calculator/StorageSelector";
 import ConditionSelector from "@/components/calculator/ConditionSelector";
 import SimTypeSelector from "@/components/calculator/SimTypeSelector";
 import BatterySelector from "@/components/calculator/BatterySelector";
+import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 
@@ -16,6 +17,7 @@ export interface CalculatorData {
   condition: "new" | "used" | "";
   simType: string;
   battery: string;
+  paymentMethod: string;
 }
 
 const Index = () => {
@@ -26,9 +28,10 @@ const Index = () => {
     condition: "",
     simType: "",
     battery: "",
+    paymentMethod: "",
   });
 
-  const totalSteps = data.condition === "used" ? 5 : 4;
+  const totalSteps = data.condition === "used" ? 6 : 5;
   const progress = (step / totalSteps) * 100;
 
   // Auto-advance when selection is made
@@ -39,7 +42,8 @@ const Index = () => {
         case 2: return data.storage !== "";
         case 3: return data.condition !== "";
         case 4: return data.condition === "used" && data.battery !== "";
-        case 5: return false; // Last step, don't auto-advance
+        case 5: return data.simType !== "";
+        case 6: return false; // Last step, don't auto-advance
         default: return false;
       }
     };
@@ -55,7 +59,7 @@ const Index = () => {
       
       return () => clearTimeout(timer);
     }
-  }, [data.model, data.storage, data.condition, data.battery, step, totalSteps]);
+  }, [data.model, data.storage, data.condition, data.battery, data.simType, step, totalSteps]);
 
   const handleBack = () => {
     if (step === 5 && data.condition === "new") {
@@ -66,7 +70,8 @@ const Index = () => {
   };
 
   const handleWhatsApp = () => {
-    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n📱 Модель: ${data.model}\n💾 Память: ${data.storage}\n✨ Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n🔋 Аккумулятор: ${data.battery}%` : ""}\n📡 SIM: ${data.simType}`;
+    const paymentText = data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0% (оформление онлайн)";
+    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n📱 Модель: ${data.model}\n💾 Память: ${data.storage}\n✨ Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n🔋 Аккумулятор: ${data.battery}%` : ""}\n📡 SIM: ${data.simType}\n💳 Оплата: ${paymentText}`;
     
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/79179997773?text=${encodedMessage}`, "_blank");
@@ -123,6 +128,13 @@ const Index = () => {
             />
           )}
 
+          {step === 6 && (
+            <PaymentMethodSelector
+              value={data.paymentMethod}
+              onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
+            />
+          )}
+
           {/* Navigation */}
           <div className="flex gap-4 mt-8">
             {step > 1 && (
@@ -135,7 +147,7 @@ const Index = () => {
               </Button>
             )}
             
-            {step === totalSteps && data.simType && (
+            {step === totalSteps && data.paymentMethod && (
               <Button
                 onClick={handleWhatsApp}
                 className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all animate-glow-pulse"
