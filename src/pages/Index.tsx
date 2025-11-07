@@ -31,7 +31,7 @@ const Index = () => {
     paymentMethod: "",
   });
 
-  const totalSteps = data.condition === "used" ? 6 : 5;
+  const totalSteps = 6;
   const progress = (step / totalSteps) * 100;
 
   // Auto-advance when selection is made
