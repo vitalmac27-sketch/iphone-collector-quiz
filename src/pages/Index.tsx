@@ -46,7 +46,7 @@ const Index = () => {
         if (calculator) {
           calculator.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 300);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, []);
