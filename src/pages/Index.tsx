@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import ModelSelector from "@/components/calculator/ModelSelector";
 import StorageSelector from "@/components/calculator/StorageSelector";
 import ConditionSelector from "@/components/calculator/ConditionSelector";
@@ -10,6 +9,11 @@ import BatterySelector from "@/components/calculator/BatterySelector";
 import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
+import EnhancedProgressBar from "@/components/calculator/EnhancedProgressBar";
+import UrgencyBanner from "@/components/UrgencyBanner";
+import TrustBadges from "@/components/TrustBadges";
+import OrderSummary from "@/components/calculator/OrderSummary";
+import FinalReview from "@/components/calculator/FinalReview";
 
 export interface CalculatorData {
   model: string;
@@ -31,7 +35,7 @@ const Index = () => {
     paymentMethod: "",
   });
 
-  const totalSteps = 6;
+  const totalSteps = 7; // Added final review step
   const progress = (step / totalSteps) * 100;
 
   // Auto-advance when selection is made
@@ -43,7 +47,8 @@ const Index = () => {
         case 3: return data.condition !== "";
         case 4: return data.condition === "used" && data.battery !== "";
         case 5: return data.simType !== "";
-        case 6: return false; // Last step, don't auto-advance
+        case 6: return data.paymentMethod !== "";
+        case 7: return false; // Final review step, don't auto-advance
         default: return false;
       }
     };
@@ -59,7 +64,7 @@ const Index = () => {
       
       return () => clearTimeout(timer);
     }
-  }, [data.model, data.storage, data.condition, data.battery, data.simType, step, totalSteps]);
+  }, [data.model, data.storage, data.condition, data.battery, data.simType, data.paymentMethod, step, totalSteps]);
 
   const handleBack = () => {
     if (step === 5 && data.condition === "new") {
@@ -78,93 +83,105 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 py-12">
-      <div className="w-full max-w-3xl">
+    <div className="min-h-screen p-4 py-12">
+      <div className="max-w-7xl mx-auto">
         <Hero />
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between text-sm text-muted-foreground mb-2">
-            <span>Шаг {step} из {totalSteps}</span>
-            <span>{Math.round(progress)}%</span>
+        <UrgencyBanner />
+        <TrustBadges />
+
+        <div className="grid lg:grid-cols-3 gap-6 items-start">
+          {/* Main Calculator */}
+          <div className="lg:col-span-2">
+            {/* Enhanced Progress Bar */}
+            <EnhancedProgressBar 
+              currentStep={step} 
+              totalSteps={totalSteps - 1} // Exclude final review from visible steps
+              condition={data.condition}
+            />
+
+            {/* Calculator Card */}
+            <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
+              {step === 1 && (
+                <ModelSelector
+                  value={data.model}
+                  onChange={(model) => setData({ ...data, model })}
+                />
+              )}
+
+              {step === 2 && (
+                <StorageSelector
+                  value={data.storage}
+                  onChange={(storage) => setData({ ...data, storage })}
+                />
+              )}
+
+              {step === 3 && (
+                <ConditionSelector
+                  value={data.condition}
+                  onChange={(condition) => setData({ ...data, condition })}
+                />
+              )}
+
+              {step === 4 && data.condition === "used" && (
+                <BatterySelector
+                  value={data.battery}
+                  onChange={(battery) => setData({ ...data, battery })}
+                />
+              )}
+
+              {step === 5 && (
+                <SimTypeSelector
+                  value={data.simType}
+                  onChange={(simType) => setData({ ...data, simType })}
+                />
+              )}
+
+              {step === 6 && (
+                <PaymentMethodSelector
+                  value={data.paymentMethod}
+                  onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
+                />
+              )}
+
+              {step === 7 && (
+                <FinalReview
+                  data={data}
+                  onConfirm={handleWhatsApp}
+                  onBack={handleBack}
+                />
+              )}
+
+              {/* Navigation - only show for non-final steps */}
+              {step < 7 && (
+                <div className="flex gap-4 mt-8">
+                  {step > 1 && (
+                    <Button
+                      variant="outline"
+                      onClick={handleBack}
+                      className="flex-1 hover:bg-muted"
+                    >
+                      Назад
+                    </Button>
+                  )}
+                </div>
+              )}
+            </Card>
+
+            {/* Footer */}
+            <div className="text-center mt-6 text-sm text-muted-foreground animate-fade-in">
+              {step === 7 ? (
+                "Нажимая кнопку, вы будете перенаправлены в WhatsApp"
+              ) : (
+                "Выберите подходящий вариант для автоматического перехода"
+              )}
+            </div>
           </div>
-          <Progress value={progress} className="h-2" />
-        </div>
 
-        {/* Calculator Card */}
-        <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
-          {step === 1 && (
-            <ModelSelector
-              value={data.model}
-              onChange={(model) => setData({ ...data, model })}
-            />
-          )}
-
-          {step === 2 && (
-            <StorageSelector
-              value={data.storage}
-              onChange={(storage) => setData({ ...data, storage })}
-            />
-          )}
-
-          {step === 3 && (
-            <ConditionSelector
-              value={data.condition}
-              onChange={(condition) => setData({ ...data, condition })}
-            />
-          )}
-
-          {step === 4 && data.condition === "used" && (
-            <BatterySelector
-              value={data.battery}
-              onChange={(battery) => setData({ ...data, battery })}
-            />
-          )}
-
-          {step === 5 && (
-            <SimTypeSelector
-              value={data.simType}
-              onChange={(simType) => setData({ ...data, simType })}
-            />
-          )}
-
-          {step === 6 && (
-            <PaymentMethodSelector
-              value={data.paymentMethod}
-              onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
-            />
-          )}
-
-          {/* Navigation */}
-          <div className="flex gap-4 mt-8">
-            {step > 1 && (
-              <Button
-                variant="outline"
-                onClick={handleBack}
-                className="flex-1 hover:bg-muted"
-              >
-                Назад
-              </Button>
-            )}
-            
-            {step === totalSteps && data.paymentMethod && (
-              <Button
-                onClick={handleWhatsApp}
-                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all animate-glow-pulse"
-              >
-                Отправить в WhatsApp
-              </Button>
-            )}
+          {/* Order Summary Sidebar */}
+          <div className="lg:block hidden">
+            <OrderSummary data={data} currentStep={step} />
           </div>
-        </Card>
-
-        {/* Footer */}
-        <div className="text-center mt-6 text-sm text-muted-foreground animate-fade-in">
-          {step === totalSteps ? (
-            "Нажимая кнопку, вы будете перенаправлены в WhatsApp"
-          ) : (
-            "Выберите подходящий вариант для автоматического перехода"
-          )}
         </div>
 
         <Benefits />
