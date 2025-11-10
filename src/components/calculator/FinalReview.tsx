@@ -28,7 +28,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-foreground mb-2">Проверьте ваш заказ</h2>
         <p className="text-muted-foreground">Убедитесь, что все данные указаны верно</p>
@@ -80,7 +80,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
         </div>
       </Card>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 sticky bottom-0 bg-background/95 backdrop-blur-sm py-4 -mx-2 px-2">
         <Button
           variant="outline"
           onClick={onBack}

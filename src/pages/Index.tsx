@@ -38,33 +38,13 @@ const Index = () => {
   const totalSteps = 7; // Added final review step
   const progress = (step / totalSteps) * 100;
 
-  // Auto-advance when selection is made
-  useEffect(() => {
-    const shouldAdvance = () => {
-      switch (step) {
-        case 1: return data.model !== "";
-        case 2: return data.storage !== "";
-        case 3: return data.condition !== "";
-        case 4: return data.condition === "used" && data.battery !== "";
-        case 5: return data.simType !== "";
-        case 6: return false; // Don't auto-advance on payment to prevent flickering
-        case 7: return false; // Final review step, don't auto-advance
-        default: return false;
-      }
-    };
-
-    if (shouldAdvance()) {
-      const timer = setTimeout(() => {
-        if (step === 3 && data.condition === "new") {
-          setStep(5);
-        } else if (step < totalSteps) {
-          setStep(step + 1);
-        }
-      }, 500);
-      
-      return () => clearTimeout(timer);
+  const handleNext = () => {
+    if (step === 3 && data.condition === "new") {
+      setStep(5);
+    } else if (step < totalSteps) {
+      setStep(step + 1);
     }
-  }, [data.model, data.storage, data.condition, data.battery, data.simType, step, totalSteps]);
+  };
 
   const handleBack = () => {
     // Clear current step data when going back
@@ -107,7 +87,7 @@ const Index = () => {
     const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n📱 Модель: ${data.model}\n💾 Память: ${data.storage}\n✨ Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n🔋 Аккумулятор: ${data.battery}%` : ""}\n📡 SIM: ${data.simType}\n💳 Оплата: ${paymentText}`;
     
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/79179997773?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/79172999773?text=${encodedMessage}`, "_blank");
   };
 
   return (
@@ -131,38 +111,83 @@ const Index = () => {
             {/* Calculator Card */}
             <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
               {step === 1 && (
-                <ModelSelector
-                  value={data.model}
-                  onChange={(model) => setData({ ...data, model })}
-                />
+                <div className="space-y-6">
+                  <ModelSelector
+                    value={data.model}
+                    onChange={(model) => setData({ ...data, model })}
+                  />
+                  <Button
+                    onClick={handleNext}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.model}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 2 && (
-                <StorageSelector
-                  value={data.storage}
-                  onChange={(storage) => setData({ ...data, storage })}
-                />
+                <div className="space-y-6">
+                  <StorageSelector
+                    value={data.storage}
+                    onChange={(storage) => setData({ ...data, storage })}
+                  />
+                  <Button
+                    onClick={handleNext}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.storage}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 3 && (
-                <ConditionSelector
-                  value={data.condition}
-                  onChange={(condition) => setData({ ...data, condition })}
-                />
+                <div className="space-y-6">
+                  <ConditionSelector
+                    value={data.condition}
+                    onChange={(condition) => setData({ ...data, condition })}
+                  />
+                  <Button
+                    onClick={handleNext}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.condition}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 4 && data.condition === "used" && (
-                <BatterySelector
-                  value={data.battery}
-                  onChange={(battery) => setData({ ...data, battery })}
-                />
+                <div className="space-y-6">
+                  <BatterySelector
+                    value={data.battery}
+                    onChange={(battery) => setData({ ...data, battery })}
+                  />
+                  <Button
+                    onClick={handleNext}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.battery}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 5 && (
-                <SimTypeSelector
-                  value={data.simType}
-                  onChange={(simType) => setData({ ...data, simType })}
-                />
+                <div className="space-y-6">
+                  <SimTypeSelector
+                    value={data.simType}
+                    onChange={(simType) => setData({ ...data, simType })}
+                  />
+                  <Button
+                    onClick={handleNext}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.simType}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 6 && (
