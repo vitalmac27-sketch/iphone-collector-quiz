@@ -116,7 +116,7 @@ const Index = () => {
 
   const handleWhatsApp = () => {
     const paymentText = data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0% (оформление онлайн)";
-    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n📱 Модель: ${data.model}\n💾 Память: ${data.storage}\n✨ Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n🔋 Аккумулятор: ${data.battery}%` : ""}\n📡 SIM: ${data.simType}\n💳 Оплата: ${paymentText}`;
+    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n- Модель: ${data.model}\n- Память: ${data.storage}\n- Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n- Аккумулятор: ${data.battery}%` : ""}\n- SIM: ${data.simType}\n- Оплата: ${paymentText}`;
     
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/79172999773?text=${encodedMessage}`, "_blank");
