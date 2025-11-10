@@ -1,6 +1,9 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Smartphone } from "lucide-react";
+import iPhone16Pro from "@/assets/iphone-16-pro.jpg";
+import iPhone15Pro from "@/assets/iphone-15-pro.jpg";
+import iPhone14Pro from "@/assets/iphone-14-pro.jpg";
+import iPhone13Pro from "@/assets/iphone-13-pro.jpg";
 
 interface ModelSelectorProps {
   value: string;
@@ -30,6 +33,14 @@ const models = [
   "iPhone 13",
 ];
 
+const getModelImage = (model: string) => {
+  if (model.includes("16") || model.includes("17")) return iPhone16Pro;
+  if (model.includes("15")) return iPhone15Pro;
+  if (model.includes("14")) return iPhone14Pro;
+  if (model.includes("13")) return iPhone13Pro;
+  return iPhone16Pro;
+};
+
 const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
   return (
     <div className="space-y-6">
@@ -52,10 +63,16 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
             />
             <Label
               htmlFor={model}
-              className="flex items-center gap-4 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+              className="flex items-center gap-4 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-lg hover:scale-[1.02] peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-xl peer-data-[state=checked]:scale-[1.02]"
             >
-              <Smartphone className="w-5 h-5 text-primary" />
-              <span className="font-medium text-foreground">{model}</span>
+              <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-background/50">
+                <img 
+                  src={getModelImage(model)} 
+                  alt={model}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="font-medium text-foreground flex-1">{model}</span>
             </Label>
           </div>
         ))}
