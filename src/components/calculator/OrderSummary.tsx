@@ -74,7 +74,7 @@ const OrderSummary = ({ data, currentStep }: OrderSummaryProps) => {
               className={cn(
                 "flex items-center gap-3 p-3 rounded-lg transition-all duration-300",
                 isCompleted && "bg-background/50 border border-primary/20",
-                isCurrent && "bg-accent/10 border border-accent animate-pulse",
+                isCurrent && "bg-accent/10 border border-accent",
                 !isCompleted && !isCurrent && "opacity-40"
               )}
             >

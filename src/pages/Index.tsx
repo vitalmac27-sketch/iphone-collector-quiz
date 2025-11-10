@@ -38,6 +38,25 @@ const Index = () => {
   const totalSteps = 7; // Added final review step
   const progress = (step / totalSteps) * 100;
 
+  // Auto-advance to next step when selection is made
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (step === 1 && data.model) {
+        handleNext();
+      } else if (step === 2 && data.storage) {
+        handleNext();
+      } else if (step === 3 && data.condition) {
+        handleNext();
+      } else if (step === 4 && data.battery && data.condition === "used") {
+        handleNext();
+      } else if (step === 5 && data.simType) {
+        handleNext();
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [data.model, data.storage, data.condition, data.battery, data.simType, step]);
+
   const handleNext = () => {
     if (step === 3 && data.condition === "new") {
       setStep(5);
@@ -111,83 +130,38 @@ const Index = () => {
             {/* Calculator Card */}
             <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
               {step === 1 && (
-                <div className="space-y-6">
-                  <ModelSelector
-                    value={data.model}
-                    onChange={(model) => setData({ ...data, model })}
-                  />
-                  <Button
-                    onClick={handleNext}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    disabled={!data.model}
-                  >
-                    Продолжить
-                  </Button>
-                </div>
+                <ModelSelector
+                  value={data.model}
+                  onChange={(model) => setData({ ...data, model })}
+                />
               )}
 
               {step === 2 && (
-                <div className="space-y-6">
-                  <StorageSelector
-                    value={data.storage}
-                    onChange={(storage) => setData({ ...data, storage })}
-                  />
-                  <Button
-                    onClick={handleNext}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    disabled={!data.storage}
-                  >
-                    Продолжить
-                  </Button>
-                </div>
+                <StorageSelector
+                  value={data.storage}
+                  onChange={(storage) => setData({ ...data, storage })}
+                />
               )}
 
               {step === 3 && (
-                <div className="space-y-6">
-                  <ConditionSelector
-                    value={data.condition}
-                    onChange={(condition) => setData({ ...data, condition })}
-                  />
-                  <Button
-                    onClick={handleNext}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    disabled={!data.condition}
-                  >
-                    Продолжить
-                  </Button>
-                </div>
+                <ConditionSelector
+                  value={data.condition}
+                  onChange={(condition) => setData({ ...data, condition })}
+                />
               )}
 
               {step === 4 && data.condition === "used" && (
-                <div className="space-y-6">
-                  <BatterySelector
-                    value={data.battery}
-                    onChange={(battery) => setData({ ...data, battery })}
-                  />
-                  <Button
-                    onClick={handleNext}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    disabled={!data.battery}
-                  >
-                    Продолжить
-                  </Button>
-                </div>
+                <BatterySelector
+                  value={data.battery}
+                  onChange={(battery) => setData({ ...data, battery })}
+                />
               )}
 
               {step === 5 && (
-                <div className="space-y-6">
-                  <SimTypeSelector
-                    value={data.simType}
-                    onChange={(simType) => setData({ ...data, simType })}
-                  />
-                  <Button
-                    onClick={handleNext}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
-                    disabled={!data.simType}
-                  >
-                    Продолжить
-                  </Button>
-                </div>
+                <SimTypeSelector
+                  value={data.simType}
+                  onChange={(simType) => setData({ ...data, simType })}
+                />
               )}
 
               {step === 6 && (
