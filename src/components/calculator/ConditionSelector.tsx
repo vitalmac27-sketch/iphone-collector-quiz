@@ -28,7 +28,7 @@ const ConditionSelector = ({ value, onChange }: ConditionSelectorProps) => {
           />
           <Label
             htmlFor="new"
-            className="flex flex-col items-center justify-center gap-4 p-8 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+            className="flex flex-col items-center justify-center gap-4 p-8 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
           >
             <Sparkles className="w-12 h-12 text-primary" />
             <div className="text-center">
@@ -46,7 +46,7 @@ const ConditionSelector = ({ value, onChange }: ConditionSelectorProps) => {
           />
           <Label
             htmlFor="used"
-            className="flex flex-col items-center justify-center gap-4 p-8 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+            className="flex flex-col items-center justify-center gap-4 p-8 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
           >
             <Package className="w-12 h-12 text-primary" />
             <div className="text-center">

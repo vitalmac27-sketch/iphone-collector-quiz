@@ -43,8 +43,8 @@ const PaymentMethodSelector = ({ value, onChange }: PaymentMethodSelectorProps) 
               onClick={() => onChange(method.id)}
               className={`h-auto py-6 px-6 flex flex-col items-center gap-3 transition-all ${
                 value === method.id
-                  ? "ring-2 ring-primary shadow-lg scale-105"
-                  : "hover:border-primary/50"
+                  ? "ring-2 ring-primary shadow-lg"
+                  : ""
               }`}
             >
               <Icon className="w-8 h-8" />

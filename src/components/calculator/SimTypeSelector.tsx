@@ -8,9 +8,9 @@ interface SimTypeSelectorProps {
 }
 
 const simOptions = [
+  { value: "eSIM + SIM", label: "eSIM + SIM", icon: Smartphone },
   { value: "eSIM", label: "eSIM", icon: Smartphone },
   { value: "2 SIM", label: "2 SIM", icon: CreditCard },
-  { value: "eSIM + SIM", label: "eSIM + SIM", icon: Smartphone },
 ];
 
 const SimTypeSelector = ({ value, onChange }: SimTypeSelectorProps) => {
@@ -37,7 +37,7 @@ const SimTypeSelector = ({ value, onChange }: SimTypeSelectorProps) => {
               />
               <Label
                 htmlFor={option.value}
-                className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+                className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
               >
                 <Icon className="w-8 h-8 text-primary" />
                 <span className="font-bold text-lg text-foreground">{option.label}</span>
