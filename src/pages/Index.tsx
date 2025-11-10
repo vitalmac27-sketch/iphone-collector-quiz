@@ -47,7 +47,7 @@ const Index = () => {
         case 3: return data.condition !== "";
         case 4: return data.condition === "used" && data.battery !== "";
         case 5: return data.simType !== "";
-        case 6: return data.paymentMethod !== "";
+        case 6: return false; // Don't auto-advance on payment to prevent flickering
         case 7: return false; // Final review step, don't auto-advance
         default: return false;
       }
@@ -60,13 +60,41 @@ const Index = () => {
         } else if (step < totalSteps) {
           setStep(step + 1);
         }
-      }, 300);
+      }, 500);
       
       return () => clearTimeout(timer);
     }
-  }, [data.model, data.storage, data.condition, data.battery, data.simType, data.paymentMethod, step, totalSteps]);
+  }, [data.model, data.storage, data.condition, data.battery, data.simType, step, totalSteps]);
 
   const handleBack = () => {
+    // Clear current step data when going back
+    switch (step) {
+      case 2:
+        setData({ ...data, model: "" });
+        break;
+      case 3:
+        setData({ ...data, storage: "" });
+        break;
+      case 4:
+        setData({ ...data, condition: "" });
+        break;
+      case 5:
+        if (data.condition === "new") {
+          setData({ ...data, condition: "" });
+          setStep(3);
+          return;
+        }
+        setData({ ...data, battery: "" });
+        break;
+      case 6:
+        setData({ ...data, simType: "" });
+        break;
+      case 7:
+        setData({ ...data, paymentMethod: "" });
+        break;
+    }
+    
+    // Navigate back
     if (step === 5 && data.condition === "new") {
       setStep(3);
     } else {
@@ -138,10 +166,19 @@ const Index = () => {
               )}
 
               {step === 6 && (
-                <PaymentMethodSelector
-                  value={data.paymentMethod}
-                  onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
-                />
+                <div className="space-y-6">
+                  <PaymentMethodSelector
+                    value={data.paymentMethod}
+                    onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
+                  />
+                  <Button
+                    onClick={() => setStep(7)}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
+                    disabled={!data.paymentMethod}
+                  >
+                    Продолжить
+                  </Button>
+                </div>
               )}
 
               {step === 7 && (
