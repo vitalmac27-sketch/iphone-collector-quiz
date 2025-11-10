@@ -55,7 +55,7 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
 
       <RadioGroup value={value} onValueChange={onChange} className="grid grid-cols-1 gap-3 max-h-[400px] overflow-y-auto pr-2">
         {models.map((model) => (
-          <div key={model} className="relative">
+          <div key={model} className="relative overflow-hidden rounded-lg">
             <RadioGroupItem
               value={model}
               id={model}
@@ -63,7 +63,7 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
             />
             <Label
               htmlFor={model}
-              className="flex items-center gap-4 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-lg hover:scale-[1.02] peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-xl peer-data-[state=checked]:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0"
+              className="flex items-center gap-4 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-lg peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-background/50">
                 <img 
