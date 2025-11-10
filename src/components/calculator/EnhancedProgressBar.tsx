@@ -57,9 +57,9 @@ const EnhancedProgressBar = ({ currentStep, totalSteps, condition }: EnhancedPro
             >
               <div 
                 className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
+                  "w-10 h-10 rounded-full flex items-center justify-center",
                   isCompleted && "bg-primary text-primary-foreground shadow-lg shadow-primary/30",
-                  isCurrent && "bg-accent text-accent-foreground ring-4 ring-accent/20 animate-pulse",
+                  isCurrent && "bg-accent text-accent-foreground ring-4 ring-accent/20",
                   !isCompleted && !isCurrent && "bg-secondary text-muted-foreground"
                 )}
               >
