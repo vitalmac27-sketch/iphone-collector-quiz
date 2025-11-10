@@ -31,7 +31,7 @@ const StorageSelector = ({ value, onChange }: StorageSelectorProps) => {
             />
             <Label
               htmlFor={storage}
-              className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-md peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
+              className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-lg"
             >
               <HardDrive className="w-8 h-8 text-primary" />
               <span className="font-bold text-xl text-foreground">{storage}</span>

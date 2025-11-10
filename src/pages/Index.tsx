@@ -38,6 +38,19 @@ const Index = () => {
   const totalSteps = 7; // Added final review step
   const progress = (step / totalSteps) * 100;
 
+  // Auto-scroll to calculator on mobile when page loads
+  useEffect(() => {
+    if (step === 1 && window.innerWidth < 1024) {
+      const timer = setTimeout(() => {
+        const calculator = document.querySelector('.calculator-card');
+        if (calculator) {
+          calculator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   // Auto-advance to next step when selection is made
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -128,7 +141,7 @@ const Index = () => {
             />
 
             {/* Calculator Card */}
-            <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
+            <Card className="calculator-card p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
               {step === 1 && (
                 <ModelSelector
                   value={data.model}
