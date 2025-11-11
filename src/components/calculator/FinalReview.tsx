@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalculatorData } from "@/pages/Index";
-import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown } from "lucide-react";
+import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown, Gift, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface FinalReviewProps {
@@ -80,20 +80,32 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
         </div>
       </Card>
 
-      <div className="flex gap-4 sticky bottom-0 bg-background/95 backdrop-blur-sm py-4 -mx-2 px-2">
-        <Button
-          variant="outline"
-          onClick={onBack}
-          className="flex-1 hover:bg-muted"
-        >
-          Назад
-        </Button>
-        <Button
-          onClick={onConfirm}
-          className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-lg py-6"
-        >
-          Отправить в WhatsApp
-        </Button>
+      <div className="space-y-4 sticky bottom-0 bg-background/95 backdrop-blur-sm py-4 -mx-2 px-2">
+        <div className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
+          <Gift className="w-5 h-5 text-primary" />
+          <p className="text-sm font-semibold text-foreground">Оригинальный блок питания в подарок</p>
+        </div>
+
+        <div className="flex gap-4">
+          <Button
+            variant="outline"
+            onClick={onBack}
+            className="flex-1 hover:bg-muted"
+          >
+            Назад
+          </Button>
+          <Button
+            onClick={onConfirm}
+            className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-lg py-6"
+          >
+            Отправить в WhatsApp
+          </Button>
+        </div>
+
+        <div className="flex items-center justify-center gap-1 text-muted-foreground">
+          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+          <span className="text-sm font-medium">5/5 на основе 300+ отзывов</span>
+        </div>
       </div>
     </div>
   );
