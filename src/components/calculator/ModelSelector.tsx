@@ -1,8 +1,16 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import iPhone17ProMax from "@/assets/iphone-17-pro-max.avif";
-import iPhone16Pro from "@/assets/iphone-16-pro.jpg";
+import iPhone17Pro from "@/assets/iphone-17-pro.avif";
+import iPhone17Air from "@/assets/iphone-17-air.avif";
+import iPhone17 from "@/assets/iphone-17.webp";
+import iPhone16ProMax from "@/assets/iphone-16-pro-max.avif";
+import iPhone16Pro from "@/assets/iphone-16-pro-new.avif";
+import iPhone16Plus from "@/assets/iphone-16-plus.avif";
+import iPhone16 from "@/assets/iphone-16.avif";
+import iPhone15ProMax from "@/assets/iphone-15-pro-max.avif";
 import iPhone15Pro from "@/assets/iphone-15-pro.jpg";
+import iPhone15 from "@/assets/iphone-15.avif";
 import iPhone14Pro from "@/assets/iphone-14-pro.jpg";
 import iPhone13Pro from "@/assets/iphone-13-pro.jpg";
 
@@ -35,11 +43,29 @@ const models = [
 ];
 
 const getModelImage = (model: string) => {
+  // iPhone 17 line
   if (model === "iPhone 17 Pro Max") return iPhone17ProMax;
-  if (model.includes("16") || model.includes("17")) return iPhone16Pro;
-  if (model.includes("15")) return iPhone15Pro;
+  if (model === "iPhone 17 Pro") return iPhone17Pro;
+  if (model === "iPhone 17 Air") return iPhone17Air;
+  if (model === "iPhone 17") return iPhone17;
+  
+  // iPhone 16 line
+  if (model === "iPhone 16 Pro Max") return iPhone16ProMax;
+  if (model === "iPhone 16 Pro") return iPhone16Pro;
+  if (model === "iPhone 16 Plus") return iPhone16Plus;
+  if (model === "iPhone 16") return iPhone16;
+  
+  // iPhone 15 line
+  if (model === "iPhone 15 Pro Max") return iPhone15ProMax;
+  if (model === "iPhone 15 Pro") return iPhone15Pro;
+  if (model.includes("15")) return iPhone15;
+  
+  // iPhone 14 line
   if (model.includes("14")) return iPhone14Pro;
+  
+  // iPhone 13 line
   if (model.includes("13")) return iPhone13Pro;
+  
   return iPhone16Pro;
 };
 
