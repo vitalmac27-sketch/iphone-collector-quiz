@@ -5,9 +5,10 @@ import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircl
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface FinalReviewProps {
   data: CalculatorData;
@@ -21,6 +22,18 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const [telegram, setTelegram] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isMobile && contactFormRef.current) {
+      const timer = setTimeout(() => {
+        contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -142,7 +155,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
         </div>
       </Card>
 
-      <Card className="p-6 border-2 border-primary/20">
+      <Card ref={contactFormRef} className="p-6 border-2 border-primary/20">
         <div className="flex items-center gap-2 mb-4">
           <MessageCircle className="w-6 h-6 text-primary" />
           <h3 className="text-xl font-bold text-foreground">Оставьте контакты</h3>
@@ -158,7 +171,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
             <Input
               id="name"
               type="text"
-              placeholder="Иван"
+              placeholder="Имя"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
