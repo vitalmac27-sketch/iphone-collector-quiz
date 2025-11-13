@@ -9,10 +9,16 @@ import iPhone16Pro from "@/assets/iphone-16-pro-new.avif";
 import iPhone16Plus from "@/assets/iphone-16-plus.avif";
 import iPhone16 from "@/assets/iphone-16.avif";
 import iPhone15ProMax from "@/assets/iphone-15-pro-max.avif";
-import iPhone15Pro from "@/assets/iphone-15-pro.jpg";
+import iPhone15Pro from "@/assets/iphone-15-pro.avif";
+import iPhone15Plus from "@/assets/iphone-15-plus.avif";
 import iPhone15 from "@/assets/iphone-15.avif";
-import iPhone14Pro from "@/assets/iphone-14-pro.jpg";
-import iPhone13Pro from "@/assets/iphone-13-pro.jpg";
+import iPhone14ProMax from "@/assets/iphone-14-pro-max.avif";
+import iPhone14Pro from "@/assets/iphone-14-pro.avif";
+import iPhone14 from "@/assets/iphone-14.avif";
+import iPhone13ProMax from "@/assets/iphone-13-pro-max.avif";
+import iPhone13Pro from "@/assets/iphone-13-pro.avif";
+import iPhone13Mini from "@/assets/iphone-13-mini.avif";
+import iPhone13 from "@/assets/iphone-13.avif";
 
 interface ModelSelectorProps {
   value: string;
@@ -58,13 +64,20 @@ const getModelImage = (model: string) => {
   // iPhone 15 line
   if (model === "iPhone 15 Pro Max") return iPhone15ProMax;
   if (model === "iPhone 15 Pro") return iPhone15Pro;
+  if (model === "iPhone 15 Plus") return iPhone15Plus;
   if (model.includes("15")) return iPhone15;
   
   // iPhone 14 line
-  if (model.includes("14")) return iPhone14Pro;
+  if (model === "iPhone 14 Pro Max") return iPhone14ProMax;
+  if (model === "iPhone 14 Pro") return iPhone14Pro;
+  if (model === "iPhone 14 Plus") return iPhone14;
+  if (model.includes("14")) return iPhone14;
   
   // iPhone 13 line
-  if (model.includes("13")) return iPhone13Pro;
+  if (model === "iPhone 13 Pro Max") return iPhone13ProMax;
+  if (model === "iPhone 13 Pro") return iPhone13Pro;
+  if (model === "iPhone 13 mini") return iPhone13Mini;
+  if (model.includes("13")) return iPhone13;
   
   return iPhone16Pro;
 };
