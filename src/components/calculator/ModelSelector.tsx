@@ -1,5 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import iPhone17ProMax from "@/assets/iphone-17-pro-max.avif";
 import iPhone16Pro from "@/assets/iphone-16-pro.jpg";
 import iPhone15Pro from "@/assets/iphone-15-pro.jpg";
 import iPhone14Pro from "@/assets/iphone-14-pro.jpg";
@@ -34,6 +35,7 @@ const models = [
 ];
 
 const getModelImage = (model: string) => {
+  if (model === "iPhone 17 Pro Max") return iPhone17ProMax;
   if (model.includes("16") || model.includes("17")) return iPhone16Pro;
   if (model.includes("15")) return iPhone15Pro;
   if (model.includes("14")) return iPhone14Pro;
