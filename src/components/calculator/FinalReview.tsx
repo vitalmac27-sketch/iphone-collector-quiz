@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 interface FinalReviewProps {
   data: CalculatorData;
@@ -22,18 +21,17 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const [telegram, setTelegram] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const isMobile = useIsMobile();
   const contactFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isMobile && contactFormRef.current) {
+    if (contactFormRef.current) {
       const timer = setTimeout(() => {
         contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 2000);
 
       return () => clearTimeout(timer);
     }
-  }, [isMobile]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
