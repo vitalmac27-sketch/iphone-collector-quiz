@@ -7,8 +7,7 @@ const corsHeaders = {
 
 interface LeadData {
   name: string;
-  whatsapp: string;
-  telegram: string;
+  contact: string;
   model: string;
   storage: string;
   condition: string;
@@ -38,8 +37,7 @@ serve(async (req) => {
     
     let message = `🔔 *Новая заявка на iPhone*\n\n`;
     message += `👤 *Имя:* ${leadData.name}\n`;
-    message += `📱 *WhatsApp:* ${leadData.whatsapp}\n`;
-    message += `✈️ *Telegram:* ${leadData.telegram}\n\n`;
+    message += `📱 *Контакт:* ${leadData.contact}\n\n`;
     message += `📲 *Модель:* ${leadData.model}\n`;
     message += `💾 *Память:* ${leadData.storage}\n`;
     message += `📦 *Состояние:* ${conditionText}\n`;
