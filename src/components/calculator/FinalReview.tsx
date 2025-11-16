@@ -17,8 +17,7 @@ interface FinalReviewProps {
 
 const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const [name, setName] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-  const [telegram, setTelegram] = useState("");
+  const [contact, setContact] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const contactFormRef = useRef<HTMLDivElement>(null);
@@ -36,10 +35,10 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!name || !whatsapp) {
+    if (!name || !contact) {
       toast({
         title: "Ошибка",
-        description: "Пожалуйста, заполните имя и WhatsApp",
+        description: "Пожалуйста, заполните все поля",
         variant: "destructive",
       });
       return;
@@ -51,8 +50,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
       const { error } = await supabase.functions.invoke('send-telegram', {
         body: {
           name,
-          whatsapp,
-          telegram: telegram || "Не указан",
+          contact,
           model: data.model,
           storage: data.storage,
           condition: data.condition,
@@ -71,8 +69,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
 
       // Очистка формы
       setName("");
-      setWhatsapp("");
-      setTelegram("");
+      setContact("");
     } catch (error) {
       console.error('Error submitting lead:', error);
       toast({
@@ -177,31 +174,17 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="whatsapp" className="flex items-center gap-2">
+            <Label htmlFor="contact" className="flex items-center gap-2">
               <MessageCircle className="w-4 h-4 text-primary" />
-              Номер WhatsApp *
+              Номер WhatsApp или Ник в Telegram *
             </Label>
             <Input
-              id="whatsapp"
-              type="tel"
-              placeholder="+7 (999) 123-45-67"
-              value={whatsapp}
-              onChange={(e) => setWhatsapp(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="telegram" className="flex items-center gap-2">
-              <Send className="w-4 h-4 text-primary" />
-              Ник в Telegram (необязательно)
-            </Label>
-            <Input
-              id="telegram"
+              id="contact"
               type="text"
-              placeholder="@username"
-              value={telegram}
-              onChange={(e) => setTelegram(e.target.value)}
+              placeholder="+7 (999) 123-45-67 или @username"
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+              required
             />
           </div>
 
@@ -223,10 +206,10 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-lg py-6"
+                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-lg py-6 animate-pulse"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Отправка..." : "Отправить заявку"}
+                {isSubmitting ? "Отправка..." : "Получить цену со скидкой"}
               </Button>
             </div>
 
