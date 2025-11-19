@@ -48,6 +48,37 @@ const models = [
   "iPhone 13",
 ];
 
+const modelPrices: Record<string, number> = {
+  "iPhone 17 Pro Max": 91900,
+  "iPhone 17 Pro": 88900,
+  "iPhone 17": 68900,
+  "iPhone 17 Air": 68900,
+  "iPhone 16 Pro Max": 82900,
+  "iPhone 16 Pro": 70900,
+  "iPhone 16 Plus": 50900,
+  "iPhone 16": 47900,
+  "iPhone 15 Pro Max": 57900,
+  "iPhone 15 Pro": 52900,
+  "iPhone 15 Plus": 45900,
+  "iPhone 15": 37900,
+  "iPhone 14 Pro Max": 0,
+  "iPhone 14 Pro": 0,
+  "iPhone 14 Plus": 0,
+  "iPhone 14": 0,
+  "iPhone 13 Pro Max": 0,
+  "iPhone 13 Pro": 0,
+  "iPhone 13 mini": 0,
+  "iPhone 13": 0,
+};
+
+const formatPrice = (price: number) => {
+  return price.toLocaleString('ru-RU');
+};
+
+const getMonthlyPayment = (price: number) => {
+  return Math.round(price / 10);
+};
+
 const getModelImage = (model: string) => {
   // iPhone 17 line
   if (model === "iPhone 17 Pro Max") return iPhone17ProMax;
@@ -113,7 +144,19 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-medium text-foreground flex-1">{model}</span>
+              <div className="flex flex-col flex-1 gap-1">
+                <span className="font-medium text-foreground">{model}</span>
+                {modelPrices[model] > 0 && (
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-sm text-primary font-semibold">
+                      от {formatPrice(modelPrices[model])} ₽
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      в рассрочку {formatPrice(getMonthlyPayment(modelPrices[model]))} ₽/мес
+                    </span>
+                  </div>
+                )}
+              </div>
             </Label>
           </div>
         ))}
