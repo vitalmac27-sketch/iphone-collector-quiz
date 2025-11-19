@@ -151,8 +151,8 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
                     <span className="text-sm text-primary font-semibold">
                       от {formatPrice(modelPrices[model])} ₽
                     </span>
-                    <span className="text-xs text-muted-foreground">
-                      в рассрочку {formatPrice(getMonthlyPayment(modelPrices[model]))} ₽/мес
+                    <span className="text-xs font-semibold text-primary border-2 border-primary rounded-md px-2 py-0.5 inline-block bg-primary/5">
+                      в рассрочку {formatPrice(getMonthlyPayment(modelPrices[model]))} ₽/мес без переплат
                     </span>
                   </div>
                 )}
