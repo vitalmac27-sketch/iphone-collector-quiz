@@ -32,7 +32,7 @@ const benefits = [
 const Benefits = () => {
   return (
     <div className="mt-16 animate-fade-in [animation-delay:400ms]">
-      <h2 className="text-2xl font-bold text-center mb-8">Почему выбирают нас?</h2>
+      <h2 className="text-2xl font-bold text-center mb-8">Почему выбирают ЭПЛ-КОЛЛЕКЦИЯ?</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {benefits.map((benefit, index) => {

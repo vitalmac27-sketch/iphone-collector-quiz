@@ -9,6 +9,7 @@ import BatterySelector from "@/components/calculator/BatterySelector";
 import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
+import SeoContent from "@/components/SeoContent";
 import EnhancedProgressBar from "@/components/calculator/EnhancedProgressBar";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import TrustBadges from "@/components/TrustBadges";
@@ -234,6 +235,7 @@ const Index = () => {
         </div>
 
         <Benefits />
+        <SeoContent />
       </div>
     </div>
   );
