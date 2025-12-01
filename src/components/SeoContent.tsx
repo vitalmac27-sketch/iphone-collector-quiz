@@ -102,41 +102,67 @@ const SeoContent = () => {
         </div>
       </section>
 
-      {/* Schema.org Product Markup for key models */}
+      {/* Schema.org Structured Data */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "ItemList",
-          "itemListElement": [
+          "@graph": [
             {
-              "@type": "Product",
-              "name": "iPhone 17 Pro Max",
-              "offers": {
-                "@type": "AggregateOffer",
-                "lowPrice": "139990",
-                "priceCurrency": "RUB",
-                "availability": "https://schema.org/InStock"
+              "@type": "LocalBusiness",
+              "name": "ЭПЛ-КОЛЛЕКЦИЯ",
+              "image": "https://apple-collection.lovable.app/og-apple-collection.jpg",
+              "description": "Официальный магазин iPhone в Казани. Продажа iPhone 13-18 с гарантией 1 год, рассрочка 0%, доставка в день заказа. 315+ пятизвездочных отзывов.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Сибгата Хакима 40а, Офис 7",
+                "addressLocality": "Казань",
+                "addressRegion": "Республика Татарстан",
+                "addressCountry": "RU"
+              },
+              "telephone": "+79992673933",
+              "openingHours": "Mo-Su 13:00-20:00",
+              "priceRange": "₽₽",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "bestRating": "5",
+                "reviewCount": "315"
               }
             },
             {
-              "@type": "Product",
-              "name": "iPhone 16 Pro Max",
-              "offers": {
-                "@type": "AggregateOffer",
-                "lowPrice": "119990",
-                "priceCurrency": "RUB",
-                "availability": "https://schema.org/InStock"
-              }
-            },
-            {
-              "@type": "Product",
-              "name": "iPhone 15 Pro Max",
-              "offers": {
-                "@type": "AggregateOffer",
-                "lowPrice": "99990",
-                "priceCurrency": "RUB",
-                "availability": "https://schema.org/InStock"
-              }
+              "@type": "ItemList",
+              "itemListElement": [
+                {
+                  "@type": "Product",
+                  "name": "iPhone 17 Pro Max",
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "lowPrice": "139990",
+                    "priceCurrency": "RUB",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "Product",
+                  "name": "iPhone 16 Pro Max",
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "lowPrice": "119990",
+                    "priceCurrency": "RUB",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "Product",
+                  "name": "iPhone 15 Pro Max",
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "lowPrice": "99990",
+                    "priceCurrency": "RUB",
+                    "availability": "https://schema.org/InStock"
+                  }
+                }
+              ]
             }
           ]
         })
