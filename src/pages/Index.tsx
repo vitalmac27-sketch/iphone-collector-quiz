@@ -134,12 +134,14 @@ const Index = () => {
         <div className="grid lg:grid-cols-3 gap-6 items-start">
           {/* Main Calculator */}
           <div className="lg:col-span-2">
-            {/* Enhanced Progress Bar */}
-            <EnhancedProgressBar 
-              currentStep={step} 
-              totalSteps={totalSteps - 1} // Exclude final review from visible steps
-              condition={data.condition}
-            />
+            {/* Enhanced Progress Bar - hide on final review step */}
+            {step < 7 && (
+              <EnhancedProgressBar 
+                currentStep={step} 
+                totalSteps={6} // Total visible steps (excluding final review)
+                condition={data.condition}
+              />
+            )}
 
             {/* Calculator Card */}
             <Card className="calculator-card p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">

@@ -98,50 +98,50 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   ];
 
   return (
-    <div className="space-y-6 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-foreground mb-2">Проверьте ваш заказ</h2>
-        <p className="text-muted-foreground">Убедитесь, что все данные указаны верно</p>
+    <div className="space-y-4 sm:space-y-6">
+      <div className="text-center mb-4 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Проверьте ваш заказ</h2>
+        <p className="text-sm sm:text-base text-muted-foreground">Убедитесь, что все данные указаны верно</p>
       </div>
 
-      <Card className="p-6 bg-gradient-to-br from-card to-muted/30 border-2 border-primary/20">
+      <Card className="p-4 sm:p-6 bg-gradient-to-br from-card to-muted/30 border-2 border-primary/20">
         <div className="flex items-center gap-2 mb-4">
-          <CheckCircle2 className="w-6 h-6 text-primary" />
-          <h3 className="text-xl font-bold text-foreground">Ваша конфигурация</h3>
+          <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+          <h3 className="text-lg sm:text-xl font-bold text-foreground">Ваша конфигурация</h3>
         </div>
         
-        <div className="grid gap-3 mb-6">
+        <div className="grid gap-2 sm:gap-3 mb-4 sm:mb-6">
           {items.map((item, index) => {
             const Icon = item.icon;
             return (
               <div 
                 key={index}
-                className="flex items-center gap-4 p-4 rounded-lg bg-background/50 border border-border hover:border-primary/30 transition-colors"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-background/50 border border-border hover:border-primary/30 transition-colors"
               >
-                <div className="p-3 rounded-lg bg-primary/10">
-                  <Icon className="w-5 h-5 text-primary" />
+                <div className="p-2 sm:p-3 rounded-lg bg-primary/10">
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                  <p className="font-semibold text-foreground">{item.value}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>
+                  <p className="text-sm sm:text-base font-semibold text-foreground truncate">{item.value}</p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <div className="pt-4 border-t border-border">
-          <p className="text-sm font-medium text-muted-foreground mb-3">Что вы получаете:</p>
-          <div className="grid grid-cols-2 gap-3">
+        <div className="pt-3 sm:pt-4 border-t border-border">
+          <p className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3">Что вы получаете:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <Badge 
                   key={index}
                   variant="secondary"
-                  className="px-3 py-2 justify-start gap-2 hover:bg-primary/10 transition-colors"
+                  className="px-2 sm:px-3 py-1.5 sm:py-2 justify-start gap-2 hover:bg-primary/10 transition-colors text-left"
                 >
-                  <Icon className="w-4 h-4 text-primary" />
+                  <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
                   <span className="text-xs">{benefit.text}</span>
                 </Badge>
               );
@@ -150,12 +150,12 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
         </div>
       </Card>
 
-      <Card ref={contactFormRef} className="p-6 border-2 border-primary/20">
-        <div className="flex items-center gap-2 mb-4">
-          <MessageCircle className="w-6 h-6 text-primary" />
-          <h3 className="text-xl font-bold text-foreground">Оставьте контакты</h3>
+      <Card ref={contactFormRef} className="p-4 sm:p-6 border-2 border-primary/20">
+        <div className="flex items-center gap-2 mb-3 sm:mb-4">
+          <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+          <h3 className="text-lg sm:text-xl font-bold text-foreground">Оставьте контакты</h3>
         </div>
-        <p className="text-sm text-muted-foreground mb-6">Мы свяжемся с вами в течение 5 минут</p>
+        <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">Мы свяжемся с вами в течение 5 минут</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -188,25 +188,25 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
             />
           </div>
 
-          <div className="pt-4 space-y-4">
-            <div className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
-              <Gift className="w-5 h-5 text-primary" />
-              <p className="text-sm font-semibold text-foreground">Оригинальный блок питания в подарок</p>
+          <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
+            <div className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
+              <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+              <p className="text-xs sm:text-sm font-semibold text-foreground text-center">Оригинальный блок питания в подарок</p>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onBack}
-                className="flex-1 hover:bg-muted"
+                className="w-full sm:flex-1 hover:bg-muted"
                 disabled={isSubmitting}
               >
                 Назад
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-lg py-6 animate-pulse"
+                className="w-full sm:flex-1 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all text-base sm:text-lg py-5 sm:py-6 animate-pulse"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Отправка..." : "Получить цену со скидкой"}
@@ -215,7 +215,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
 
             <div className="flex items-center justify-center gap-1 text-muted-foreground">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">5/5 на основе 300+ отзывов</span>
+              <span className="text-xs sm:text-sm font-medium">5/5 на основе 300+ отзывов</span>
             </div>
           </div>
         </form>
