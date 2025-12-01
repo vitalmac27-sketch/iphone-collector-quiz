@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -90,6 +92,10 @@ const reviewImages = [
 ];
 
 const Testimonials = () => {
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  
+  const displayedTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 5);
+  
   return (
     <section className="py-16 animate-fade-in">
       <div className="max-w-7xl mx-auto">
@@ -157,7 +163,7 @@ const Testimonials = () => {
           Что говорят наши клиенты
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
+          {displayedTestimonials.map((testimonial, index) => (
             <Card 
               key={index} 
               className="p-6 hover:shadow-lg transition-shadow bg-card border-border"
@@ -177,6 +183,28 @@ const Testimonials = () => {
               <p className="text-foreground leading-relaxed">{testimonial.text}</p>
             </Card>
           ))}
+        </div>
+
+        {/* Show More/Less Button */}
+        <div className="text-center mt-8">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => setShowAllReviews(!showAllReviews)}
+            className="gap-2 hover:bg-primary/10"
+          >
+            {showAllReviews ? (
+              <>
+                Свернуть
+                <ChevronUp className="w-5 h-5" />
+              </>
+            ) : (
+              <>
+                Показать еще {testimonials.length - 5} отзывов
+                <ChevronDown className="w-5 h-5" />
+              </>
+            )}
+          </Button>
         </div>
 
         <div className="text-center mt-12">
