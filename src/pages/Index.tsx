@@ -10,6 +10,7 @@ import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 import SeoContent from "@/components/SeoContent";
+import Testimonials from "@/components/Testimonials";
 import EnhancedProgressBar from "@/components/calculator/EnhancedProgressBar";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import TrustBadges from "@/components/TrustBadges";
@@ -242,6 +243,7 @@ const Index = () => {
         </div>
 
         <Benefits />
+        <Testimonials />
         <SeoContent />
       </div>
     </div>
