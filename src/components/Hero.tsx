@@ -1,13 +1,14 @@
-import { Smartphone, Apple } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Hero = () => {
   return (
     <div className="text-center mb-12 animate-slide-up">
       <div className="relative inline-block mb-6">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-2xl opacity-30 animate-glow-pulse"></div>
-        <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-2xl animate-float">
-          <Apple className="w-10 h-10 text-white" strokeWidth={2.5} />
-        </div>
+        <img 
+          src={logo} 
+          alt="ЭПЛ КОЛЛЕКЦИЯ" 
+          className="w-24 h-24 mx-auto rounded-2xl shadow-2xl animate-float"
+        />
       </div>
       
       <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
