@@ -108,6 +108,54 @@ const Testimonials = () => {
           <p className="text-muted-foreground">На основании 315+ отзывов реальных покупателей</p>
         </div>
 
+        {/* Carousel with Review Screenshots - MOVED UP */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-center mb-8">
+            Скриншоты реальных отзывов
+          </h3>
+          <div className="relative">
+            {/* Mobile scroll hint */}
+            <div className="md:hidden absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background via-background/50 to-transparent pointer-events-none z-10 flex items-center justify-end pr-2">
+              <div className="animate-pulse text-primary font-semibold text-sm rotate-180" style={{ writingMode: "vertical-lr" }}>
+                ← свайп
+              </div>
+            </div>
+            
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-5xl mx-auto"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {reviewImages.map((image, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-4/5 sm:basis-3/5 md:basis-1/2 lg:basis-1/3">
+                    <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer border-2 hover:border-primary/50">
+                      <img
+                        src={image}
+                        alt={`Отзыв клиента ЭПЛ-КОЛЛЕКЦИЯ ${index + 1} - реальный отзыв о покупке iPhone в Казани`}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
+            
+            <p className="text-center text-sm text-muted-foreground mt-4 md:hidden">
+              ← Листайте, чтобы увидеть больше отзывов →
+            </p>
+          </div>
+        </div>
+
+        {/* Text Reviews Grid */}
+        <h3 className="text-2xl font-bold text-center mb-8">
+          Что говорят наши клиенты
+        </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <Card 
@@ -129,39 +177,6 @@ const Testimonials = () => {
               <p className="text-foreground leading-relaxed">{testimonial.text}</p>
             </Card>
           ))}
-        </div>
-
-        {/* Carousel with Review Screenshots */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-center mb-8">
-            Скриншоты реальных отзывов
-          </h3>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-5xl mx-auto"
-          >
-            <CarouselContent>
-              {reviewImages.map((image, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2">
-                    <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
-                      <img
-                        src={image}
-                        alt={`Отзыв клиента ЭПЛ-КОЛЛЕКЦИЯ ${index + 1} - реальный отзыв о покупке iPhone в Казани`}
-                        className="w-full h-auto object-cover"
-                        loading="lazy"
-                      />
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
         </div>
 
         <div className="text-center mt-12">
