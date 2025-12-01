@@ -1,5 +1,22 @@
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import review1 from "@/assets/reviews/review-1.jpg";
+import review2 from "@/assets/reviews/review-2.jpg";
+import review3 from "@/assets/reviews/review-3.jpg";
+import review4 from "@/assets/reviews/review-4.jpg";
+import review5 from "@/assets/reviews/review-5.jpg";
+import review6 from "@/assets/reviews/review-6.jpg";
+import review7 from "@/assets/reviews/review-7.jpg";
+import review8 from "@/assets/reviews/review-8.jpg";
+import review9 from "@/assets/reviews/review-9.jpg";
+import review10 from "@/assets/reviews/review-10.jpg";
 
 const testimonials = [
   {
@@ -67,6 +84,11 @@ const testimonials = [
   }
 ];
 
+const reviewImages = [
+  review1, review2, review3, review4, review5,
+  review6, review7, review8, review9, review10
+];
+
 const Testimonials = () => {
   return (
     <section className="py-16 animate-fade-in">
@@ -107,6 +129,39 @@ const Testimonials = () => {
               <p className="text-foreground leading-relaxed">{testimonial.text}</p>
             </Card>
           ))}
+        </div>
+
+        {/* Carousel with Review Screenshots */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-center mb-8">
+            Скриншоты реальных отзывов
+          </h3>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {reviewImages.map((image, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2">
+                    <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
+                      <img
+                        src={image}
+                        alt={`Отзыв клиента ЭПЛ-КОЛЛЕКЦИЯ ${index + 1} - реальный отзыв о покупке iPhone в Казани`}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
 
         <div className="text-center mt-12">
