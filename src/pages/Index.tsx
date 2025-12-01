@@ -15,6 +15,8 @@ import UrgencyBanner from "@/components/UrgencyBanner";
 import TrustBadges from "@/components/TrustBadges";
 import OrderSummary from "@/components/calculator/OrderSummary";
 import FinalReview from "@/components/calculator/FinalReview";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export interface CalculatorData {
   model: string;
@@ -124,9 +126,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen p-4 py-12">
-      <div className="max-w-7xl mx-auto">
-        <Hero />
+    <>
+      <ExitIntentPopup />
+      <ChatWidget />
+      <div className="min-h-screen p-4 py-12">
+        <div className="max-w-7xl mx-auto">
+          <Hero />
 
         <UrgencyBanner />
         <TrustBadges />
@@ -240,6 +245,7 @@ const Index = () => {
         <SeoContent />
       </div>
     </div>
+    </>
   );
 };
 
