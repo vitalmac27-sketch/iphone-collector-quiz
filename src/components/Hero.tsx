@@ -2,81 +2,30 @@ import logo from "@/assets/logo.jpg";
 
 const Hero = () => {
   return (
-    <div className="animate-fade-in">
-      {/* Top Bar - City, Logo, Phone */}
-      <div className="px-4 py-3 border-b border-border/30">
-        <div className="flex justify-between items-center text-sm text-foreground/70 mb-3">
-          <span className="font-light">Казань</span>
-          <a 
-            href="tel:+79992673933" 
-            className="font-light hover:text-primary transition-colors"
-          >
-            +7 (999) 267-39-33
-          </a>
-        </div>
-        
-        {/* Logo - centered on mobile */}
-        <div className="flex justify-center md:hidden">
-          <img 
-            src={logo} 
-            alt="ЭПЛ КОЛЛЕКЦИЯ" 
-            className="h-12 rounded-xl transition-all duration-300 hover:scale-105"
-          />
-        </div>
-      </div>
-
-      {/* Logo - desktop only */}
-      <div className="hidden md:flex justify-center py-4 border-b border-border/30">
+    <div className="max-w-4xl mx-auto px-4 pt-12 pb-16 md:pt-20 md:pb-24 text-center animate-fade-in">
+      {/* Logo */}
+      <div className="mb-12 md:mb-16">
         <img 
           src={logo} 
           alt="ЭПЛ КОЛЛЕКЦИЯ" 
-          className="h-10 rounded-xl transition-all duration-300 hover:scale-105"
+          className="h-16 md:h-20 mx-auto rounded-2xl transition-all duration-300 hover:scale-105"
         />
       </div>
       
-      {/* Hero Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8 md:py-20 text-center">
-        {/* Main Heading */}
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
-          <span className="block text-foreground/90 mb-2">
-            Купить Айфон в Казани
-          </span>
-          <span className="block bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent font-normal">
-            по выгодной цене
-          </span>
-        </h1>
-        
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl font-light text-foreground/60 mb-8 max-w-2xl mx-auto">
-          Подберите свой Айфон за 1 минуту и получите персональное предложение
-        </p>
-
-        {/* CTA Button */}
-        <button 
-          onClick={() => {
-            const calculator = document.getElementById('calculator-section');
-            calculator?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }}
-          className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full text-lg font-light hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,113,227,0.4)]"
-        >
-          <span>Узнать больше</span>
-          <svg 
-            className="w-5 h-5 group-hover:translate-x-1 transition-transform" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Benefits Bar */}
-      <div className="bg-primary text-primary-foreground py-4 px-4 text-center">
-        <p className="text-sm md:text-base font-light leading-relaxed">
-          Гарантия 1 год • Скидка до 30% • Оригинальный блок питания в подарок
-        </p>
-      </div>
+      {/* Main Heading */}
+      <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-light tracking-tight mb-6 md:mb-8">
+        <span className="block text-foreground/90 mb-3">
+          Купить Айфон в Казани
+        </span>
+        <span className="block bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent font-normal">
+          по выгодной цене
+        </span>
+      </h1>
+      
+      {/* Subtitle */}
+      <p className="text-lg md:text-xl lg:text-2xl font-light text-foreground/60 max-w-2xl mx-auto">
+        Подберите свой Айфон за 1 минуту
+      </p>
     </div>
   );
 };
