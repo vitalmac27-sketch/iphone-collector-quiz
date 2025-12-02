@@ -3,19 +3,30 @@ import logo from "@/assets/logo.jpg";
 const Hero = () => {
   return (
     <div className="animate-fade-in">
-      {/* Top Bar - City and Phone */}
-      <div className="flex justify-between items-center px-4 py-3 text-sm text-foreground/70 border-b border-border/30">
-        <span className="font-light">Казань</span>
-        <a 
-          href="tel:+79992673933" 
-          className="font-light hover:text-primary transition-colors"
-        >
-          +7 (999) 267-39-33
-        </a>
+      {/* Top Bar - City, Logo, Phone */}
+      <div className="px-4 py-3 border-b border-border/30">
+        <div className="flex justify-between items-center text-sm text-foreground/70 mb-3">
+          <span className="font-light">Казань</span>
+          <a 
+            href="tel:+79992673933" 
+            className="font-light hover:text-primary transition-colors"
+          >
+            +7 (999) 267-39-33
+          </a>
+        </div>
+        
+        {/* Logo - centered on mobile */}
+        <div className="flex justify-center md:hidden">
+          <img 
+            src={logo} 
+            alt="ЭПЛ КОЛЛЕКЦИЯ" 
+            className="h-12 rounded-xl transition-all duration-300 hover:scale-105"
+          />
+        </div>
       </div>
 
-      {/* Logo */}
-      <div className="flex justify-center py-4 border-b border-border/30">
+      {/* Logo - desktop only */}
+      <div className="hidden md:flex justify-center py-4 border-b border-border/30">
         <img 
           src={logo} 
           alt="ЭПЛ КОЛЛЕКЦИЯ" 
@@ -24,7 +35,7 @@ const Hero = () => {
       </div>
       
       {/* Hero Content */}
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-4 py-8 md:py-20 text-center">
         {/* Main Heading */}
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
           <span className="block text-foreground/90 mb-2">
@@ -61,8 +72,8 @@ const Hero = () => {
       </div>
 
       {/* Benefits Bar */}
-      <div className="bg-primary text-primary-foreground py-3 text-center">
-        <p className="text-sm md:text-base font-light">
+      <div className="bg-primary text-primary-foreground py-4 px-4 text-center">
+        <p className="text-sm md:text-base font-light leading-relaxed">
           Гарантия 1 год • Скидка до 30% • Оригинальный блок питания в подарок
         </p>
       </div>
