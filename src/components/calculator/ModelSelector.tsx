@@ -125,7 +125,7 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
         </p>
       </div>
 
-      <RadioGroup value={value} onValueChange={onChange} className="grid grid-cols-1 gap-3 max-h-[400px] overflow-y-auto pr-2">
+      <RadioGroup value={value} onValueChange={onChange} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-[500px] overflow-y-auto pr-2">
         {models.map((model) => (
           <div key={model} className="relative overflow-hidden rounded-lg">
             <RadioGroupItem
@@ -135,24 +135,24 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
             />
             <Label
               htmlFor={model}
-              className="flex items-center gap-4 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-lg peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="flex flex-col items-center gap-3 p-4 rounded-lg border-2 border-border bg-gradient-to-br from-card to-muted/30 cursor-pointer transition-all hover:border-primary hover:shadow-lg peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-gradient-to-br peer-data-[state=checked]:from-primary/5 peer-data-[state=checked]:to-accent/5 peer-data-[state=checked]:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 aspect-square"
             >
-              <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-background/50">
+              <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-background/50">
                 <img 
                   src={getModelImage(model)} 
                   alt={model}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex flex-col flex-1 gap-1">
-                <span className="font-medium text-foreground">{model}</span>
+              <div className="flex flex-col items-center gap-1 text-center flex-1">
+                <span className="font-medium text-foreground text-sm">{model}</span>
                 {modelPrices[model] > 0 && (
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-sm text-primary font-semibold">
+                  <div className="flex flex-col gap-0.5 w-full">
+                    <span className="text-xs text-primary font-semibold">
                       от {formatPrice(modelPrices[model])} ₽
                     </span>
-                    <span className="text-xs font-medium text-primary/90 border border-primary/30 rounded px-2 py-0.5 inline-block bg-primary/5">
-                      в рассрочку {formatPrice(getMonthlyPayment(modelPrices[model]))} ₽/мес без переплат
+                    <span className="text-[10px] leading-tight font-medium text-primary/90 border border-primary/30 rounded px-1.5 py-0.5 bg-primary/5">
+                      {formatPrice(getMonthlyPayment(modelPrices[model]))} ₽/мес
                     </span>
                   </div>
                 )}
