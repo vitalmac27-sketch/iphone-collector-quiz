@@ -137,7 +137,7 @@ const Index = () => {
         <UrgencyBanner />
         <TrustBadges />
 
-        <div className="grid lg:grid-cols-3 gap-6 items-start">
+        <div id="calculator-section" className="grid lg:grid-cols-3 gap-6 items-start">
           {/* Main Calculator */}
           <div className="lg:col-span-2">
             {/* Enhanced Progress Bar - hide on final review step */}
