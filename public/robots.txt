@@ -1,4 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.map$
+
 User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
 Allow: /
 
 User-agent: Bingbot
@@ -10,5 +21,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+Sitemap: https://epl-collection.ru/sitemap.xml
+Host: https://epl-collection.ru
