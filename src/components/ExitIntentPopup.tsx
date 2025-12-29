@@ -31,7 +31,7 @@ export const ExitIntentPopup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const message = `🎁 ЭКСКЛЮЗИВНАЯ ЗАЯВКА\n\n👤 Имя: ${name}\n📱 Контакт: ${contact}\n\n💰 Скидка 2000₽ применена`;
+    const message = `🎁 ЭКСКЛЮЗИВНАЯ ЗАЯВКА\n\n👤 Имя: ${name}\n📱 Контакт: ${contact}\n\n🎁 Подарки на 3000₽`;
     
     const whatsappUrl = `https://wa.me/79992673933?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
@@ -57,7 +57,7 @@ export const ExitIntentPopup = () => {
             Подождите! 🎁
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            <span className="text-lg font-semibold text-primary">Эксклюзивная скидка 2000₽</span>
+            <span className="text-lg font-semibold text-primary">Эксклюзивные подарки на 3000₽</span>
             <br />
             только для вас, прямо сейчас!
           </DialogDescription>
@@ -87,7 +87,7 @@ export const ExitIntentPopup = () => {
               className="w-full h-12 text-base font-semibold"
               size="lg"
             >
-              Получить скидку 2000₽
+              Получить подарки на 3000₽
             </Button>
             
             <p className="text-xs text-center text-muted-foreground">
