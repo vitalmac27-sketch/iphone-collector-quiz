@@ -53,7 +53,7 @@ const SeoContent = () => {
           </div>
           <h3 className="font-semibold text-lg">Подарки</h3>
           <p className="text-sm text-muted-foreground">
-            При покупке iPhone — защитное стекло и чехол на выбор в подарок при оформлении заказа.
+            При покупке iPhone — стильный чехол и премиум защитное стекло в подарок при оформлении заказа.
           </p>
         </Card>
 
