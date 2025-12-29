@@ -38,7 +38,7 @@ const UrgencyBanner = () => {
             </div>
             <div className="text-left">
               <p className="font-display font-medium text-base md:text-lg text-foreground mb-0.5 md:mb-1">
-                Скидка 2000₽ действует сегодня!
+                Подарки на 3000₽ сегодня!
               </p>
               <p className="text-xs md:text-sm text-muted-foreground font-light">
                 Успей оформить заказ и получи выгоду
