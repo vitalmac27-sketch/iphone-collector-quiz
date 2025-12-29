@@ -153,13 +153,10 @@ const Index = () => {
             {/* Calculator Card */}
             <Card className="calculator-card p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
               {step === 1 && (
-                <div>
-                  <ModelSelector
-                    value={data.model}
-                    onChange={(model) => setData({ ...data, model })}
-                  />
-                  {data.model && <AvitoListings model={data.model} />}
-                </div>
+                <ModelSelector
+                  value={data.model}
+                  onChange={(model) => setData({ ...data, model })}
+                />
               )}
 
               {step === 2 && (
@@ -245,6 +242,15 @@ const Index = () => {
             <OrderSummary data={data} currentStep={step} />
           </div>
         </div>
+
+        {/* Avito Listings Section - показываем после выбора модели */}
+        {data.model && (
+          <div className="mt-8">
+            <Card className="p-6 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10">
+              <AvitoListings model={data.model} />
+            </Card>
+          </div>
+        )}
 
         <Testimonials />
         <Benefits />
