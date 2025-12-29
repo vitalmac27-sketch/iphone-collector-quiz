@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ExternalLink, RefreshCw, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, RefreshCw, AlertCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface AvitoItem {
@@ -12,96 +12,13 @@ interface AvitoItem {
   url: string;
   status: string;
   address?: string;
-  images: string[];
-  description?: string;
 }
 
-const ImageCarousel = ({ images, title }: { images: string[], title: string }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
-  const [errorImages, setErrorImages] = useState<Record<number, boolean>>({});
+interface AvitoListingsProps {
+  model: string;
+}
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
-  if (images.length === 0) {
-    return (
-      <div className="aspect-square bg-muted rounded-t-lg flex items-center justify-center text-muted-foreground text-sm">
-        Нет фото
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative aspect-square rounded-t-lg overflow-hidden group bg-muted">
-      {/* Loading placeholder */}
-      {!loadedImages[currentIndex] && !errorImages[currentIndex] && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-        </div>
-      )}
-      
-      {/* Error state */}
-      {errorImages[currentIndex] && (
-        <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-          Фото недоступно
-        </div>
-      )}
-      
-      <img
-        src={images[currentIndex]}
-        alt={`${title} - фото ${currentIndex + 1}`}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${
-          loadedImages[currentIndex] ? 'opacity-100' : 'opacity-0'
-        }`}
-        onLoad={() => setLoadedImages(prev => ({ ...prev, [currentIndex]: true }))}
-        onError={() => setErrorImages(prev => ({ ...prev, [currentIndex]: true }))}
-        loading="lazy"
-      />
-      
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={handlePrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-          
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setCurrentIndex(i);
-                }}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  i === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-const AvitoListings = () => {
+const AvitoListings = ({ model }: AvitoListingsProps) => {
   const [items, setItems] = useState<AvitoItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -111,10 +28,10 @@ const AvitoListings = () => {
     setError(null);
 
     try {
-      console.log("Fetching all Avito items");
+      console.log("Fetching Avito items for model:", model);
       
       const { data, error: fnError } = await supabase.functions.invoke('avito-items', {
-        body: { includeImages: true }
+        body: { model }
       });
 
       if (fnError) {
@@ -137,8 +54,10 @@ const AvitoListings = () => {
   };
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    if (model) {
+      fetchItems();
+    }
+  }, [model]);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ru-RU', {
@@ -150,24 +69,16 @@ const AvitoListings = () => {
 
   if (loading) {
     return (
-      <div className="space-y-6">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-2">
-            Наши объявления на Avito
-          </h2>
-          <p className="text-muted-foreground">
-            Загружаем актуальные объявления...
-          </p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <Card key={i} className="overflow-hidden">
-              <Skeleton className="aspect-square w-full" />
-              <div className="p-3">
-                <Skeleton className="h-4 w-full mb-2" />
-                <Skeleton className="h-5 w-2/3 mb-2" />
-                <Skeleton className="h-3 w-full" />
-              </div>
+      <div className="space-y-4 mt-6">
+        <h3 className="text-lg font-semibold text-foreground">
+          Загрузка объявлений Avito...
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i} className="p-4">
+              <Skeleton className="h-4 w-3/4 mb-2" />
+              <Skeleton className="h-6 w-1/2 mb-2" />
+              <Skeleton className="h-3 w-1/3" />
             </Card>
           ))}
         </div>
@@ -177,33 +88,12 @@ const AvitoListings = () => {
 
   if (error) {
     return (
-      <Card className="p-6 bg-destructive/10 border border-destructive/20">
-        <div className="flex flex-col items-center text-center gap-3">
-          <AlertCircle className="h-8 w-8 text-destructive" />
-          <div>
-            <h3 className="font-medium text-foreground">Ошибка загрузки объявлений</h3>
-            <p className="text-sm text-muted-foreground">{error}</p>
-          </div>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={fetchItems}
-            className="gap-2"
-          >
-            <RefreshCw className="h-4 w-4" />
-            Попробовать снова
-          </Button>
+      <div className="mt-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+        <div className="flex items-center gap-2 text-destructive mb-2">
+          <AlertCircle className="h-5 w-5" />
+          <span className="font-medium">Ошибка загрузки</span>
         </div>
-      </Card>
-    );
-  }
-
-  if (items.length === 0) {
-    return (
-      <Card className="p-6 bg-muted/50 text-center">
-        <p className="text-muted-foreground mb-3">
-          Сейчас нет активных объявлений
-        </p>
+        <p className="text-sm text-muted-foreground mb-3">{error}</p>
         <Button 
           variant="outline" 
           size="sm" 
@@ -211,23 +101,37 @@ const AvitoListings = () => {
           className="gap-2"
         >
           <RefreshCw className="h-4 w-4" />
+          Попробовать снова
+        </Button>
+      </div>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <div className="mt-6 p-4 bg-muted/50 rounded-lg text-center">
+        <p className="text-muted-foreground">
+          Нет активных объявлений для "{model}"
+        </p>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={fetchItems}
+          className="mt-3 gap-2"
+        >
+          <RefreshCw className="h-4 w-4" />
           Обновить
         </Button>
-      </Card>
+      </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 mt-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-foreground">
-            Наши объявления на Avito
-          </h2>
-          <p className="text-muted-foreground text-sm">
-            {items.length} актуальных товаров
-          </p>
-        </div>
+        <h3 className="text-lg font-semibold text-foreground">
+          Объявления Avito ({items.length})
+        </h3>
         <Button 
           variant="ghost" 
           size="sm" 
@@ -239,37 +143,29 @@ const AvitoListings = () => {
         </Button>
       </div>
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto pr-2">
         {items.map((item) => (
           <Card 
             key={item.id} 
-            className="overflow-hidden hover:shadow-lg transition-all cursor-pointer group hover:-translate-y-1"
+            className="p-4 hover:shadow-md transition-shadow cursor-pointer group"
             onClick={() => window.open(item.url, '_blank')}
           >
-            <ImageCarousel images={item.images} title={item.title} />
-            
-            <div className="p-3">
-              <h4 className="font-medium text-foreground text-sm line-clamp-2 mb-1.5 group-hover:text-primary transition-colors min-h-[2.5rem]">
+            <div className="flex flex-col h-full">
+              <h4 className="font-medium text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
                 {item.title}
               </h4>
               
-              <p className="text-lg font-bold text-primary mb-1.5">
+              <p className="text-xl font-bold text-primary mb-2">
                 {formatPrice(item.price)}
               </p>
               
-              {item.description && (
-                <p className="text-xs text-muted-foreground line-clamp-2 mb-1.5">
-                  {item.description}
-                </p>
-              )}
-              
               {item.address && (
-                <p className="text-xs text-muted-foreground line-clamp-1 mb-1.5">
+                <p className="text-xs text-muted-foreground mb-2 line-clamp-1">
                   📍 {item.address}
                 </p>
               )}
               
-              <div className="flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors pt-1 border-t border-border/50">
+              <div className="mt-auto flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors">
                 <ExternalLink className="h-3 w-3 mr-1" />
                 Открыть на Avito
               </div>
