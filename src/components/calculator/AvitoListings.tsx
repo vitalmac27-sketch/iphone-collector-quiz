@@ -16,31 +16,10 @@ interface AvitoItem {
   description?: string;
 }
 
-interface AvitoListingsProps {
-  model: string;
-}
-
 const ImageCarousel = ({ images, title }: { images: string[], title: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imageError, setImageError] = useState<Record<number, boolean>>({});
-
-  if (images.length === 0) {
-    return (
-      <div className="w-full h-32 bg-muted rounded-lg flex items-center justify-center text-muted-foreground text-sm">
-        Нет фото
-      </div>
-    );
-  }
-
-  const validImages = images.filter((_, i) => !imageError[i]);
-  
-  if (validImages.length === 0) {
-    return (
-      <div className="w-full h-32 bg-muted rounded-lg flex items-center justify-center text-muted-foreground text-sm">
-        Нет фото
-      </div>
-    );
-  }
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
+  const [errorImages, setErrorImages] = useState<Record<number, boolean>>({});
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -52,36 +31,66 @@ const ImageCarousel = ({ images, title }: { images: string[], title: string }) =
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  if (images.length === 0) {
+    return (
+      <div className="aspect-square bg-muted rounded-t-lg flex items-center justify-center text-muted-foreground text-sm">
+        Нет фото
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full h-32 rounded-lg overflow-hidden group">
+    <div className="relative aspect-square rounded-t-lg overflow-hidden group bg-muted">
+      {/* Loading placeholder */}
+      {!loadedImages[currentIndex] && !errorImages[currentIndex] && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+      
+      {/* Error state */}
+      {errorImages[currentIndex] && (
+        <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
+          Фото недоступно
+        </div>
+      )}
+      
       <img
         src={images[currentIndex]}
         alt={`${title} - фото ${currentIndex + 1}`}
-        className="w-full h-full object-cover"
-        onError={() => setImageError(prev => ({ ...prev, [currentIndex]: true }))}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${
+          loadedImages[currentIndex] ? 'opacity-100' : 'opacity-0'
+        }`}
+        onLoad={() => setLoadedImages(prev => ({ ...prev, [currentIndex]: true }))}
+        onError={() => setErrorImages(prev => ({ ...prev, [currentIndex]: true }))}
+        loading="lazy"
       />
       
       {images.length > 1 && (
         <>
           <button
             onClick={handlePrev}
-            className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-5 w-5" />
           </button>
           
-          <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1">
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
             {images.map((_, i) => (
-              <div
+              <button
                 key={i}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                  i === currentIndex ? 'bg-white' : 'bg-white/50'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(i);
+                }}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  i === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/70'
                 }`}
               />
             ))}
@@ -92,7 +101,7 @@ const ImageCarousel = ({ images, title }: { images: string[], title: string }) =
   );
 };
 
-const AvitoListings = ({ model }: AvitoListingsProps) => {
+const AvitoListings = () => {
   const [items, setItems] = useState<AvitoItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -102,10 +111,10 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
     setError(null);
 
     try {
-      console.log("Fetching Avito items for model:", model);
+      console.log("Fetching all Avito items");
       
       const { data, error: fnError } = await supabase.functions.invoke('avito-items', {
-        body: { model, includeImages: true }
+        body: { includeImages: true }
       });
 
       if (fnError) {
@@ -128,10 +137,8 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
   };
 
   useEffect(() => {
-    if (model) {
-      fetchItems();
-    }
-  }, [model]);
+    fetchItems();
+  }, []);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ru-RU', {
@@ -143,20 +150,24 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
 
   if (loading) {
     return (
-      <div className="space-y-4 mt-6">
-        <h3 className="text-lg font-semibold text-foreground">
-          Загрузка объявлений Avito...
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Получаем фотографии товаров...
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[1, 2, 3, 4].map((i) => (
-            <Card key={i} className="p-4">
-              <Skeleton className="h-32 w-full mb-3 rounded-lg" />
-              <Skeleton className="h-4 w-3/4 mb-2" />
-              <Skeleton className="h-6 w-1/2 mb-2" />
-              <Skeleton className="h-3 w-1/3" />
+      <div className="space-y-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-foreground mb-2">
+            Наши объявления на Avito
+          </h2>
+          <p className="text-muted-foreground">
+            Загружаем актуальные объявления...
+          </p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <Card key={i} className="overflow-hidden">
+              <Skeleton className="aspect-square w-full" />
+              <div className="p-3">
+                <Skeleton className="h-4 w-full mb-2" />
+                <Skeleton className="h-5 w-2/3 mb-2" />
+                <Skeleton className="h-3 w-full" />
+              </div>
             </Card>
           ))}
         </div>
@@ -166,12 +177,33 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
 
   if (error) {
     return (
-      <div className="mt-6 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-        <div className="flex items-center gap-2 text-destructive mb-2">
-          <AlertCircle className="h-5 w-5" />
-          <span className="font-medium">Ошибка загрузки</span>
+      <Card className="p-6 bg-destructive/10 border border-destructive/20">
+        <div className="flex flex-col items-center text-center gap-3">
+          <AlertCircle className="h-8 w-8 text-destructive" />
+          <div>
+            <h3 className="font-medium text-foreground">Ошибка загрузки объявлений</h3>
+            <p className="text-sm text-muted-foreground">{error}</p>
+          </div>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={fetchItems}
+            className="gap-2"
+          >
+            <RefreshCw className="h-4 w-4" />
+            Попробовать снова
+          </Button>
         </div>
-        <p className="text-sm text-muted-foreground mb-3">{error}</p>
+      </Card>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <Card className="p-6 bg-muted/50 text-center">
+        <p className="text-muted-foreground mb-3">
+          Сейчас нет активных объявлений
+        </p>
         <Button 
           variant="outline" 
           size="sm" 
@@ -179,37 +211,23 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
           className="gap-2"
         >
           <RefreshCw className="h-4 w-4" />
-          Попробовать снова
-        </Button>
-      </div>
-    );
-  }
-
-  if (items.length === 0) {
-    return (
-      <div className="mt-6 p-4 bg-muted/50 rounded-lg text-center">
-        <p className="text-muted-foreground">
-          Нет активных объявлений для "{model}"
-        </p>
-        <Button 
-          variant="outline" 
-          size="sm" 
-          onClick={fetchItems}
-          className="mt-3 gap-2"
-        >
-          <RefreshCw className="h-4 w-4" />
           Обновить
         </Button>
-      </div>
+      </Card>
     );
   }
 
   return (
-    <div className="space-y-4 mt-6">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">
-          Наличие на Avito ({items.length})
-        </h3>
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">
+            Наши объявления на Avito
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            {items.length} актуальных товаров
+          </p>
+        </div>
         <Button 
           variant="ghost" 
           size="sm" 
@@ -221,37 +239,37 @@ const AvitoListings = ({ model }: AvitoListingsProps) => {
         </Button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {items.map((item) => (
           <Card 
             key={item.id} 
-            className="overflow-hidden hover:shadow-md transition-shadow cursor-pointer group"
+            className="overflow-hidden hover:shadow-lg transition-all cursor-pointer group hover:-translate-y-1"
             onClick={() => window.open(item.url, '_blank')}
           >
             <ImageCarousel images={item.images} title={item.title} />
             
-            <div className="p-4">
-              <h4 className="font-medium text-foreground line-clamp-2 mb-2 group-hover:text-primary transition-colors">
+            <div className="p-3">
+              <h4 className="font-medium text-foreground text-sm line-clamp-2 mb-1.5 group-hover:text-primary transition-colors min-h-[2.5rem]">
                 {item.title}
               </h4>
               
-              <p className="text-xl font-bold text-primary mb-2">
+              <p className="text-lg font-bold text-primary mb-1.5">
                 {formatPrice(item.price)}
               </p>
               
               {item.description && (
-                <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                <p className="text-xs text-muted-foreground line-clamp-2 mb-1.5">
                   {item.description}
                 </p>
               )}
               
               {item.address && (
-                <p className="text-xs text-muted-foreground mb-2 line-clamp-1">
+                <p className="text-xs text-muted-foreground line-clamp-1 mb-1.5">
                   📍 {item.address}
                 </p>
               )}
               
-              <div className="flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors">
+              <div className="flex items-center text-xs text-muted-foreground group-hover:text-primary transition-colors pt-1 border-t border-border/50">
                 <ExternalLink className="h-3 w-3 mr-1" />
                 Открыть на Avito
               </div>
