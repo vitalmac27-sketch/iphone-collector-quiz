@@ -7,6 +7,7 @@ import ConditionSelector from "@/components/calculator/ConditionSelector";
 import SimTypeSelector from "@/components/calculator/SimTypeSelector";
 import BatterySelector from "@/components/calculator/BatterySelector";
 import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector";
+import PurchaseTimingSelector from "@/components/calculator/PurchaseTimingSelector";
 import AvitoListings from "@/components/calculator/AvitoListings";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
@@ -27,6 +28,7 @@ export interface CalculatorData {
   simType: string;
   battery: string;
   paymentMethod: string;
+  purchaseTiming: string;
 }
 
 const Index = () => {
@@ -38,9 +40,10 @@ const Index = () => {
     simType: "",
     battery: "",
     paymentMethod: "",
+    purchaseTiming: "",
   });
 
-  const totalSteps = 7; // Added final review step
+  const totalSteps = 8;
   const progress = (step / totalSteps) * 100;
 
   // Auto-scroll to calculator on mobile when page loads
@@ -69,11 +72,13 @@ const Index = () => {
         handleNext();
       } else if (step === 5 && data.simType) {
         handleNext();
+      } else if (step === 6 && data.purchaseTiming) {
+        handleNext();
       }
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [data.model, data.storage, data.condition, data.battery, data.simType, step]);
+  }, [data.model, data.storage, data.condition, data.battery, data.simType, data.purchaseTiming, step]);
 
   const handleNext = () => {
     if (step === 3 && data.condition === "new") {
@@ -107,6 +112,9 @@ const Index = () => {
         setData({ ...data, simType: "" });
         break;
       case 7:
+        setData({ ...data, purchaseTiming: "" });
+        break;
+      case 8:
         setData({ ...data, paymentMethod: "" });
         break;
     }
@@ -121,7 +129,8 @@ const Index = () => {
 
   const handleWhatsApp = () => {
     const paymentText = data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0% (оформление онлайн)";
-    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n- Модель: ${data.model}\n- Память: ${data.storage}\n- Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n- Аккумулятор: ${data.battery}%` : ""}\n- SIM: ${data.simType}\n- Оплата: ${paymentText}`;
+    const timingText = data.purchaseTiming === "today-tomorrow" ? "Сегодня-завтра" : data.purchaseTiming === "this-week" ? "На неделе" : "В течение месяца";
+    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n- Модель: ${data.model}\n- Память: ${data.storage}\n- Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n- Аккумулятор: ${data.battery}%` : ""}\n- SIM: ${data.simType}\n- Сроки покупки: ${timingText}\n- Оплата: ${paymentText}`;
     
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/79172999773?text=${encodedMessage}`, "_blank");
@@ -142,10 +151,10 @@ const Index = () => {
           {/* Main Calculator */}
           <div className="lg:col-span-2">
             {/* Enhanced Progress Bar - hide on final review step */}
-            {step < 7 && (
+            {step < 8 && (
               <EnhancedProgressBar 
                 currentStep={step} 
-                totalSteps={6} // Total visible steps (excluding final review)
+                totalSteps={7}
                 condition={data.condition}
               />
             )}
@@ -191,13 +200,20 @@ const Index = () => {
               )}
 
               {step === 6 && (
+                <PurchaseTimingSelector
+                  value={data.purchaseTiming}
+                  onChange={(purchaseTiming) => setData({ ...data, purchaseTiming })}
+                />
+              )}
+
+              {step === 7 && (
                 <div className="space-y-6">
                   <PaymentMethodSelector
                     value={data.paymentMethod}
                     onChange={(paymentMethod) => setData({ ...data, paymentMethod })}
                   />
                   <Button
-                    onClick={() => setStep(7)}
+                    onClick={() => setStep(8)}
                     className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/30 transition-all"
                     disabled={!data.paymentMethod}
                   >
@@ -206,7 +222,7 @@ const Index = () => {
                 </div>
               )}
 
-              {step === 7 && (
+              {step === 8 && (
                 <FinalReview
                   data={data}
                   onConfirm={handleWhatsApp}
@@ -215,7 +231,7 @@ const Index = () => {
               )}
 
               {/* Navigation - only show for non-final steps */}
-              {step < 7 && (
+              {step < 8 && (
                 <div className="flex gap-4 mt-8">
                   {step > 1 && (
                     <Button
@@ -232,7 +248,7 @@ const Index = () => {
 
             {/* Footer */}
             <div className="text-center mt-6 text-sm text-muted-foreground animate-fade-in">
-              {step === 7 ? (
+              {step === 8 ? (
                 "Нажимая кнопку, вы будете перенаправлены в WhatsApp"
               ) : (
                 "Выберите подходящий вариант для автоматического перехода"
