@@ -41,7 +41,7 @@ const UrgencyBanner = () => {
                 Бонусы на 3000₽ в подарок!
               </p>
               <p className="text-xs md:text-sm text-muted-foreground font-light">
-                Блок питания + чехол + стекло — только сегодня
+                Чехол + защитное стекло — только сегодня
               </p>
             </div>
           </div>
