@@ -38,10 +38,10 @@ const UrgencyBanner = () => {
             </div>
             <div className="text-left">
               <p className="font-display font-medium text-base md:text-lg text-foreground mb-0.5 md:mb-1">
-                Подарки на 3000₽ сегодня!
+                Бонусы на 3000₽ в подарок!
               </p>
               <p className="text-xs md:text-sm text-muted-foreground font-light">
-                Успей оформить заказ и получи выгоду
+                Блок питания + чехол + стекло — только сегодня
               </p>
             </div>
           </div>

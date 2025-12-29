@@ -57,9 +57,9 @@ export const ExitIntentPopup = () => {
             Подождите! 🎁
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            <span className="text-lg font-semibold text-primary">Эксклюзивные подарки на 3000₽</span>
+            <span className="text-lg font-semibold text-primary">Набор аксессуаров на 3000₽ бесплатно!</span>
             <br />
-            только для вас, прямо сейчас!
+            Блок питания, чехол и стекло — только для вас
           </DialogDescription>
         </DialogHeader>
 
@@ -87,7 +87,7 @@ export const ExitIntentPopup = () => {
               className="w-full h-12 text-base font-semibold"
               size="lg"
             >
-              Получить подарки на 3000₽
+              Забрать подарки
             </Button>
             
             <p className="text-xs text-center text-muted-foreground">

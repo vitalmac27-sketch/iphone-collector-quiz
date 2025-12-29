@@ -94,7 +94,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     { icon: Shield, text: "Гарантия 1 год" },
     { icon: Zap, text: "Доставка в день заказа" },
     { icon: CheckCircle2, text: "Проверка при получении" },
-    { icon: TrendingDown, text: "Подарки на 3000₽" },
+    { icon: TrendingDown, text: "Комплект аксессуаров 3000₽" },
   ];
 
   return (
@@ -191,7 +191,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
           <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
             <div className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
               <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-              <p className="text-xs sm:text-sm font-semibold text-foreground text-center">Подарки на 3000₽</p>
+              <p className="text-xs sm:text-sm font-semibold text-foreground text-center">🎁 Блок питания + чехол + стекло в подарок</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
