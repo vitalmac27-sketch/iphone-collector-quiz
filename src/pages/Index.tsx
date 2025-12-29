@@ -243,14 +243,10 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Avito Listings Section - показываем после выбора модели */}
-        {data.model && (
-          <div className="mt-8">
-            <Card className="p-6 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10">
-              <AvitoListings model={data.model} />
-            </Card>
-          </div>
-        )}
+        {/* Avito Listings Section - показываем всегда перед отзывами */}
+        <div className="mt-12">
+          <AvitoListings />
+        </div>
 
         <Testimonials />
         <Benefits />
