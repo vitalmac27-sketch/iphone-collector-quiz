@@ -7,6 +7,7 @@ import ConditionSelector from "@/components/calculator/ConditionSelector";
 import SimTypeSelector from "@/components/calculator/SimTypeSelector";
 import BatterySelector from "@/components/calculator/BatterySelector";
 import PaymentMethodSelector from "@/components/calculator/PaymentMethodSelector";
+import AvitoListings from "@/components/calculator/AvitoListings";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 import SeoContent from "@/components/SeoContent";
@@ -152,10 +153,13 @@ const Index = () => {
             {/* Calculator Card */}
             <Card className="calculator-card p-8 shadow-xl bg-white/80 backdrop-blur-sm border-2 border-primary/10 card-glow animate-fade-in [animation-delay:300ms]">
               {step === 1 && (
-                <ModelSelector
-                  value={data.model}
-                  onChange={(model) => setData({ ...data, model })}
-                />
+                <div>
+                  <ModelSelector
+                    value={data.model}
+                    onChange={(model) => setData({ ...data, model })}
+                  />
+                  {data.model && <AvitoListings model={data.model} />}
+                </div>
               )}
 
               {step === 2 && (
