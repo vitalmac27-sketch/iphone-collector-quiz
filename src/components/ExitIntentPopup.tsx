@@ -59,7 +59,7 @@ export const ExitIntentPopup = () => {
           <DialogDescription className="text-center text-base">
             <span className="text-lg font-semibold text-primary">Набор аксессуаров на 3000₽ бесплатно!</span>
             <br />
-            Блок питания, чехол и стекло — только для вас
+            Чехол и защитное стекло — только для вас
           </DialogDescription>
         </DialogHeader>
 
