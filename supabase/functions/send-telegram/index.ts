@@ -13,6 +13,7 @@ interface LeadData {
   condition: string;
   battery?: string;
   simType: string;
+  purchaseTiming: string;
   paymentMethod: string;
 }
 
@@ -47,6 +48,7 @@ serve(async (req) => {
     }
     
     message += `📡 *SIM:* ${leadData.simType}\n`;
+    message += `📅 *Когда покупка:* ${leadData.purchaseTiming}\n`;
     message += `💳 *Оплата:* ${paymentText}\n`;
 
     console.log('Sending to Telegram:', { chatId: TELEGRAM_CHAT_ID, message });

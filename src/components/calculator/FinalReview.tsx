@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalculatorData } from "@/pages/Index";
-import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown, Gift, Star, User, MessageCircle, Send } from "lucide-react";
+import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown, Gift, Star, User, MessageCircle, Send, Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,6 +56,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
           condition: data.condition,
           battery: data.battery,
           simType: data.simType,
+          purchaseTiming: data.purchaseTiming,
           paymentMethod: data.paymentMethod,
         },
       });
@@ -87,6 +88,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     { icon: Package, label: "Состояние", value: data.condition === "new" ? "Новый" : "Б/У" },
     ...(data.condition === "used" ? [{ icon: Battery, label: "Батарея", value: `${data.battery}%` }] : []),
     { icon: Signal, label: "SIM", value: data.simType },
+    { icon: Calendar, label: "Когда покупка", value: data.purchaseTiming },
     { icon: CreditCard, label: "Оплата", value: data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0%" },
   ];
 
