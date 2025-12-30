@@ -82,13 +82,19 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
       setIsSubmitting(false);
     }
   };
+  const timingMap: Record<string, string> = {
+    "today-tomorrow": "Сегодня-завтра",
+    "this-week": "На неделе",
+    "this-month": "В течение месяца",
+  };
+
   const items = [
     { icon: Smartphone, label: "Модель", value: data.model },
     { icon: HardDrive, label: "Память", value: data.storage },
     { icon: Package, label: "Состояние", value: data.condition === "new" ? "Новый" : "Б/У" },
     ...(data.condition === "used" ? [{ icon: Battery, label: "Батарея", value: `${data.battery}%` }] : []),
     { icon: Signal, label: "SIM", value: data.simType },
-    { icon: Calendar, label: "Когда покупка", value: data.purchaseTiming },
+    { icon: Calendar, label: "Когда покупка", value: timingMap[data.purchaseTiming] || data.purchaseTiming },
     { icon: CreditCard, label: "Оплата", value: data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0%" },
   ];
 

@@ -36,6 +36,13 @@ serve(async (req) => {
     const conditionText = leadData.condition === "new" ? "Новый" : "Б/У";
     const paymentText = leadData.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0%";
     
+    const timingMap: Record<string, string> = {
+      "today-tomorrow": "Сегодня-завтра",
+      "this-week": "На неделе",
+      "this-month": "В течение месяца",
+    };
+    const timingText = timingMap[leadData.purchaseTiming] || leadData.purchaseTiming;
+    
     let message = `🔔 *Новая заявка на iPhone*\n\n`;
     message += `👤 *Имя:* ${leadData.name}\n`;
     message += `📱 *Контакт:* ${leadData.contact}\n\n`;
@@ -48,7 +55,7 @@ serve(async (req) => {
     }
     
     message += `📡 *SIM:* ${leadData.simType}\n`;
-    message += `📅 *Когда покупка:* ${leadData.purchaseTiming}\n`;
+    message += `📅 *Когда покупка:* ${timingText}\n`;
     message += `💳 *Оплата:* ${paymentText}\n`;
 
     console.log('Sending to Telegram:', { chatId: TELEGRAM_CHAT_ID, message });
