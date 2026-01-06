@@ -1,5 +1,5 @@
 import logo from "@/assets/logo.jpg";
-import heroIphone from "@/assets/hero-iphone.jpg";
+import heroIphone from "@/assets/hero-iphones-collection.jpg";
 
 const Hero = () => {
   return (
