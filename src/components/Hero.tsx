@@ -44,7 +44,7 @@ const Hero = () => {
             <img 
               src={heroIphone} 
               alt="iPhone" 
-              className="w-80 h-auto object-contain rounded-2xl"
+              className="w-80 h-auto object-contain rounded-2xl bg-white"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ const Hero = () => {
             <img 
               src={heroIphone} 
               alt="iPhone" 
-              className="w-96 lg:w-[500px] h-auto object-contain rounded-3xl"
+              className="w-96 lg:w-[500px] h-auto object-contain rounded-3xl bg-white"
             />
           </div>
         </div>
