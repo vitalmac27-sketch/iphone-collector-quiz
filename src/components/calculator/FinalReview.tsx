@@ -190,13 +190,16 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
             <Input
               id="contact"
               type="text"
-              placeholder="Например: +7 999 123-45-67 или @username"
+              placeholder="@telegram_ник или +7 999 123-45-67"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               required
               className="h-12 text-base bg-background border-2 border-border focus:border-primary placeholder:text-muted-foreground/60"
             />
-            <p className="text-xs text-muted-foreground">Укажите удобный способ связи — WhatsApp или Telegram</p>
+            <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+              <span className="px-2 py-1 bg-muted rounded-md">Пример: @ivan_petrov</span>
+              <span className="px-2 py-1 bg-muted rounded-md">Пример: +7 999 123-45-67</span>
+            </div>
           </div>
 
           <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
