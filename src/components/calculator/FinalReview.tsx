@@ -165,35 +165,38 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
         </div>
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">Мы свяжемся с вами в течение 5 минут</p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="name" className="flex items-center gap-2">
+            <Label htmlFor="name" className="flex items-center gap-2 text-sm font-medium">
               <User className="w-4 h-4 text-primary" />
-              Ваше имя *
+              Ваше имя <span className="text-destructive">*</span>
             </Label>
             <Input
               id="name"
               type="text"
-              placeholder="Имя"
+              placeholder="Введите ваше имя"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              className="h-12 text-base bg-background border-2 border-border focus:border-primary placeholder:text-muted-foreground/60"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="contact" className="flex items-center gap-2">
+            <Label htmlFor="contact" className="flex items-center gap-2 text-sm font-medium">
               <MessageCircle className="w-4 h-4 text-primary" />
-              Номер WhatsApp или Ник в Telegram *
+              Телефон или Telegram <span className="text-destructive">*</span>
             </Label>
             <Input
               id="contact"
               type="text"
-              placeholder="+7 (999) 123-45-67 или @username"
+              placeholder="Например: +7 999 123-45-67 или @username"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               required
+              className="h-12 text-base bg-background border-2 border-border focus:border-primary placeholder:text-muted-foreground/60"
             />
+            <p className="text-xs text-muted-foreground">Укажите удобный способ связи — WhatsApp или Telegram</p>
           </div>
 
           <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
