@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="flex justify-center py-4">
           <img 
             src={logo} 
-            alt="ЭПЛ КОЛЛЕКЦИЯ" 
+            alt="ЭПЛ КОЛЛЕКЦИЯ - Магазин iPhone в Казани" 
             className="h-12 rounded-xl"
           />
         </div>
@@ -43,7 +43,7 @@ const Hero = () => {
           <div className="flex justify-center">
             <img 
               src={heroIphone} 
-              alt="iPhone" 
+              alt="Купить iPhone в Казани - новые и б/у модели iPhone 13, 14, 15, 16, 17 Pro Max с гарантией" 
               className="w-80 h-auto object-contain rounded-2xl bg-white"
             />
           </div>
@@ -57,7 +57,7 @@ const Hero = () => {
           <span className="text-foreground/60 font-light">Казань</span>
           <img 
             src={logo} 
-            alt="ЭПЛ КОЛЛЕКЦИЯ" 
+            alt="ЭПЛ КОЛЛЕКЦИЯ - Магазин iPhone в Казани с гарантией и доставкой" 
             className="h-14 rounded-xl"
           />
           <a 
@@ -86,7 +86,7 @@ const Hero = () => {
           <div className="flex-shrink-0">
             <img 
               src={heroIphone} 
-              alt="iPhone" 
+              alt="Купить iPhone в Казани недорого - iPhone 13, 14, 15, 16, 17 Pro Max с гарантией 1 год и бесплатной доставкой" 
               className="w-96 lg:w-[500px] h-auto object-contain rounded-3xl bg-white"
             />
           </div>
