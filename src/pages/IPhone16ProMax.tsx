@@ -217,8 +217,8 @@ const IPhone16ProMaxPage = () => {
           "brand": { "@type": "Brand", "name": "Apple" },
           "offers": {
             "@type": "AggregateOffer",
-            "lowPrice": "159990",
-            "highPrice": "209990",
+            "lowPrice": "96800",
+            "highPrice": "126600",
             "priceCurrency": "RUB",
             "availability": "https://schema.org/InStock",
             "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" }

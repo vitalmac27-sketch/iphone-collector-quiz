@@ -217,8 +217,8 @@ const IPhone16Page = () => {
           "brand": { "@type": "Brand", "name": "Apple" },
           "offers": {
             "@type": "AggregateOffer",
-            "lowPrice": "89990",
-            "highPrice": "119990",
+            "lowPrice": "56400",
+            "highPrice": "77700",
             "priceCurrency": "RUB",
             "availability": "https://schema.org/InStock",
             "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" }
