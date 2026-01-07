@@ -79,38 +79,58 @@ const getMonthlyPayment = (price: number) => {
   return Math.round(price / 10);
 };
 
+const modelImages: Record<string, string> = {
+  "iPhone 17 Pro Max": iPhone17ProMax,
+  "iPhone 17 Pro": iPhone17Pro,
+  "iPhone 17 Air": iPhone17Air,
+  "iPhone 17": iPhone17,
+  "iPhone 16 Pro Max": iPhone16ProMax,
+  "iPhone 16 Pro": iPhone16Pro,
+  "iPhone 16 Plus": iPhone16Plus,
+  "iPhone 16": iPhone16,
+  "iPhone 15 Pro Max": iPhone15ProMax,
+  "iPhone 15 Pro": iPhone15Pro,
+  "iPhone 15 Plus": iPhone15Plus,
+  "iPhone 15": iPhone15,
+  "iPhone 14 Pro Max": iPhone14ProMax,
+  "iPhone 14 Pro": iPhone14Pro,
+  "iPhone 14 Plus": iPhone14,
+  "iPhone 14": iPhone14,
+  "iPhone 13 Pro Max": iPhone13ProMax,
+  "iPhone 13 Pro": iPhone13Pro,
+  "iPhone 13 mini": iPhone13Mini,
+  "iPhone 13": iPhone13,
+};
+
+const modelAltTexts: Record<string, string> = {
+  "iPhone 17 Pro Max": "Купить iPhone 17 Pro Max в Казани - ЭПЛ-КОЛЛЕКЦИЯ",
+  "iPhone 17 Pro": "Купить iPhone 17 Pro в Казани недорого",
+  "iPhone 17 Air": "Купить iPhone 17 Air в Казани с доставкой",
+  "iPhone 17": "Купить iPhone 17 в Казани - магазин Apple",
+  "iPhone 16 Pro Max": "Купить iPhone 16 Pro Max в Казани - ЭПЛ-КОЛЛЕКЦИЯ",
+  "iPhone 16 Pro": "Купить iPhone 16 Pro в Казани недорого",
+  "iPhone 16 Plus": "Купить iPhone 16 Plus в Казани с доставкой",
+  "iPhone 16": "Купить iPhone 16 в Казани - магазин Apple",
+  "iPhone 15 Pro Max": "Купить iPhone 15 Pro Max в Казани недорого",
+  "iPhone 15 Pro": "Купить iPhone 15 Pro в Казани - ЭПЛ-КОЛЛЕКЦИЯ",
+  "iPhone 15 Plus": "Купить iPhone 15 Plus в Казани с доставкой",
+  "iPhone 15": "Купить iPhone 15 в Казани - магазин Apple",
+  "iPhone 14 Pro Max": "Купить iPhone 14 Pro Max в Казани б/у",
+  "iPhone 14 Pro": "Купить iPhone 14 Pro в Казани недорого",
+  "iPhone 14 Plus": "Купить iPhone 14 Plus в Казани с доставкой",
+  "iPhone 14": "Купить iPhone 14 в Казани - магазин Apple",
+  "iPhone 13 Pro Max": "Купить iPhone 13 Pro Max в Казани б/у",
+  "iPhone 13 Pro": "Купить iPhone 13 Pro в Казани недорого",
+  "iPhone 13 mini": "Купить iPhone 13 mini в Казани с доставкой",
+  "iPhone 13": "Купить iPhone 13 в Казани - магазин Apple",
+};
+
 const getModelImage = (model: string) => {
-  // iPhone 17 line
-  if (model === "iPhone 17 Pro Max") return iPhone17ProMax;
-  if (model === "iPhone 17 Pro") return iPhone17Pro;
-  if (model === "iPhone 17 Air") return iPhone17Air;
-  if (model === "iPhone 17") return iPhone17;
-  
-  // iPhone 16 line
-  if (model === "iPhone 16 Pro Max") return iPhone16ProMax;
-  if (model === "iPhone 16 Pro") return iPhone16Pro;
-  if (model === "iPhone 16 Plus") return iPhone16Plus;
-  if (model === "iPhone 16") return iPhone16;
-  
-  // iPhone 15 line
-  if (model === "iPhone 15 Pro Max") return iPhone15ProMax;
-  if (model === "iPhone 15 Pro") return iPhone15Pro;
-  if (model === "iPhone 15 Plus") return iPhone15Plus;
-  if (model.includes("15")) return iPhone15;
-  
-  // iPhone 14 line
-  if (model === "iPhone 14 Pro Max") return iPhone14ProMax;
-  if (model === "iPhone 14 Pro") return iPhone14Pro;
-  if (model === "iPhone 14 Plus") return iPhone14;
-  if (model.includes("14")) return iPhone14;
-  
-  // iPhone 13 line
-  if (model === "iPhone 13 Pro Max") return iPhone13ProMax;
-  if (model === "iPhone 13 Pro") return iPhone13Pro;
-  if (model === "iPhone 13 mini") return iPhone13Mini;
-  if (model.includes("13")) return iPhone13;
-  
-  return iPhone16Pro;
+  return modelImages[model] || iPhone16Pro;
+};
+
+const getModelAlt = (model: string) => {
+  return modelAltTexts[model] || `Купить ${model} в Казани - ЭПЛ-КОЛЛЕКЦИЯ`;
 };
 
 const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
@@ -140,7 +160,7 @@ const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
               <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-background/50">
                 <img 
                   src={getModelImage(model)} 
-                  alt={model}
+                  alt={getModelAlt(model)}
                   className="w-full h-full object-contain"
                 />
               </div>
