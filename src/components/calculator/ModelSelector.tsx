@@ -48,27 +48,28 @@ const models = [
   "iPhone 13",
 ];
 
+// Цены Apple USA × курс ~95 руб/$
 const modelPrices: Record<string, number> = {
-  "iPhone 17 Pro Max": 91900,
-  "iPhone 17 Pro": 88900,
-  "iPhone 17": 68900,
-  "iPhone 17 Air": 68900,
-  "iPhone 16 Pro Max": 82900,
-  "iPhone 16 Pro": 70900,
-  "iPhone 16 Plus": 50900,
-  "iPhone 16": 47900,
-  "iPhone 15 Pro Max": 57900,
-  "iPhone 15 Pro": 52900,
-  "iPhone 15 Plus": 45900,
-  "iPhone 15": 37900,
-  "iPhone 14 Pro Max": 0,
-  "iPhone 14 Pro": 0,
-  "iPhone 14 Plus": 0,
-  "iPhone 14": 0,
-  "iPhone 13 Pro Max": 0,
-  "iPhone 13 Pro": 0,
-  "iPhone 13 mini": 0,
-  "iPhone 13": 0,
+  "iPhone 17 Pro Max": 113900, // $1199
+  "iPhone 17 Pro": 104400,     // $1099
+  "iPhone 17 Air": 94900,      // $999
+  "iPhone 17": 75900,          // $799
+  "iPhone 16 Pro Max": 113900, // $1199
+  "iPhone 16 Pro": 94900,      // $999
+  "iPhone 16 Plus": 85400,     // $899
+  "iPhone 16": 66400,          // $699
+  "iPhone 15 Pro Max": 0,      // снят с продажи
+  "iPhone 15 Pro": 0,          // снят с продажи
+  "iPhone 15 Plus": 0,         // снят с продажи
+  "iPhone 15": 0,              // снят с продажи
+  "iPhone 14 Pro Max": 0,      // б/у
+  "iPhone 14 Pro": 0,          // б/у
+  "iPhone 14 Plus": 0,         // б/у
+  "iPhone 14": 0,              // б/у
+  "iPhone 13 Pro Max": 0,      // б/у
+  "iPhone 13 Pro": 0,          // б/у
+  "iPhone 13 mini": 0,         // б/у
+  "iPhone 13": 0,              // б/у
 };
 
 const formatPrice = (price: number) => {
