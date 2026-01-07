@@ -16,17 +16,17 @@ const IPhone16ProMaxPage = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
-  // Цены Apple USA $1199 × курс ~95₽
+  // Цены -15%
   const prices = {
-    "256GB": 113900,
-    "512GB": 128900,
-    "1TB": 148900,
+    "256GB": 96800,
+    "512GB": 109600,
+    "1TB": 126600,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 16 Pro Max в Казани | Цена от 113 900 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 16 Pro Max в Казани | Цена от 96 800 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 16 Pro Max в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия. Чип A18 Pro, камера 48MP, титановый корпус. Бесплатная доставка!" />
         <meta name="keywords" content="iPhone 16 Pro Max Казань, купить айфон 16 про макс, iPhone 16 Pro Max цена, айфон 16 про макс казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-16-pro-max" />

@@ -16,17 +16,17 @@ const IPhone17ProPage = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
-  // Цены Apple USA $1099 × курс ~95₽
+  // Цены -15%
   const prices = {
-    "256GB": 104400,
-    "512GB": 119400,
-    "1TB": 139400,
+    "256GB": 88700,
+    "512GB": 101500,
+    "1TB": 118500,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 Pro в Казани | Цена от 104 400 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 17 Pro в Казани | Цена от 88 700 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 17 Pro в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия. Чип A19 Pro, камера 48MP, титан. Доставка по Казани бесплатно!" />
         <meta name="keywords" content="iPhone 17 Pro Казань, купить айфон 17 про, iPhone 17 Pro цена, айфон 17 про казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17-pro" />
