@@ -6,28 +6,8 @@ const Hero = () => {
     <div className="animate-fade-in">
       {/* Mobile Hero */}
       <div className="md:hidden">
-        {/* Top bar */}
-        <div className="flex justify-between items-center px-4 py-3 text-sm">
-          <span className="text-foreground/60 font-light">Казань</span>
-          <a 
-            href="tel:+79992673933" 
-            className="text-foreground/60 font-light hover:text-primary transition-colors"
-          >
-            +7 (999) 267-39-33
-          </a>
-        </div>
-        
-        {/* Logo centered */}
-        <div className="flex justify-center py-4">
-          <img 
-            src={logo} 
-            alt="ЭПЛ КОЛЛЕКЦИЯ - Магазин iPhone в Казани" 
-            className="h-12 rounded-xl"
-          />
-        </div>
-        
         {/* Main content */}
-        <div className="px-4 pt-6 pb-8 text-center">
+        <div className="px-4 pt-4 pb-8 text-center">
           <h1 className="font-display text-3xl font-light tracking-tight mb-3">
             <span className="block text-foreground/90 mb-1">Купить Айфон в Казани</span>
             <span className="block bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent font-normal">
