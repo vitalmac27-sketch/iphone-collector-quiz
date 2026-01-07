@@ -16,17 +16,17 @@ const IPhone16ProPage = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
+  // Цены Apple USA $999 × курс ~95₽
   const prices = {
-    "128GB": 134990,
-    "256GB": 149990,
-    "512GB": 169990,
-    "1TB": 199990,
+    "256GB": 94900,
+    "512GB": 109900,
+    "1TB": 129900,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 16 Pro в Казани | Цена от 134 990 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 16 Pro в Казани | Цена от 94 900 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 16 Pro в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A18 Pro, камера 48MP, титан. Бесплатная доставка по Казани!" />
         <meta name="keywords" content="iPhone 16 Pro Казань, купить айфон 16 про, iPhone 16 Pro цена, айфон 16 про казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-16-pro" />

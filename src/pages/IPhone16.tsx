@@ -16,16 +16,17 @@ const IPhone16Page = () => {
     features: ["Dynamic Island", "USB-C", "Алюминиевый корпус", "Action Button", "5G", "Face ID"],
   };
 
+  // Цены Apple USA $699 × курс ~95₽
   const prices = {
-    "128GB": 89990,
-    "256GB": 99990,
-    "512GB": 119990,
+    "128GB": 66400,
+    "256GB": 76400,
+    "512GB": 91400,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 16 в Казани | Цена от 89 990 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 16 в Казани | Цена от 66 400 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 16 в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A18, камера 48MP, Dynamic Island. Бесплатная доставка по Казани!" />
         <meta name="keywords" content="iPhone 16 Казань, купить айфон 16, iPhone 16 цена, айфон 16 казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-16" />

@@ -16,16 +16,17 @@ const IPhone17ProMax = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
+  // Цены Apple USA $1199 × курс ~95₽
   const prices = {
-    "256GB": 189990,
-    "512GB": 209990,
-    "1TB": 239990,
+    "256GB": 118900,
+    "512GB": 133900,
+    "1TB": 153900,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 Pro Max в Казани | Цена от 189 990 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 17 Pro Max в Казани | Цена от 118 900 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 17 Pro Max в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия. A19 Pro, камера 48MP, титановый корпус. Доставка по Казани бесплатно!" />
         <meta name="keywords" content="iPhone 17 Pro Max Казань, купить айфон 17 про макс, iPhone 17 Pro Max цена, айфон 17 про макс казань" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17-pro-max" />

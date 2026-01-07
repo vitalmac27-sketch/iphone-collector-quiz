@@ -16,16 +16,17 @@ const IPhone17Page = () => {
     features: ["Dynamic Island", "USB-C", "Алюминиевый корпус", "5G", "Face ID", "Ceramic Shield"],
   };
 
+  // Цены Apple USA $799 × курс ~95₽
   const prices = {
-    "128GB": 109990,
-    "256GB": 124990,
-    "512GB": 144990,
+    "128GB": 75900,
+    "256GB": 85900,
+    "512GB": 100900,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 в Казани | Цена от 109 990 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 17 в Казани | Цена от 75 900 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 17 в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A19, камера 48MP, Dynamic Island. Бесплатная доставка по Казани!" />
         <meta name="keywords" content="iPhone 17 Казань, купить айфон 17, iPhone 17 цена, айфон 17 казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17" />
