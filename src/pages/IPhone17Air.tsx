@@ -16,16 +16,17 @@ const IPhone17AirPage = () => {
     features: ["Самый тонкий iPhone", "Dynamic Island", "USB-C", "5G", "Face ID", "Алюминий"],
   };
 
+  // Цены Apple USA $999 × курс ~95₽
   const prices = {
-    "128GB": 129990,
-    "256GB": 144990,
-    "512GB": 164990,
+    "256GB": 94900,
+    "512GB": 109900,
+    "1TB": 129900,
   };
 
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 Air в Казани | Цена от 129 990 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <title>Купить iPhone 17 Air в Казани | Цена от 94 900 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
         <meta name="description" content="iPhone 17 Air в Казани — самый тонкий iPhone. Рассрочка 0%, Trade-in, гарантия. Толщина 5.5мм, чип A19, камера 48MP. Доставка по Казани бесплатно!" />
         <meta name="keywords" content="iPhone 17 Air Казань, купить айфон 17 эйр, iPhone 17 Air цена, самый тонкий айфон казань" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17-air" />
