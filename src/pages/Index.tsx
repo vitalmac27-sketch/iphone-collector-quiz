@@ -20,6 +20,7 @@ import OrderSummary from "@/components/calculator/OrderSummary";
 import FinalReview from "@/components/calculator/FinalReview";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { ChatWidget } from "@/components/ChatWidget";
+import Navigation from "@/components/Navigation";
 
 export interface CalculatorData {
   model: string;
@@ -138,6 +139,7 @@ const Index = () => {
 
   return (
     <>
+      <Navigation />
       <ExitIntentPopup />
       <ChatWidget />
       <div className="min-h-screen p-4 py-12">

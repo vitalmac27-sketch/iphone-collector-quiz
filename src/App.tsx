@@ -13,6 +13,8 @@ import IPhone17 from "./pages/IPhone17";
 import IPhone16ProMax from "./pages/IPhone16ProMax";
 import IPhone16Pro from "./pages/IPhone16Pro";
 import IPhone16 from "./pages/IPhone16";
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/iphone-16-pro-max" element={<IPhone16ProMax />} />
             <Route path="/iphone-16-pro" element={<IPhone16Pro />} />
             <Route path="/iphone-16" element={<IPhone16 />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
