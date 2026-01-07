@@ -48,21 +48,16 @@ const models = [
   "iPhone 13",
 ];
 
-// Цены Apple USA (apple.com/shop/buy-iphone) × курс ~95 руб/$
-// iPhone 17 Pro/Pro Max: from $1099
-// iPhone 17 Air: $999
-// iPhone 17: $799
-// iPhone 16/16 Plus: from $699
-// iPhone 16e: $599
+// Цены Apple USA × курс ~95₽/$ минус 15%
 const modelPrices: Record<string, number> = {
-  "iPhone 17 Pro Max": 118900, // $1199 + наценка Pro Max
-  "iPhone 17 Pro": 104400,     // $1099
-  "iPhone 17 Air": 94900,      // $999
-  "iPhone 17": 75900,          // $799
-  "iPhone 16 Pro Max": 113900, // $1199
-  "iPhone 16 Pro": 94900,      // $999
-  "iPhone 16 Plus": 85400,     // $899
-  "iPhone 16": 66400,          // $699
+  "iPhone 17 Pro Max": 101000,
+  "iPhone 17 Pro": 88700,
+  "iPhone 17 Air": 80700,
+  "iPhone 17": 64500,
+  "iPhone 16 Pro Max": 96800,
+  "iPhone 16 Pro": 80700,
+  "iPhone 16 Plus": 72600,
+  "iPhone 16": 56400,
   "iPhone 15 Pro Max": 0,      // снят с продажи
   "iPhone 15 Pro": 0,          // снят с продажи
   "iPhone 15 Plus": 0,         // снят с продажи
