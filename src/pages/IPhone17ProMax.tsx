@@ -228,8 +228,8 @@ const IPhone17ProMax = () => {
           "brand": { "@type": "Brand", "name": "Apple" },
           "offers": {
             "@type": "AggregateOffer",
-            "lowPrice": "189990",
-            "highPrice": "239990",
+            "lowPrice": "101000",
+            "highPrice": "130800",
             "priceCurrency": "RUB",
             "availability": "https://schema.org/InStock",
             "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" }
