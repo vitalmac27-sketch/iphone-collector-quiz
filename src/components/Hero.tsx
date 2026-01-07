@@ -1,4 +1,3 @@
-import logo from "@/assets/logo.jpg";
 import heroIphone from "@/assets/hero-iphones-collection.jpg";
 
 const Hero = () => {
@@ -32,24 +31,8 @@ const Hero = () => {
 
       {/* Desktop Hero */}
       <div className="hidden md:block">
-        {/* Top bar */}
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="text-foreground/60 font-light">Казань</span>
-          <img 
-            src={logo} 
-            alt="ЭПЛ КОЛЛЕКЦИЯ - Магазин iPhone в Казани с гарантией и доставкой" 
-            className="h-14 rounded-xl"
-          />
-          <a 
-            href="tel:+79992673933" 
-            className="text-foreground/60 font-light hover:text-primary transition-colors"
-          >
-            +7 (999) 267-39-33
-          </a>
-        </div>
-        
         {/* Main content with iPhone */}
-        <div className="max-w-6xl mx-auto px-6 py-16 flex items-center justify-between gap-12">
+        <div className="max-w-6xl mx-auto px-6 py-12 flex items-center justify-between gap-12">
           <div className="flex-1">
             <h1 className="font-display text-5xl lg:text-6xl font-light tracking-tight mb-6">
               <span className="block text-foreground/90 mb-2">Купить Айфон в Казани</span>
