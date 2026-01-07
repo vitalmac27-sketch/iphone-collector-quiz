@@ -38,7 +38,7 @@ const Navigation = () => {
               alt="ЭПЛ-КОЛЛЕКЦИЯ - магазин iPhone в Казани" 
               className="h-10 w-10 rounded-full object-cover"
             />
-            <span className="font-bold text-lg hidden sm:block">ЭПЛ-КОЛЛЕКЦИЯ</span>
+            <span className="font-bold text-lg">ЭПЛ-КОЛЛЕКЦИЯ</span>
           </Link>
 
           {/* Desktop Navigation */}
