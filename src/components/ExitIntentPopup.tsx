@@ -58,7 +58,7 @@ export const ExitIntentPopup = () => {
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
               <span className="text-[#0088cc]">✓</span>
-              <span>Эксклюзивные скидки до 15%</span>
+              <span>Эксклюзивные лоты</span>
             </li>
             <li className="flex items-center gap-2">
               <span className="text-[#0088cc]">✓</span>
