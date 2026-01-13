@@ -26,7 +26,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     if (contactFormRef.current) {
       const timer = setTimeout(() => {
         contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 2000);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
