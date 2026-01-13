@@ -98,7 +98,7 @@ const IPhone17ProMax = () => {
                   <Link to="/#calculator">Рассчитать стоимость</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="flex-1">
-                  <a href="https://t.me/eplcollection" target="_blank" rel="noopener noreferrer">
+                  <a href="https://t.me/ac_care" target="_blank" rel="noopener noreferrer">
                     Написать в Telegram
                   </a>
                 </Button>
