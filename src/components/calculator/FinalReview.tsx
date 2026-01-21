@@ -1,7 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalculatorData } from "@/pages/Index";
-import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown, Gift, Star, User, MessageCircle, Send, Calendar } from "lucide-react";
+import { Smartphone, HardDrive, Package, Battery, Signal, CreditCard, CheckCircle2, Shield, Zap, TrendingDown, Gift, Star, User, MessageCircle, Send, Calendar, Banknote } from "lucide-react";
+
+// Цены для новых iPhone 17 моделей (минимальные цены по цветам)
+const iphone17Prices: Record<string, Record<string, Record<string, number>>> = {
+  "iPhone 17 Pro Max": {
+    "256 ГБ": { "eSIM": 105000, "eSIM + SIM": 112000 },
+    "512 ГБ": { "eSIM": 116500, "eSIM + SIM": 129000 },
+    "1 ТБ": { "eSIM": 133000, "eSIM + SIM": 147000 },
+  },
+  "iPhone 17 Pro": {
+    "256 ГБ": { "eSIM": 95000, "eSIM + SIM": 102500 },
+    "512 ГБ": { "eSIM": 108000, "eSIM + SIM": 118500 },
+    "1 ТБ": { "eSIM": 125000, "eSIM + SIM": 137000 },
+  },
+  "iPhone 17 Air": {
+    "256 ГБ": { "eSIM": 79000, "eSIM + SIM": 79000 },
+    "512 ГБ": { "eSIM": 95000, "eSIM + SIM": 95000 },
+  },
+  "iPhone 17": {
+    "256 ГБ": { "eSIM": 72000, "eSIM + SIM": 72000, "2 SIM": 72000 },
+  },
+};
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -82,6 +103,23 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
       setIsSubmitting(false);
     }
   };
+
+  // Функция получения цены для новых iPhone 17 моделей
+  const getPrice = () => {
+    if (data.condition !== "new" || !data.model.startsWith("iPhone 17")) {
+      return null;
+    }
+    
+    const modelPrices = iphone17Prices[data.model];
+    if (!modelPrices) return null;
+    
+    const storagePrices = modelPrices[data.storage];
+    if (!storagePrices) return null;
+    
+    const price = storagePrices[data.simType];
+    return price || null;
+  };
+
   const timingMap: Record<string, string> = {
     "today-tomorrow": "Сегодня-завтра",
     "this-week": "На неделе",
@@ -104,6 +142,8 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     { icon: CheckCircle2, text: "Проверка при получении" },
     { icon: TrendingDown, text: "Комплект аксессуаров 3000₽" },
   ];
+
+  const calculatedPrice = getPrice();
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -157,6 +197,26 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
           </div>
         </div>
       </Card>
+
+      {/* Блок с ценой для новых iPhone 17 */}
+      {calculatedPrice && (
+        <Card className="p-4 sm:p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-2 border-green-500/30">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <div className="p-3 rounded-full bg-green-500/20">
+                <Banknote className="w-6 h-6 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Стоимость</p>
+                <p className="text-2xl sm:text-3xl font-bold text-green-600">
+                  {calculatedPrice.toLocaleString('ru-RU')} ₽
+                </p>
+              </div>
+            </div>
+            <Badge className="bg-green-500 text-white hover:bg-green-600">Актуальная цена</Badge>
+          </div>
+        </Card>
+      )}
 
       <Card ref={contactFormRef} className="p-4 sm:p-6 border-2 border-primary/20">
         <div className="flex items-center gap-2 mb-3 sm:mb-4">
