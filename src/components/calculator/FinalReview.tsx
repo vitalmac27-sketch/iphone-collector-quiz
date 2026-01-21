@@ -42,16 +42,38 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const contactFormRef = useRef<HTMLDivElement>(null);
+  const priceBlockRef = useRef<HTMLDivElement>(null);
+
+  // Функция получения цены для новых iPhone 17 моделей
+  const getPrice = () => {
+    if (data.condition !== "new" || !data.model.startsWith("iPhone 17")) {
+      return null;
+    }
+    
+    const modelPrices = iphone17Prices[data.model];
+    if (!modelPrices) return null;
+    
+    const storagePrices = modelPrices[data.storage];
+    if (!storagePrices) return null;
+    
+    const price = storagePrices[data.simType];
+    return price || null;
+  };
+
+  const calculatedPrice = getPrice();
 
   useEffect(() => {
-    if (contactFormRef.current) {
-      const timer = setTimeout(() => {
-        contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 1000);
+    const timer = setTimeout(() => {
+      // Если есть цена - скроллим к блоку цены, иначе к форме
+      if (calculatedPrice && priceBlockRef.current) {
+        priceBlockRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (contactFormRef.current) {
+        contactFormRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 1000);
 
-      return () => clearTimeout(timer);
-    }
-  }, []);
+    return () => clearTimeout(timer);
+  }, [calculatedPrice]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,22 +126,6 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     }
   };
 
-  // Функция получения цены для новых iPhone 17 моделей
-  const getPrice = () => {
-    if (data.condition !== "new" || !data.model.startsWith("iPhone 17")) {
-      return null;
-    }
-    
-    const modelPrices = iphone17Prices[data.model];
-    if (!modelPrices) return null;
-    
-    const storagePrices = modelPrices[data.storage];
-    if (!storagePrices) return null;
-    
-    const price = storagePrices[data.simType];
-    return price || null;
-  };
-
   const timingMap: Record<string, string> = {
     "today-tomorrow": "Сегодня-завтра",
     "this-week": "На неделе",
@@ -142,8 +148,6 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
     { icon: CheckCircle2, text: "Проверка при получении" },
     { icon: TrendingDown, text: "Комплект аксессуаров 3000₽" },
   ];
-
-  const calculatedPrice = getPrice();
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -200,7 +204,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
 
       {/* Блок с ценой для новых iPhone 17 */}
       {calculatedPrice && (
-        <Card className="p-4 sm:p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-2 border-green-500/30">
+        <Card ref={priceBlockRef} className="p-4 sm:p-6 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-2 border-green-500/30">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-center gap-3">
               <div className="p-3 rounded-full bg-green-500/20">
