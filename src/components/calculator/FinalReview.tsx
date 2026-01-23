@@ -65,10 +65,17 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       // Если есть цена - скроллим к блоку цены, иначе к форме
+      // Учитываем высоту фиксированной навигации (примерно 80px)
+      const headerOffset = 100;
+      
       if (calculatedPrice && priceBlockRef.current) {
-        priceBlockRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const elementPosition = priceBlockRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       } else if (contactFormRef.current) {
-        contactFormRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const elementPosition = contactFormRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
     }, 1000);
 
