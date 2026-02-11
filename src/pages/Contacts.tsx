@@ -26,20 +26,20 @@ const Contacts = () => {
     },
     {
       icon: MessageCircle,
-      title: "WhatsApp",
-      value: "+7 (999) 267-39-33",
+      title: "Telegram поддержка",
+      value: "@ac_care",
       description: "Быстрый ответ в мессенджере",
-      action: "https://wa.me/79992673933",
+      action: "https://t.me/ac_care",
       buttonText: "Написать",
       highlight: true
     },
     {
       icon: MessageCircle,
-      title: "Telegram",
+      title: "Telegram канал",
       value: "@apple_collecty",
-      description: "Наш канал и чат поддержки",
+      description: "Новости, акции и эксклюзивные лоты",
       action: "https://t.me/apple_collecty",
-      buttonText: "Открыть"
+      buttonText: "Подписаться"
     }
   ];
 
@@ -89,8 +89,8 @@ const Contacts = () => {
                 "closes": "20:00"
               },
               "sameAs": [
-                "https://wa.me/79992673933",
-                "https://t.me/apple_collecty"
+                "https://t.me/apple_collecty",
+                "https://t.me/ac_care"
               ]
             }
           })}
@@ -141,16 +141,16 @@ const Contacts = () => {
               {contactMethods.map((method, index) => (
                 <Card 
                   key={index} 
-                  className={`p-6 hover:shadow-lg transition-shadow ${method.highlight ? 'border-[#25D366] border-2' : ''}`}
+                  className={`p-6 hover:shadow-lg transition-shadow ${method.highlight ? 'border-[#0088cc] border-2' : ''}`}
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${method.highlight ? 'bg-[#25D366]/10' : 'bg-primary/10'}`}>
-                    <method.icon className={`w-6 h-6 ${method.highlight ? 'text-[#25D366]' : 'text-primary'}`} />
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${method.highlight ? 'bg-[#0088cc]/10' : 'bg-primary/10'}`}>
+                     <method.icon className={`w-6 h-6 ${method.highlight ? 'text-[#0088cc]' : 'text-primary'}`} />
                   </div>
                   <h3 className="text-xl font-semibold mb-1">{method.title}</h3>
                   <p className="text-lg font-medium text-foreground mb-1">{method.value}</p>
                   <p className="text-sm text-muted-foreground mb-4">{method.description}</p>
                   <Button 
-                    className={`w-full ${method.highlight ? 'bg-[#25D366] hover:bg-[#128C7E]' : ''}`}
+                    className={`w-full ${method.highlight ? 'bg-[#0088cc] hover:bg-[#006699]' : ''}`}
                     variant={method.highlight ? 'default' : 'outline'}
                     asChild
                   >
@@ -279,12 +279,12 @@ const Contacts = () => {
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-4">Остались вопросы?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Напишите нам в WhatsApp — мы ответим в течение 5 минут!
+              Напишите нам в Telegram — мы ответим в течение 5 минут!
             </p>
-            <Button size="lg" className="bg-[#25D366] hover:bg-[#128C7E] text-white" asChild>
-              <a href="https://wa.me/79992673933" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-[#0088cc] hover:bg-[#006699] text-white" asChild>
+              <a href="https://t.me/ac_care" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Написать в WhatsApp
+                Написать в Telegram
               </a>
             </Button>
           </div>
