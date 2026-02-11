@@ -128,13 +128,8 @@ const Index = () => {
     }
   };
 
-  const handleWhatsApp = () => {
-    const paymentText = data.paymentMethod === "cash" ? "Наличными" : "В рассрочку 0% (оформление онлайн)";
-    const timingText = data.purchaseTiming === "today-tomorrow" ? "Сегодня-завтра" : data.purchaseTiming === "this-week" ? "На неделе" : "В течение месяца";
-    const message = `Здравствуйте! Интересует iPhone со следующими параметрами:\n\n- Модель: ${data.model}\n- Память: ${data.storage}\n- Состояние: ${data.condition === "new" ? "Новый" : "Б/У"}${data.condition === "used" ? `\n- Аккумулятор: ${data.battery}%` : ""}\n- SIM: ${data.simType}\n- Сроки покупки: ${timingText}\n- Оплата: ${paymentText}`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/79172999773?text=${encodedMessage}`, "_blank");
+  const handleTelegram = () => {
+    window.open("https://t.me/ac_care", "_blank");
   };
 
   return (
@@ -227,7 +222,7 @@ const Index = () => {
               {step === 8 && (
                 <FinalReview
                   data={data}
-                  onConfirm={handleWhatsApp}
+                  onConfirm={handleTelegram}
                   onBack={handleBack}
                 />
               )}
