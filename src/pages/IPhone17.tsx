@@ -26,12 +26,12 @@ const IPhone17Page = () => {
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 в Казани | Цена от 64 500 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
-        <meta name="description" content="iPhone 17 в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A19, камера 48MP, Dynamic Island. Бесплатная доставка по Казани!" />
+        <title>Купить iPhone 17 в Казани недорого | ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <meta name="description" content="iPhone 17 в Казани ✅ Чип A19, камера 48MP. Гарантия на новые 1 год, на б/у 60 дней. Рассрочка 0% на 10 мес, доставка в день заказа" />
         <meta name="keywords" content="iPhone 17 Казань, купить айфон 17, iPhone 17 цена, айфон 17 казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17" />
-        <meta property="og:title" content="Купить iPhone 17 в Казани - ЭПЛ-КОЛЛЕКЦИЯ" />
-        <meta property="og:description" content="iPhone 17 в Казани. Рассрочка 0%, Trade-in, гарантия 1 год." />
+        <meta property="og:title" content="iPhone 17 в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
+        <meta property="og:description" content="iPhone 17 в Казани. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17" />
       </Helmet>
 
@@ -64,7 +64,7 @@ const IPhone17Page = () => {
 
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Купить iPhone 17 в Казани
+                iPhone 17 в Казани — купить недорого
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Новый iPhone с чипом A19 и камерой профессионального уровня
@@ -100,7 +100,7 @@ const IPhone17Page = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия 1 год", "Доставка бесплатно"].map((benefit) => (
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-sm">{benefit}</span>

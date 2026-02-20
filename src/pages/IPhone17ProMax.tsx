@@ -26,12 +26,12 @@ const IPhone17ProMax = () => {
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 Pro Max в Казани | Цена от 101 000 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
-        <meta name="description" content="iPhone 17 Pro Max в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия. A19 Pro, камера 48MP, титановый корпус. Доставка по Казани бесплатно!" />
+        <title>Купить iPhone 17 Pro Max в Казани недорого | ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <meta name="description" content="iPhone 17 Pro Max в Казани ✅ A19 Pro, камера 48MP, титан. Гарантия на новые 1 год, на б/у 60 дней. Рассрочка 0%, Trade-in, бесплатная доставка!" />
         <meta name="keywords" content="iPhone 17 Pro Max Казань, купить айфон 17 про макс, iPhone 17 Pro Max цена, айфон 17 про макс казань" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17-pro-max" />
-        <meta property="og:title" content="Купить iPhone 17 Pro Max в Казани - ЭПЛ-КОЛЛЕКЦИЯ" />
-        <meta property="og:description" content="iPhone 17 Pro Max в Казани. Рассрочка 0%, Trade-in, гарантия 1 год." />
+        <meta property="og:title" content="iPhone 17 Pro Max в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
+        <meta property="og:description" content="iPhone 17 Pro Max в Казани. A19 Pro, титан. Гарантия, рассрочка 0%, Trade-in." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17-pro-max" />
       </Helmet>
 
@@ -68,7 +68,7 @@ const IPhone17ProMax = () => {
             {/* Info */}
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Купить iPhone 17 Pro Max в Казани
+                iPhone 17 Pro Max в Казани — флагман с гарантией
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Самый мощный iPhone с чипом A19 Pro и лучшей камерой в истории Apple
@@ -106,7 +106,7 @@ const IPhone17ProMax = () => {
 
               {/* Benefits */}
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия 1 год", "Доставка бесплатно"].map((benefit) => (
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-sm">{benefit}</span>

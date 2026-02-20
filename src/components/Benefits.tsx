@@ -4,8 +4,8 @@ import { Card } from "@/components/ui/card";
 const benefits = [
   {
     icon: Shield,
-    title: "Гарантия 1 год",
-    description: "На все устройства"
+    title: "Гарантия до 1 года",
+    description: "Новые — 1 год, б/у — 60 дней"
   },
   {
     icon: Zap,
