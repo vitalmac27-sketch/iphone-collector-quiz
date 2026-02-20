@@ -26,12 +26,12 @@ const IPhone16ProPage = () => {
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 16 Pro в Казани | Цена от 80 700 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
-        <meta name="description" content="iPhone 16 Pro в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A18 Pro, камера 48MP, титан. Бесплатная доставка по Казани!" />
+        <title>Купить iPhone 16 Pro в Казани | С Trade-in — ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <meta name="description" content="iPhone 16 Pro в Казани ✅ A18 Pro, титан, 5x зум. Гарантия на новые 1 год, на б/у 60 дней. Trade-in до 30% выгоды, рассрочка 0%" />
         <meta name="keywords" content="iPhone 16 Pro Казань, купить айфон 16 про, iPhone 16 Pro цена, айфон 16 про казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-16-pro" />
-        <meta property="og:title" content="Купить iPhone 16 Pro в Казани - ЭПЛ-КОЛЛЕКЦИЯ" />
-        <meta property="og:description" content="iPhone 16 Pro в Казани. Рассрочка 0%, Trade-in, гарантия 1 год." />
+        <meta property="og:title" content="iPhone 16 Pro в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
+        <meta property="og:description" content="iPhone 16 Pro в Казани. A18 Pro, титан. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-16-pro" />
       </Helmet>
 
@@ -64,7 +64,7 @@ const IPhone16ProPage = () => {
 
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Купить iPhone 16 Pro в Казани
+                iPhone 16 Pro в Казани — купить с Trade-in
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Компактный Pro с мощью A18 Pro в титановом корпусе
@@ -100,7 +100,7 @@ const IPhone16ProPage = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия 1 год", "Доставка бесплатно"].map((benefit) => (
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-sm">{benefit}</span>

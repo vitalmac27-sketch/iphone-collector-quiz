@@ -40,14 +40,30 @@ const Contacts = () => {
       description: "Новости, акции и эксклюзивные лоты",
       action: "https://t.me/apple_collecty",
       buttonText: "Подписаться"
+    },
+    {
+      icon: ExternalLink,
+      title: "ВКонтакте",
+      value: "apple_collecty",
+      description: "Наша группа во ВКонтакте",
+      action: "https://vk.ru/apple_collecty",
+      buttonText: "Перейти"
+    },
+    {
+      icon: ExternalLink,
+      title: "Авито",
+      value: "ЭПЛ-КОЛЛЕКЦИЯ",
+      description: "Наш магазин на Авито",
+      action: "https://www.avito.ru/brands/i141094380",
+      buttonText: "Открыть"
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Контакты ЭПЛ-КОЛЛЕКЦИЯ | Магазин iPhone в Казани - адрес, телефон</title>
-        <meta name="description" content="Контакты магазина ЭПЛ-КОЛЛЕКЦИЯ в Казани. Адрес: Сибгата Хакима 40а, Офис 7. Телефон: +7 (999) 267-39-33. Работаем ежедневно 13:00-20:00." />
+        <title>Контакты ЭПЛ-КОЛЛЕКЦИЯ | Адрес магазина iPhone Казань</title>
+        <meta name="description" content="Магазин iPhone ЭПЛ-КОЛЛЕКЦИЯ: Казань, Сибгата Хакима 40а. ☎ +7(999)267-39-33. Ежедневно 13:00-20:00. Бесплатная доставка по Казани" />
         <meta name="keywords" content="эпл коллекция контакты, магазин iphone казань адрес, купить айфон казань телефон, apple store казань контакты" />
         <link rel="canonical" href="https://apple-collecty.ru/contacts" />
         <meta property="og:title" content="Контакты ЭПЛ-КОЛЛЕКЦИЯ | Магазин iPhone Казань" />
@@ -90,7 +106,9 @@ const Contacts = () => {
               },
               "sameAs": [
                 "https://t.me/apple_collecty",
-                "https://t.me/ac_care"
+                "https://t.me/ac_care",
+                "https://vk.ru/apple_collecty",
+                "https://www.avito.ru/brands/i141094380"
               ]
             }
           })}
@@ -126,7 +144,7 @@ const Contacts = () => {
         <section className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-              Контакты
+              Контакты магазина iPhone в Казани — ЭПЛ-КОЛЛЕКЦИЯ
             </h1>
             <p className="text-xl text-muted-foreground text-center max-w-2xl mx-auto">
               Свяжитесь с нами любым удобным способом или приезжайте в наш офис в Казани
@@ -137,7 +155,7 @@ const Contacts = () => {
         {/* Contact Methods */}
         <section className="pb-12">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {contactMethods.map((method, index) => (
                 <Card 
                   key={index} 

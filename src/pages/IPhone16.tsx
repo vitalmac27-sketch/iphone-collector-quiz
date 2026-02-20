@@ -26,12 +26,12 @@ const IPhone16Page = () => {
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 16 в Казани | Цена от 56 400 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
-        <meta name="description" content="iPhone 16 в Казани по лучшей цене. Рассрочка 0%, Trade-in, гарантия 1 год. Чип A18, камера 48MP, Dynamic Island. Бесплатная доставка по Казани!" />
+        <title>Купить iPhone 16 в Казани | Рассрочка 0% — ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <meta name="description" content="iPhone 16 в Казани ✅ Чип A18, камера 48MP, Action Button. Гарантия на новые 1 год, на б/у 60 дней. Рассрочка 0% на 10 мес, бесплатная доставка" />
         <meta name="keywords" content="iPhone 16 Казань, купить айфон 16, iPhone 16 цена, айфон 16 казань недорого" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-16" />
-        <meta property="og:title" content="Купить iPhone 16 в Казани - ЭПЛ-КОЛЛЕКЦИЯ" />
-        <meta property="og:description" content="iPhone 16 в Казани. Рассрочка 0%, Trade-in, гарантия 1 год." />
+        <meta property="og:title" content="iPhone 16 в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
+        <meta property="og:description" content="iPhone 16 в Казани. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-16" />
       </Helmet>
 
@@ -64,7 +64,7 @@ const IPhone16Page = () => {
 
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Купить iPhone 16 в Казани
+                iPhone 16 в Казани — рассрочка 0%, гарантия
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Современный iPhone с чипом A18 и Action Button
@@ -100,7 +100,7 @@ const IPhone16Page = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия 1 год", "Доставка бесплатно"].map((benefit) => (
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-sm">{benefit}</span>

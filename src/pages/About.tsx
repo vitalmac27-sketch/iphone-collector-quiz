@@ -24,8 +24,8 @@ const About = () => {
   const features = [
     {
       icon: Shield,
-      title: "Гарантия 1 год",
-      description: "На все устройства предоставляется официальная гарантия магазина сроком 1 год"
+      title: "Гарантия до 1 года",
+      description: "На новые устройства гарантия 1 год, на б/у — 60 дней"
     },
     {
       icon: CheckCircle2,
@@ -64,8 +64,8 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>О магазине ЭПЛ-КОЛЛЕКЦИЯ | Купить iPhone в Казани с гарантией</title>
-        <meta name="description" content="ЭПЛ-КОЛЛЕКЦИЯ - официальный магазин iPhone в Казани. 3+ года работы, 2000+ довольных клиентов. Гарантия 1 год, рассрочка 0%, бесплатная доставка." />
+        <title>Магазин Айфонов в Казани ЭПЛ-КОЛЛЕКЦИЯ | 2000+ клиентов</title>
+        <meta name="description" content="ЭПЛ-КОЛЛЕКЦИЯ — проверенный магазин iPhone в Казани. 3+ года работы, 2000+ клиентов, рейтинг 5.0. Гарантия на новые 1 год, на б/у 60 дней. Рассрочка, бесплатная доставка" />
         <meta name="keywords" content="магазин iphone казань, купить айфон казань, эпл коллекция, apple store казань, iphone с гарантией казань" />
         <link rel="canonical" href="https://apple-collecty.ru/about" />
         <meta property="og:title" content="О магазине ЭПЛ-КОЛЛЕКЦИЯ | iPhone в Казани" />
@@ -147,7 +147,7 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                  О магазине <span className="text-primary">ЭПЛ-КОЛЛЕКЦИЯ</span>
+                  Магазин iPhone в Казани — <span className="text-primary">ЭПЛ-КОЛЛЕКЦИЯ</span>
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                   Мы — ваш надежный партнер в мире Apple в Казани. Более 3 лет мы помогаем жителям Казани 
@@ -243,7 +243,7 @@ const About = () => {
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <span><strong>Гарантия 1 год</strong> — на все устройства предоставляется официальная гарантия магазина</span>
+                  <span><strong>Гарантия до 1 года</strong> — на новые устройства 1 год, на б/у — 60 дней</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
@@ -277,10 +277,10 @@ const About = () => {
               <Button size="lg" asChild>
                 <Link to="/#calculator-section">Подобрать iPhone</Link>
               </Button>
-              <Button size="lg" variant="outline" className="bg-[#25D366] hover:bg-[#128C7E] text-white border-none" asChild>
-                <a href="https://wa.me/79992673933" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="bg-[#0088cc] hover:bg-[#006699] text-white border-none" asChild>
+                <a href="https://t.me/ac_care" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Написать в WhatsApp
+                  Написать в Telegram
                 </a>
               </Button>
             </div>

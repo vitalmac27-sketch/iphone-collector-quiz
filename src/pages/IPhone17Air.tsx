@@ -26,12 +26,12 @@ const IPhone17AirPage = () => {
   return (
     <>
       <Helmet>
-        <title>Купить iPhone 17 Air в Казани | Цена от 80 700 ₽ - ЭПЛ-КОЛЛЕКЦИЯ</title>
-        <meta name="description" content="iPhone 17 Air в Казани — самый тонкий iPhone. Рассрочка 0%, Trade-in, гарантия. Толщина 5.5мм, чип A19, камера 48MP. Доставка по Казани бесплатно!" />
+        <title>iPhone 17 Air Казань | Самый тонкий iPhone — ЭПЛ-КОЛЛЕКЦИЯ</title>
+        <meta name="description" content="iPhone 17 Air в Казани ✅ Самый тонкий iPhone — 5.5мм, чип A19. Гарантия на новые 1 год, на б/у 60 дней. Рассрочка 0%, бесплатная доставка" />
         <meta name="keywords" content="iPhone 17 Air Казань, купить айфон 17 эйр, iPhone 17 Air цена, самый тонкий айфон казань" />
         <link rel="canonical" href="https://apple-collecty.ru/iphone-17-air" />
-        <meta property="og:title" content="Купить iPhone 17 Air в Казани - ЭПЛ-КОЛЛЕКЦИЯ" />
-        <meta property="og:description" content="iPhone 17 Air — самый тонкий iPhone в истории. Рассрочка 0%, Trade-in, гарантия." />
+        <meta property="og:title" content="iPhone 17 Air в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
+        <meta property="og:description" content="iPhone 17 Air — самый тонкий iPhone. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17-air" />
       </Helmet>
 
@@ -64,7 +64,7 @@ const IPhone17AirPage = () => {
 
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Купить iPhone 17 Air в Казани
+                iPhone 17 Air в Казани — самый тонкий iPhone
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Революционно тонкий iPhone толщиной всего 5.5 мм
@@ -100,7 +100,7 @@ const IPhone17AirPage = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия 1 год", "Доставка бесплатно"].map((benefit) => (
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
                   <div key={benefit} className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-sm">{benefit}</span>
