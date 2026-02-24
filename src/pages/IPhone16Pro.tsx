@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone16Pro from "@/assets/iphone-16-pro-new.avif";
+import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
 
 const IPhone16ProPage = () => {
   const specs = {
@@ -16,12 +17,21 @@ const IPhone16ProPage = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
-  // Цены -15%
-  const prices = {
-    "256GB": 80700,
-    "512GB": 93400,
-    "1TB": 110400,
-  };
+  const prices = { "256GB": 80700, "512GB": 93400, "1TB": 110400 };
+
+  const reviews = [
+    { name: "Азат", text: "iPhone 16 Pro — лучший компактный флагман! Камера с 5x зумом снимает потрясающе. Доставили на Губкина за час.", rating: 5, date: "Февраль 2026" },
+    { name: "Наталья", text: "Сдала iPhone 13 Pro по Trade-in и доплатила совсем немного. Титановый корпус выглядит премиально!", rating: 5, date: "Январь 2026" },
+    { name: "Олег", text: "Третий раз покупаю в ЭПЛ-КОЛЛЕКЦИЯ. Всегда отличные цены и честная гарантия. Рекомендую всем!", rating: 5, date: "Декабрь 2025" },
+  ];
+
+  const relatedModels = [
+    { name: "iPhone 16 Pro Max", path: "/iphone-16-pro-max", label: "Большой экран" },
+    { name: "iPhone 16", path: "/iphone-16", label: "Ещё выгоднее" },
+    { name: "iPhone 17 Pro", path: "/iphone-17-pro", label: "Новейший Pro" },
+    { name: "iPhone 17 Pro Max", path: "/iphone-17-pro-max", label: "Максимум мощности" },
+    { name: "iPhone 17 Air", path: "/iphone-17-air", label: "Самый тонкий" },
+  ];
 
   return (
     <>
@@ -38,73 +48,33 @@ const IPhone16ProPage = () => {
       <div className="min-h-screen bg-background">
         <nav className="container mx-auto px-4 py-4">
           <ol className="flex items-center gap-2 text-sm text-muted-foreground">
-            <li><Link to="/" className="hover:text-primary">Главная</Link></li>
-            <li>/</li>
+            <li><Link to="/" className="hover:text-primary">Главная</Link></li><li>/</li>
             <li className="text-foreground">iPhone 16 Pro</li>
           </ol>
         </nav>
 
         <section className="container mx-auto px-4 py-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6">
-            <ArrowLeft className="w-4 h-4" />
-            Вернуться в каталог
-          </Link>
-
+          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-purple-500 text-white z-10">
-                Выбор покупателей
-              </Badge>
-              <img
-                src={iPhone16Pro}
-                alt="Купить iPhone 16 Pro в Казани недорого - ЭПЛ-КОЛЛЕКЦИЯ"
-                className="w-full max-w-md mx-auto rounded-2xl"
-              />
+              <Badge className="absolute top-4 left-4 bg-secondary text-secondary-foreground z-10">Выбор покупателей</Badge>
+              <img src={iPhone16Pro} alt="Купить iPhone 16 Pro в Казани недорого - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
-
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                iPhone 16 Pro в Казани — купить с Trade-in
-              </h1>
-              <p className="text-xl text-muted-foreground mb-6">
-                Компактный Pro с мощью A18 Pro в титановом корпусе
-              </p>
-
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro в Казани — купить с Trade-in</h1>
+              <p className="text-xl text-muted-foreground mb-6">Компактный Pro с мощью A18 Pro в титановом корпусе</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
-                  <Card key={storage} className="border-primary/20">
-                    <CardContent className="flex items-center justify-between p-4">
-                      <span className="font-medium">{storage}</span>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-primary">
-                          {price.toLocaleString("ru-RU")} ₽
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
                 ))}
               </div>
-
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button asChild size="lg" className="flex-1">
-                  <Link to="/#calculator">Рассчитать стоимость</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="flex-1">
-                  <a href="https://t.me/ac_care" target="_blank" rel="noopener noreferrer">
-                    Написать в Telegram
-                  </a>
-                </Button>
+                <Button asChild size="lg" className="flex-1"><Link to="/#calculator">Рассчитать стоимость</Link></Button>
+                <Button asChild variant="outline" size="lg" className="flex-1"><a href="https://t.me/ac_care" target="_blank" rel="noopener noreferrer">Написать в Telegram</a></Button>
               </div>
-
               <div className="grid grid-cols-2 gap-4">
-                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((benefit) => (
-                  <div key={benefit} className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-green-500" />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
+                {["Рассрочка 0%", "Trade-in до 70%", "Гарантия до 1 года", "Доставка бесплатно"].map((b) => (
+                  <div key={b} className="flex items-center gap-2"><Check className="w-5 h-5 text-primary" /><span className="text-sm">{b}</span></div>
                 ))}
               </div>
             </div>
@@ -114,114 +84,60 @@ const IPhone16ProPage = () => {
         <section className="container mx-auto px-4 py-12">
           <h2 className="text-2xl font-bold mb-8 text-center">Характеристики iPhone 16 Pro</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Monitor className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Дисплей</h3>
-                  <p className="text-sm text-muted-foreground">{specs.display}</p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Cpu className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Процессор</h3>
-                  <p className="text-sm text-muted-foreground">{specs.chip}</p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Camera className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Камера</h3>
-                  <p className="text-sm text-muted-foreground">{specs.camera}</p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Battery className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Батарея</h3>
-                  <p className="text-sm text-muted-foreground">{specs.battery}</p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Smartphone className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Память</h3>
-                  <p className="text-sm text-muted-foreground">{specs.storage}</p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 flex items-start gap-4">
-                <Shield className="w-8 h-8 text-primary flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold mb-1">Особенности</h3>
-                  <p className="text-sm text-muted-foreground">{specs.features.join(", ")}</p>
-                </div>
-              </CardContent>
-            </Card>
+            {[{ icon: Monitor, title: "Дисплей", value: specs.display }, { icon: Cpu, title: "Процессор", value: specs.chip }, { icon: Camera, title: "Камера", value: specs.camera }, { icon: Battery, title: "Батарея", value: specs.battery }, { icon: Smartphone, title: "Память", value: specs.storage }, { icon: Shield, title: "Особенности", value: specs.features.join(", ") }].map(({ icon: Icon, title, value }) => (
+              <Card key={title}><CardContent className="p-6 flex items-start gap-4"><Icon className="w-8 h-8 text-primary flex-shrink-0" /><div><h3 className="font-semibold mb-1">{title}</h3><p className="text-sm text-muted-foreground">{value}</p></div></CardContent></Card>
+            ))}
           </div>
         </section>
 
         <section className="container mx-auto px-4 py-12 max-w-4xl">
           <h2 className="text-2xl font-bold mb-6">iPhone 16 Pro — компактный флагман в Казани</h2>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p>
-              <strong>Купить iPhone 16 Pro в Казани</strong> — идеальный выбор для ценителей 
-              компактных флагманов. В магазине ЭПЛ-КОЛЛЕКЦИЯ доступны все цвета и конфигурации.
-            </p>
-            <p>
-              iPhone 16 Pro сочетает мощь чипа A18 Pro с компактным 6.3-дюймовым дисплеем. 
-              Титановый корпус обеспечивает премиальный вид и отличную прочность.
-            </p>
-            <p>
-              Система камер с 5-кратным оптическим зумом позволяет снимать профессиональные 
-              фото и видео. Action Button даёт быстрый доступ к камере и другим функциям.
-            </p>
-            <p>
-              <strong>iPhone 16 Pro в рассрочку 0%</strong> — отличная возможность приобрести 
-              флагман без переплаты. Trade-in позволяет сэкономить до 70% при сдаче старого устройства.
-            </p>
+            <p><strong>Купить iPhone 16 Pro в Казани</strong> — идеальный выбор для ценителей компактных флагманов. В магазине ЭПЛ-КОЛЛЕКЦИЯ доступны все цвета и конфигурации.</p>
+            <p>iPhone 16 Pro сочетает мощь чипа A18 Pro с компактным 6.3-дюймовым дисплеем. Титановый корпус обеспечивает премиальный вид и отличную прочность.</p>
+            <p>Система камер с 5-кратным оптическим зумом позволяет снимать профессиональные фото и видео. Action Button даёт быстрый доступ к камере и другим функциям.</p>
+            <p><strong>iPhone 16 Pro в рассрочку 0%</strong> — отличная возможность приобрести флагман без переплаты. Trade-in позволяет сэкономить до 70% при сдаче старого устройства.</p>
           </div>
         </section>
 
+        <ModelPageSeoBlock modelName="iPhone 16 Pro" reviews={reviews} relatedModels={relatedModels}
+          additionalContent={
+            <>
+              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 Pro — оптимальный Pro для большинства</h3>
+              <p>Если вам не нужен огромный экран 6.9", <strong>iPhone 16 Pro</strong> — идеальный выбор. Те же Pro-возможности (A18 Pro, 5x зум, титан) в компактном корпусе, который удобно держать одной рукой.</p>
+              <p>В ЭПЛ-КОЛЛЕКЦИЯ iPhone 16 Pro от 80 700 ₽. Для сравнения: <Link to="/iphone-17-pro" className="text-primary hover:underline">iPhone 17 Pro</Link> от 88 700 ₽. Разница в производительности минимальна.</p>
+              <p><strong>Гарантия:</strong> на новые — 1 год, на б/у — 60 дней. Бесплатная доставка по всей Казани в день заказа.</p>
+            </>
+          }
+        />
+
         <section className="container mx-auto px-4 py-12">
-          <Card className="bg-primary text-primary-foreground">
-            <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4">Готовы купить iPhone 16 Pro?</h2>
-              <p className="mb-6 opacity-90">Рассчитайте стоимость с учётом Trade-in и выберите удобный способ оплаты</p>
-              <Button asChild size="lg" variant="secondary">
-                <Link to="/#calculator">Перейти в калькулятор</Link>
-              </Button>
-            </CardContent>
-          </Card>
+          <Card className="bg-primary text-primary-foreground"><CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Готовы купить iPhone 16 Pro?</h2>
+            <p className="mb-6 opacity-90">Рассчитайте стоимость с учётом Trade-in</p>
+            <Button asChild size="lg" variant="secondary"><Link to="/#calculator">Перейти в калькулятор</Link></Button>
+          </CardContent></Card>
         </section>
       </div>
 
       <script type="application/ld+json">
         {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Product",
-          "name": "iPhone 16 Pro",
-          "image": "https://apple-collecty.ru/iphone-16-pro.avif",
-          "description": "iPhone 16 Pro с чипом A18 Pro, камерой 48MP и титановым корпусом",
-          "brand": { "@type": "Brand", "name": "Apple" },
-          "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "80700",
-            "highPrice": "110400",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock",
-            "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" }
-          }
+          "@context": "https://schema.org", "@graph": [
+            { "@type": "Product", "name": "iPhone 16 Pro", "image": "https://apple-collecty.ru/iphone-16-pro.avif",
+              "description": "iPhone 16 Pro в Казани. A18 Pro, титан, 5x зум. Рассрочка 0%, гарантия.",
+              "brand": { "@type": "Brand", "name": "Apple" },
+              "offers": { "@type": "AggregateOffer", "lowPrice": "80700", "highPrice": "110400", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
+              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "41", "bestRating": "5" },
+              "review": [
+                { "@type": "Review", "author": { "@type": "Person", "name": "Азат" }, "datePublished": "2026-02-03", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Лучший компактный флагман! Камера с 5x зумом снимает потрясающе." },
+                { "@type": "Review", "author": { "@type": "Person", "name": "Наталья" }, "datePublished": "2026-01-10", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Сдала iPhone 13 Pro по Trade-in и доплатила совсем немного." }
+              ]
+            },
+            { "@type": "BreadcrumbList", "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
+              { "@type": "ListItem", "position": 2, "name": "iPhone 16 Pro", "item": "https://apple-collecty.ru/iphone-16-pro" }
+            ]}
+          ]
         })}
       </script>
     </>
