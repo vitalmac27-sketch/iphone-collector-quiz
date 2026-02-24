@@ -279,7 +279,7 @@ const Contacts = () => {
               
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">На общественном транспорте:</h3>
               <ul className="list-disc list-inside space-y-2">
-                <li>От станции метро "Проспект Победы" — 10 минут пешком</li>
+                <li>От станции метро «Козья слобода» — 15 минут пешком</li>
                 <li>Автобусы и маршрутки: остановка "Сибгата Хакима"</li>
               </ul>
               
