@@ -12,6 +12,7 @@ import AvitoListings from "@/components/calculator/AvitoListings";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
 import SeoContent from "@/components/SeoContent";
+import DeliveryDistricts from "@/components/DeliveryDistricts";
 import Testimonials from "@/components/Testimonials";
 import EnhancedProgressBar from "@/components/calculator/EnhancedProgressBar";
 import UrgencyBanner from "@/components/UrgencyBanner";
@@ -261,6 +262,7 @@ const Index = () => {
 
         <Testimonials />
         <Benefits />
+        <DeliveryDistricts />
         <SeoContent />
       </div>
     </div>
