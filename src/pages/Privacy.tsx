@@ -64,7 +64,7 @@ const Privacy = () => {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Оператор персональных данных</h2>
               <ul className="list-none space-y-1 pl-0">
-                <li>ИП Дарьин Максим Павлович</li>
+                <li><li>ИП Дарьин М.П.</li></li>
                 <li>ИНН: 164609500872</li>
                 <li>Адрес: г. Казань, ул. Сибгата Хакима, 40а, офис 7</li>
                 <li>Email: <a href="mailto:apple.collecty@gmail.com" className="text-primary hover:underline">apple.collecty@gmail.com</a></li>

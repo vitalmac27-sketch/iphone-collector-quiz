@@ -44,7 +44,7 @@ const Legal = () => {
             <section>
               <h2 className="text-xl font-semibold text-foreground">Реквизиты</h2>
               <ul className="list-none space-y-1 pl-0">
-                <li>Индивидуальный предприниматель <strong className="text-foreground">Дарьин Максим Павлович</strong></li>
+                <li><li>Индивидуальный предприниматель <strong className="text-foreground">Дарьин М.П.</strong></li></li>
                 <li>ИНН: 164609500872</li>
                 <li>Фактический адрес: г. Казань, ул. Сибгата Хакима, 40а, офис 7</li>
                 <li>Телефон: <a href="tel:+79992673933" className="text-primary hover:underline">+7 (999) 267-39-33</a></li>
