@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone16ProMax from "@/assets/iphone-16-pro-max.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone16ProMaxPage = () => {
   const specs = {
@@ -40,6 +41,27 @@ const IPhone16ProMaxPage = () => {
     { name: "iPhone 17", path: "/iphone-17", label: "Хит продаж" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 16 Pro Max",
+    description: "iPhone 16 Pro Max в Казани. A18 Pro, титан, камера 48MP. Рассрочка 0%, гарантия.",
+    image: "https://apple-collecty.ru/iphone-16-pro-max.avif",
+    url: "https://apple-collecty.ru/iphone-16-pro-max",
+    lowPrice: "96800",
+    highPrice: "126600",
+    offerCount: "3",
+    reviewCount: "63",
+    reviews: [
+      { name: "Руслан", date: "2026-02-01", text: "Взял 16 Pro Max вместо 17-го — сэкономил 40 тысяч! Разница минимальная." },
+      { name: "Гульнара", date: "2026-01-12", text: "Рассрочка 0% за 5 минут, доставили на Декабристов через 2 часа." },
+      { name: "Максим", date: "2026-01-05", text: "Второй iPhone покупаю здесь. Цены ниже, гарантия настоящая." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 16 Pro Max", url: "https://apple-collecty.ru/iphone-16-pro-max" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -50,6 +72,9 @@ const IPhone16ProMaxPage = () => {
         <meta property="og:title" content="iPhone 16 Pro Max в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 16 Pro Max в Казани. A18 Pro, титан. Рассрочка 0%, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-16-pro-max" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -64,12 +89,12 @@ const IPhone16ProMaxPage = () => {
           <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Популярный</Badge>
-              <img src={iPhone16ProMax} alt="Купить iPhone 16 Pro Max в Казани - ЭПЛ-КОЛЛЕКЦИЯ магазин Apple" className="w-full max-w-md mx-auto rounded-2xl" />
+              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Выгодный флагман</Badge>
+              <img src={iPhone16ProMax} alt="Купить iPhone 16 Pro Max в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro Max в Казани — лучшая цена, гарантия</h1>
-              <p className="text-xl text-muted-foreground mb-6">Флагман 2024 года с чипом A18 Pro и профессиональной камерой</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro Max в Казани — флагман по лучшей цене</h1>
+              <p className="text-xl text-muted-foreground mb-6">A18 Pro, титан, 5x зум, экран 6.9" — максимум за разумные деньги</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
                   <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
@@ -98,22 +123,23 @@ const IPhone16ProMaxPage = () => {
         </section>
 
         <section className="container mx-auto px-4 py-12 max-w-4xl">
-          <h2 className="text-2xl font-bold mb-6">iPhone 16 Pro Max — выгодная альтернатива в Казани</h2>
+          <h2 className="text-2xl font-bold mb-6">iPhone 16 Pro Max — максимум за разумные деньги</h2>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p><strong>Купить iPhone 16 Pro Max в Казани</strong> — отличное решение для тех, кто хочет получить флагманский iPhone по более выгодной цене. В магазине ЭПЛ-КОЛЛЕКЦИЯ представлены все варианты памяти.</p>
-            <p>iPhone 16 Pro Max оснащён мощным чипом A18 Pro с 6-ядерным GPU и Neural Engine. Огромный 6.9-дюймовый дисплей с ProMotion идеален для просмотра контента и игр.</p>
-            <p>Профессиональная система из трёх камер с основным модулем 48 Мп и 5-кратным оптическим зумом позволяет снимать на уровне профессиональной техники.</p>
-            <p><strong>iPhone 16 Pro Max в рассрочку 0%</strong> без переплаты — выгодный способ приобрести флагман. Также доступен Trade-in со скидкой до 70%.</p>
+            <p><strong>Купить iPhone 16 Pro Max в Казани</strong> — отличный способ получить флагманские возможности по выгодной цене. A18 Pro, титан, камера 48MP с 5x зумом — всё как у нового поколения, но дешевле на 30–40 тысяч.</p>
+            <p>Экран 6.9" с ProMotion 120Hz и батарея на 33 часа видео — рекорд для смартфонов. Идеален для видео, игр и работы.</p>
+            <p><strong>Рассрочка 0%</strong> на 10 месяцев. Trade-in до 70%. Бесплатная доставка по всем районам Казани.</p>
           </div>
         </section>
 
         <ModelPageSeoBlock modelName="iPhone 16 Pro Max" reviews={reviews} relatedModels={relatedModels}
           additionalContent={
             <>
-              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 Pro Max — умная экономия в 2026 году</h3>
-              <p>С выходом iPhone 17 цена на <strong>iPhone 16 Pro Max</strong> стала ещё привлекательнее. При этом вы получаете 95% возможностей нового поколения: тот же размер экрана, похожая камера, отличная автономность.</p>
-              <p>В ЭПЛ-КОЛЛЕКЦИЯ iPhone 16 Pro Max стоит от 96 800 ₽ — это на 20–30% дешевле, чем <Link to="/iphone-17-pro-max" className="text-primary hover:underline">iPhone 17 Pro Max</Link>. Идеальный выбор для тех, кто хочет флагман без переплаты.</p>
-              <p><strong>Бесплатная доставка</strong> по всей Казани. <strong>Гарантия:</strong> на новые — 1 год, на б/у — 60 дней. Проверка при получении.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 Pro Max — умный выбор в 2026 году</h3>
+              <p>Многие выбирают iPhone 16 Pro Max вместо 17 Pro Max и экономят 30–40 тысяч. Разница в производительности — всего 15–20%, а камера и экран практически идентичны.</p>
+              <p><strong>Гарантия на новые — 1 год, на б/у — 60 дней.</strong></p>
+              <p><strong>Бесплатная доставка</strong> по всем районам Казани.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 mt-6">iPhone 16 Pro Max или 17 Pro Max?</h3>
+              <p><Link to="/iphone-17-pro-max" className="text-primary hover:underline">iPhone 17 Pro Max</Link> — новее, A19 Pro быстрее на 20–30%. iPhone 16 Pro Max — выгоднее на 30–40 тысяч при сопоставимых возможностях.</p>
             </>
           }
         />
@@ -126,27 +152,6 @@ const IPhone16ProMaxPage = () => {
           </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org", "@graph": [
-            { "@type": "Product", "name": "iPhone 16 Pro Max", "image": "https://apple-collecty.ru/iphone-16-pro-max.avif",
-              "description": "iPhone 16 Pro Max в Казани. A18 Pro, титан, камера 48MP. Рассрочка 0%, гарантия.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "96800", "highPrice": "126600", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "63", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Руслан" }, "datePublished": "2026-02-01", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Взял 16 Pro Max вместо 17-го — сэкономил 40 тысяч! Разница минимальная." },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Гульнара" }, "datePublished": "2026-01-12", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Рассрочка 0% за 5 минут, доставили на Декабристов через 2 часа." }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 16 Pro Max", "item": "https://apple-collecty.ru/iphone-16-pro-max" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };

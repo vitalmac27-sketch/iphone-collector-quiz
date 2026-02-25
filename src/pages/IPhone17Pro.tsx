@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone17Pro from "@/assets/iphone-17-pro.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone17ProPage = () => {
   const specs = {
@@ -17,11 +18,7 @@ const IPhone17ProPage = () => {
     features: ["Dynamic Island", "USB-C", "Титановый корпус", "Action Button", "5G", "Face ID"],
   };
 
-  const prices = {
-    "256GB": 88700,
-    "512GB": 101500,
-    "1TB": 118500,
-  };
+  const prices = { "256GB": 88700, "512GB": 101500, "1TB": 118500 };
 
   const reviews = [
     { name: "Марат", text: "iPhone 17 Pro — идеальный размер! Компактный, но мощный. Доставили на Ямашева за час. Рассрочку оформили прямо при получении.", rating: 5, date: "Февраль 2026" },
@@ -44,6 +41,27 @@ const IPhone17ProPage = () => {
     { name: "iPhone 16 Pro Max", path: "/iphone-16-pro-max", label: "Большой экран дешевле" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 17 Pro",
+    description: "Купить iPhone 17 Pro в Казани. A19 Pro, титановый корпус, 5x зум. Рассрочка 0%, гарантия.",
+    image: "https://apple-collecty.ru/iphone-17-pro.avif",
+    url: "https://apple-collecty.ru/iphone-17-pro",
+    lowPrice: "88700",
+    highPrice: "118500",
+    offerCount: "3",
+    reviewCount: "64",
+    reviews: [
+      { name: "Марат", date: "2026-02-05", text: "iPhone 17 Pro — идеальный размер! Компактный, но мощный." },
+      { name: "Елена", date: "2026-01-18", text: "Перешла с iPhone 14 по Trade-in — сэкономила почти 40%!" },
+      { name: "Дамир", date: "2025-12-10", text: "Титановый корпус приятный на ощупь. A19 Pro работает молниеносно." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 17 Pro", url: "https://apple-collecty.ru/iphone-17-pro" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -54,42 +72,32 @@ const IPhone17ProPage = () => {
         <meta property="og:title" content="iPhone 17 Pro в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 17 Pro в Казани. A19 Pro, титан. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17-pro" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
         <nav className="container mx-auto px-4 py-4">
           <ol className="flex items-center gap-2 text-sm text-muted-foreground">
-            <li><Link to="/" className="hover:text-primary">Главная</Link></li>
-            <li>/</li>
+            <li><Link to="/" className="hover:text-primary">Главная</Link></li><li>/</li>
             <li className="text-foreground">iPhone 17 Pro</li>
           </ol>
         </nav>
 
         <section className="container mx-auto px-4 py-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6">
-            <ArrowLeft className="w-4 h-4" />
-            Вернуться в каталог
-          </Link>
-
+          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground z-10">Pro 2025</Badge>
-              <img src={iPhone17Pro} alt="Купить iPhone 17 Pro в Казани недорого - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
+              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Pro-флагман</Badge>
+              <img src={iPhone17Pro} alt="Купить iPhone 17 Pro в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 17 Pro в Казани — купить в рассрочку</h1>
-              <p className="text-xl text-muted-foreground mb-6">Компактный Pro-флагман с мощью A19 Pro и профессиональной камерой</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 17 Pro в Казани — компактный флагман</h1>
+              <p className="text-xl text-muted-foreground mb-6">A19 Pro, титановый корпус, 5x зум в компактном формате</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
-                  <Card key={storage} className="border-primary/20">
-                    <CardContent className="flex items-center justify-between p-4">
-                      <span className="font-medium">{storage}</span>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div>
-                        <div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -108,14 +116,7 @@ const IPhone17ProPage = () => {
         <section className="container mx-auto px-4 py-12">
           <h2 className="text-2xl font-bold mb-8 text-center">Характеристики iPhone 17 Pro</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[
-              { icon: Monitor, title: "Дисплей", value: specs.display },
-              { icon: Cpu, title: "Процессор", value: specs.chip },
-              { icon: Camera, title: "Камера", value: specs.camera },
-              { icon: Battery, title: "Батарея", value: specs.battery },
-              { icon: Smartphone, title: "Память", value: specs.storage },
-              { icon: Shield, title: "Особенности", value: specs.features.join(", ") },
-            ].map(({ icon: Icon, title, value }) => (
+            {[{ icon: Monitor, title: "Дисплей", value: specs.display }, { icon: Cpu, title: "Процессор", value: specs.chip }, { icon: Camera, title: "Камера", value: specs.camera }, { icon: Battery, title: "Батарея", value: specs.battery }, { icon: Smartphone, title: "Память", value: specs.storage }, { icon: Shield, title: "Особенности", value: specs.features.join(", ") }].map(({ icon: Icon, title, value }) => (
               <Card key={title}><CardContent className="p-6 flex items-start gap-4"><Icon className="w-8 h-8 text-primary flex-shrink-0" /><div><h3 className="font-semibold mb-1">{title}</h3><p className="text-sm text-muted-foreground">{value}</p></div></CardContent></Card>
             ))}
           </div>
@@ -131,10 +132,7 @@ const IPhone17ProPage = () => {
           </div>
         </section>
 
-        <ModelPageSeoBlock
-          modelName="iPhone 17 Pro"
-          reviews={reviews}
-          relatedModels={relatedModels}
+        <ModelPageSeoBlock modelName="iPhone 17 Pro" reviews={reviews} relatedModels={relatedModels}
           additionalContent={
             <>
               <h3 className="text-xl font-bold text-foreground mb-4">Преимущества покупки iPhone 17 Pro в ЭПЛ-КОЛЛЕКЦИЯ</h3>
@@ -148,39 +146,13 @@ const IPhone17ProPage = () => {
         />
 
         <section className="container mx-auto px-4 py-12">
-          <Card className="bg-primary text-primary-foreground">
-            <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4">Готовы купить iPhone 17 Pro?</h2>
-              <p className="mb-6 opacity-90">Рассчитайте стоимость с учётом Trade-in и выберите удобный способ оплаты</p>
-              <Button asChild size="lg" variant="secondary"><Link to="/#calculator">Перейти в калькулятор</Link></Button>
-            </CardContent>
-          </Card>
+          <Card className="bg-primary text-primary-foreground"><CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Готовы купить iPhone 17 Pro?</h2>
+            <p className="mb-6 opacity-90">Рассчитайте стоимость с учётом Trade-in и выберите удобный способ оплаты</p>
+            <Button asChild size="lg" variant="secondary"><Link to="/#calculator">Перейти в калькулятор</Link></Button>
+          </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Product", "name": "iPhone 17 Pro",
-              "image": "https://apple-collecty.ru/iphone-17-pro.avif",
-              "description": "Купить iPhone 17 Pro в Казани. A19 Pro, титан, 5x зум. Рассрочка 0%, гарантия.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "88700", "highPrice": "118500", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "38", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Марат" }, "datePublished": "2026-02-05", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "iPhone 17 Pro — идеальный размер! Компактный, но мощный." },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Елена" }, "datePublished": "2026-01-18", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Перешла с iPhone 14 по Trade-in — сэкономила почти 40%!" }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 17 Pro", "item": "https://apple-collecty.ru/iphone-17-pro" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };

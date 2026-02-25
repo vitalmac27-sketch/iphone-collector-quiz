@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone17 from "@/assets/iphone-17.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone17Page = () => {
   const specs = {
@@ -40,6 +41,27 @@ const IPhone17Page = () => {
     { name: "iPhone 16 Pro", path: "/iphone-16-pro", label: "Pro прошлого года" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 17",
+    description: "Купить iPhone 17 в Казани. Чип A19, камера 48MP. Рассрочка 0%, гарантия.",
+    image: "https://apple-collecty.ru/iphone-17.webp",
+    url: "https://apple-collecty.ru/iphone-17",
+    lowPrice: "64500",
+    highPrice: "85800",
+    offerCount: "3",
+    reviewCount: "52",
+    reviews: [
+      { name: "Ильнар", date: "2026-02-08", text: "iPhone 17 за 64 500 — это подарок! В М.Видео такая же модель дороже на 15 тысяч." },
+      { name: "Алина", date: "2026-01-15", text: "Оформили рассрочку без проблем, платим по 6 450 в месяц." },
+      { name: "Тимур", date: "2025-12-20", text: "Сдал старый Xiaomi по Trade-in и получил хорошую скидку." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 17", url: "https://apple-collecty.ru/iphone-17" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -50,6 +72,9 @@ const IPhone17Page = () => {
         <meta property="og:title" content="iPhone 17 в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 17 в Казани. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -128,27 +153,6 @@ const IPhone17Page = () => {
           </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org", "@graph": [
-            { "@type": "Product", "name": "iPhone 17", "image": "https://apple-collecty.ru/iphone-17.webp",
-              "description": "iPhone 17 в Казани. Чип A19, камера 48MP. Рассрочка 0%, гарантия.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "64500", "highPrice": "85800", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "52", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Ильнар" }, "datePublished": "2026-02-08", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "iPhone 17 за 64 500 — это подарок! В М.Видео такая же модель дороже на 15 тысяч." },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Алина" }, "datePublished": "2026-01-15", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Оформили рассрочку без проблем, платим по 6 450 в месяц." }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 17", "item": "https://apple-collecty.ru/iphone-17" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };
