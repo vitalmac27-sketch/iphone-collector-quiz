@@ -261,8 +261,8 @@ const Index = () => {
           </div>
         </div>
 
-        <ModelCatalog />
         <Testimonials />
+        <ModelCatalog />
         <Benefits />
         <DeliveryDistricts />
         <SeoContent />
