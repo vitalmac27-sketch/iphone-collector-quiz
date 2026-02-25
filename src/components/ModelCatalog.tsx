@@ -14,10 +14,10 @@ import iphone15Pro from "@/assets/iphone-15-pro.avif";
 import iphone15 from "@/assets/iphone-15.avif";
 
 const models = [
-  { name: "iPhone 17 Pro Max", price: "от 140 000 ₽", image: iphone17ProMax, badge: "Новинка" },
-  { name: "iPhone 17 Pro", price: "от 110 000 ₽", image: iphone17Pro, badge: "Новинка" },
-  { name: "iPhone 17 Air", price: "от 105 000 ₽", image: iphone17Air, badge: "Новинка" },
-  { name: "iPhone 17", price: "от 85 000 ₽", image: iphone17, badge: "Новинка" },
+  { name: "iPhone 17 Pro Max", price: "от 105 000 ₽", image: iphone17ProMax, badge: "Новинка" },
+  { name: "iPhone 17 Pro", price: "от 95 000 ₽", image: iphone17Pro, badge: "Новинка" },
+  { name: "iPhone 17 Air", price: "от 79 000 ₽", image: iphone17Air, badge: "Новинка" },
+  { name: "iPhone 17", price: "от 72 000 ₽", image: iphone17, badge: "Новинка" },
   { name: "iPhone 16 Pro Max", price: "от 105 000 ₽", image: iphone16ProMax, badge: "Хит" },
   { name: "iPhone 16 Pro", price: "от 85 000 ₽", image: iphone16Pro, badge: "Хит" },
   { name: "iPhone 16", price: "от 65 000 ₽", image: iphone16 },
