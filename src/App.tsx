@@ -15,6 +15,7 @@ import IPhone16Pro from "./pages/IPhone16Pro";
 import IPhone16 from "./pages/IPhone16";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/iphone-17-pro-max" element={<IPhone17ProMax />} />
