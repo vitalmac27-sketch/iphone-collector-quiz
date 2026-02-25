@@ -29,6 +29,7 @@ import { Label } from "@/components/ui/label";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface FinalReviewProps {
   data: CalculatorData;
@@ -40,6 +41,7 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const { toast } = useToast();
   const contactFormRef = useRef<HTMLDivElement>(null);
   const priceBlockRef = useRef<HTMLDivElement>(null);
@@ -89,6 +91,15 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
       toast({
         title: "Ошибка",
         description: "Пожалуйста, заполните все поля",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!agreed) {
+      toast({
+        title: "Ошибка",
+        description: "Необходимо принять условия оферты и политики конфиденциальности",
         variant: "destructive",
       });
       return;
@@ -274,6 +285,20 @@ const FinalReview = ({ data, onConfirm, onBack }: FinalReviewProps) => {
           </div>
 
           <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
+            <div className="flex items-start gap-2">
+              <Checkbox
+                id="agree"
+                checked={agreed}
+                onCheckedChange={(checked) => setAgreed(checked === true)}
+                className="mt-0.5"
+              />
+              <label htmlFor="agree" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                Я ознакомился и согласен с{" "}
+                <a href="/offer" target="_blank" className="text-primary hover:underline">Публичной офертой</a>{" "}и{" "}
+                <a href="/privacy" target="_blank" className="text-primary hover:underline">Политикой конфиденциальности</a>
+              </label>
+            </div>
+
             <div className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg border border-primary/20">
               <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
               <p className="text-xs sm:text-sm font-semibold text-foreground text-center">Комплект аксессуаров на 3000₽ в подарок</p>

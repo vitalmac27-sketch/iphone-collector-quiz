@@ -223,6 +223,13 @@ const SeoContent = () => {
               Авито
             </a>
           </div>
+
+          {/* Legal footer links */}
+          <div className="flex flex-wrap gap-x-4 gap-y-1 pt-4 border-t border-border/50 mt-4">
+            <a href="/offer" className="text-xs text-muted-foreground/70 hover:text-primary hover:underline transition-colors">Публичная оферта</a>
+            <a href="/privacy" className="text-xs text-muted-foreground/70 hover:text-primary hover:underline transition-colors">Политика конфиденциальности</a>
+            <a href="/legal" className="text-xs text-muted-foreground/70 hover:text-primary hover:underline transition-colors">Правовая информация</a>
+          </div>
       </section>
 
       {/* Schema.org Structured Data - LocalBusiness + Products + FAQ */}

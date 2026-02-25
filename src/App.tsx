@@ -15,6 +15,9 @@ import IPhone16Pro from "./pages/IPhone16Pro";
 import IPhone16 from "./pages/IPhone16";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
+import Offer from "./pages/Offer";
+import Privacy from "./pages/Privacy";
+import Legal from "./pages/Legal";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/iphone-16" element={<IPhone16 />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/offer" element={<Offer />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/legal" element={<Legal />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
