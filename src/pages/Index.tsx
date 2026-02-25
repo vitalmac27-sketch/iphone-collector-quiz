@@ -22,6 +22,7 @@ import FinalReview from "@/components/calculator/FinalReview";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { ChatWidget } from "@/components/ChatWidget";
 import Navigation from "@/components/Navigation";
+import ModelCatalog from "@/components/ModelCatalog";
 
 export interface CalculatorData {
   model: string;
@@ -260,6 +261,7 @@ const Index = () => {
           </div>
         </div>
 
+        <ModelCatalog />
         <Testimonials />
         <Benefits />
         <DeliveryDistricts />
