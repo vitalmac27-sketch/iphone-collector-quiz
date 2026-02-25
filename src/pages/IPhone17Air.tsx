@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone17Air from "@/assets/iphone-17-air.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone17AirPage = () => {
   const specs = {
@@ -40,6 +41,27 @@ const IPhone17AirPage = () => {
     { name: "iPhone 16", path: "/iphone-16", label: "Лучшая цена" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 17 Air",
+    description: "iPhone 17 Air — самый тонкий iPhone. Чип A19, камера 48MP. Купить в Казани.",
+    image: "https://apple-collecty.ru/iphone-17-air.avif",
+    url: "https://apple-collecty.ru/iphone-17-air",
+    lowPrice: "80700",
+    highPrice: "110400",
+    offerCount: "3",
+    reviewCount: "29",
+    reviews: [
+      { name: "Камилла", date: "2026-02-12", text: "Невероятно тонкий и лёгкий! Доставили на Проспект Победы бесплатно." },
+      { name: "Артур", date: "2026-01-22", text: "Взял Air вместо Pro — дизайн просто вау!" },
+      { name: "Рамиль", date: "2026-02-05", text: "5.5 мм — это фантастика! Камера 48MP снимает отлично." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 17 Air", url: "https://apple-collecty.ru/iphone-17-air" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -50,6 +72,9 @@ const IPhone17AirPage = () => {
         <meta property="og:title" content="iPhone 17 Air в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 17 Air — самый тонкий iPhone. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-17-air" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -64,12 +89,12 @@ const IPhone17AirPage = () => {
           <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-gradient-to-r from-primary to-accent text-primary-foreground z-10">Ультратонкий</Badge>
-              <img src={iPhone17Air} alt="Купить iPhone 17 Air в Казани - самый тонкий iPhone - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
+              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Самый тонкий</Badge>
+              <img src={iPhone17Air} alt="Купить iPhone 17 Air в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 17 Air в Казани — самый тонкий iPhone</h1>
-              <p className="text-xl text-muted-foreground mb-6">Революционно тонкий iPhone толщиной всего 5.5 мм</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 17 Air — самый тонкий iPhone в Казани</h1>
+              <p className="text-xl text-muted-foreground mb-6">Ультратонкий дизайн 5.5мм, чип A19, камера 48MP</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
                   <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
@@ -98,24 +123,24 @@ const IPhone17AirPage = () => {
         </section>
 
         <section className="container mx-auto px-4 py-12 max-w-4xl">
-          <h2 className="text-2xl font-bold mb-6">iPhone 17 Air — самый тонкий iPhone в Казани</h2>
+          <h2 className="text-2xl font-bold mb-6">iPhone 17 Air — революция дизайна Apple в Казани</h2>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p><strong>Купить iPhone 17 Air в Казани</strong> — это возможность получить революционный смартфон от Apple. В магазине ЭПЛ-КОЛЛЕКЦИЯ представлены все цвета и конфигурации памяти.</p>
-            <p>iPhone 17 Air — самый тонкий iPhone в истории с толщиной всего 5.5 мм. Несмотря на ультратонкий дизайн, смартфон оснащён мощным чипом A19 и камерой 48 Мп.</p>
-            <p>Большой 6.6-дюймовый дисплей Super Retina XDR обеспечивает яркую и чёткую картинку. Dynamic Island делает взаимодействие со смартфоном ещё удобнее.</p>
-            <p><strong>iPhone 17 Air в рассрочку без переплаты</strong> — лучший способ приобрести ультратонкий iPhone. Доступен Trade-in и бесплатная доставка по Казани.</p>
+            <p><strong>Купить iPhone 17 Air в Казани</strong> можно в магазине ЭПЛ-КОЛЛЕКЦИЯ. Это самый тонкий iPhone в истории — всего 5.5мм толщиной.</p>
+            <p>Несмотря на ультратонкий корпус, iPhone 17 Air оснащён мощным чипом A19 и камерой 48MP. Экран 6.6" Super Retina XDR обеспечивает яркое и чёткое изображение.</p>
+            <p>Батарея до 26 часов видео — отличный результат для такого тонкого устройства. Dynamic Island делает управление интуитивным.</p>
+            <p><strong>Рассрочка 0%</strong> без переплаты. Trade-in со скидкой до 70%. Бесплатная доставка по Казани в день заказа.</p>
           </div>
         </section>
 
         <ModelPageSeoBlock modelName="iPhone 17 Air" reviews={reviews} relatedModels={relatedModels}
           additionalContent={
             <>
-              <h3 className="text-xl font-bold text-foreground mb-4">Почему iPhone 17 Air популярен в Казани?</h3>
-              <p>iPhone 17 Air заменил линейку Plus и стал самым обсуждаемым iPhone 2025 года. Толщина 5.5 мм — это рекорд для смартфонов Apple. При этом производительность на уровне стандартного iPhone 17 благодаря чипу A19.</p>
-              <p>В <strong>ЭПЛ-КОЛЛЕКЦИЯ</strong> цена на iPhone 17 Air ниже, чем в федеральных сетях, на 15–25%. Мы доставляем бесплатно по всей Казани: от центра (Вахитовский, Баумана) до отдалённых районов (Азино, Авиастроительный).</p>
-              <p><strong>Гарантия на новые устройства — 1 год, на б/у — 60 дней.</strong> Каждый iPhone проходит полную диагностику перед продажей.</p>
-              <h3 className="text-xl font-bold text-foreground mb-4 mt-6">iPhone 17 Air или iPhone 17 Pro?</h3>
-              <p>Air — для тех, кто ценит дизайн и лёгкость. Pro — для тех, кому нужна профессиональная камера с 5x зумом и ProMotion 120Hz. Оба варианта доступны в нашем магазине. Сравните: <Link to="/iphone-17-pro" className="text-primary hover:underline">iPhone 17 Pro</Link>.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 17 Air vs конкуренты — почему покупать у нас</h3>
+              <p>Цена iPhone 17 Air в ЭПЛ-КОЛЛЕКЦИЯ начинается от 80 700 ₽ — на 15–25% дешевле, чем в М.Видео или DNS. На Авито высок риск получить б/у устройство без гарантии.</p>
+              <p><strong>Гарантия на новые — 1 год, на б/у — 60 дней.</strong> Полная диагностика каждого устройства перед продажей.</p>
+              <p><strong>Бесплатная доставка</strong> по всем районам: Вахитовский, Ново-Савиновский, Приволжский (Азино), Московский, Авиастроительный, Кировский, Советский.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 mt-6">iPhone 17 Air или iPhone 17?</h3>
+              <p><Link to="/iphone-17" className="text-primary hover:underline">iPhone 17</Link> — компактнее (6.1") и доступнее от 64 500 ₽. iPhone 17 Air — больше экран (6.6") и ультратонкий дизайн 5.5мм.</p>
             </>
           }
         />
@@ -128,27 +153,6 @@ const IPhone17AirPage = () => {
           </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org", "@graph": [
-            { "@type": "Product", "name": "iPhone 17 Air", "image": "https://apple-collecty.ru/iphone-17-air.avif",
-              "description": "iPhone 17 Air — самый тонкий iPhone. Чип A19, камера 48MP. Купить в Казани.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "80700", "highPrice": "110400", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "29", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Камилла" }, "datePublished": "2026-02-12", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Невероятно тонкий и лёгкий! Доставили на Проспект Победы бесплатно." },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Артур" }, "datePublished": "2026-01-22", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Взял Air вместо Pro — дизайн просто вау!" }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 17 Air", "item": "https://apple-collecty.ru/iphone-17-air" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone16 from "@/assets/iphone-16.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone16Page = () => {
   const specs = {
@@ -40,6 +41,27 @@ const IPhone16Page = () => {
     { name: "iPhone 17 Pro", path: "/iphone-17-pro", label: "Pro 2025 года" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 16",
+    description: "iPhone 16 в Казани. Чип A18, камера 48MP, Action Button. Рассрочка 0%, гарантия.",
+    image: "https://apple-collecty.ru/iphone-16.avif",
+    url: "https://apple-collecty.ru/iphone-16",
+    lowPrice: "56400",
+    highPrice: "77700",
+    offerCount: "3",
+    reviewCount: "58",
+    reviews: [
+      { name: "Эльвира", date: "2026-02-06", text: "iPhone 16 за 56 400 — дешевле нигде не нашла!" },
+      { name: "Рустам", date: "2026-01-08", text: "Рассрочка 0% — платим всего 5 640 в месяц. Отлично!" },
+      { name: "Аделина", date: "2025-12-15", text: "Перешла с Android — и в восторге! Работает плавно и быстро." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 16", url: "https://apple-collecty.ru/iphone-16" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -50,6 +72,9 @@ const IPhone16Page = () => {
         <meta property="og:title" content="iPhone 16 в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 16 в Казани. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-16" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -64,12 +89,12 @@ const IPhone16Page = () => {
           <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground z-10">Лучшая цена</Badge>
-              <img src={iPhone16} alt="Купить iPhone 16 в Казани недорого - магазин ЭПЛ-КОЛЛЕКЦИЯ Apple" className="w-full max-w-md mx-auto rounded-2xl" />
+              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Лучшая цена</Badge>
+              <img src={iPhone16} alt="Купить iPhone 16 в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 в Казани — рассрочка 0%, гарантия</h1>
-              <p className="text-xl text-muted-foreground mb-6">Современный iPhone с чипом A18 и Action Button</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 в Казани — купить выгодно</h1>
+              <p className="text-xl text-muted-foreground mb-6">Чип A18, камера 48MP, Action Button — лучшая цена в городе</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
                   <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
@@ -98,24 +123,23 @@ const IPhone16Page = () => {
         </section>
 
         <section className="container mx-auto px-4 py-12 max-w-4xl">
-          <h2 className="text-2xl font-bold mb-6">iPhone 16 — лучшее соотношение цены и качества в Казани</h2>
+          <h2 className="text-2xl font-bold mb-6">iPhone 16 — лучший выбор по цене и качеству в Казани</h2>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p><strong>Купить iPhone 16 в Казани</strong> — оптимальный выбор для тех, кто хочет современный iPhone с отличными характеристиками по разумной цене. В магазине ЭПЛ-КОЛЛЕКЦИЯ представлены все цвета и варианты памяти.</p>
-            <p>iPhone 16 получил новый чип A18 с улучшенной энергоэффективностью и производительностью. Впервые в базовой модели появилась Action Button для быстрого доступа к функциям.</p>
-            <p>Камера 48 Мп позволяет снимать детализированные фото и видео 4K Dolby Vision. Dynamic Island делает уведомления и взаимодействие более интуитивными.</p>
-            <p><strong>iPhone 16 в рассрочку без переплаты</strong> — удобный способ приобрести смартфон. Также доступен Trade-in со скидкой до 70% и бесплатная доставка по Казани.</p>
+            <p><strong>Купить iPhone 16 в Казани</strong> по лучшей цене — в магазине ЭПЛ-КОЛЛЕКЦИЯ. Это идеальный выбор для тех, кто хочет получить все преимущества iPhone по доступной цене.</p>
+            <p>Чип A18, изготовленный по 3-нм техпроцессу, обеспечивает высокую производительность. Камера 48MP снимает профессиональные фото. Action Button — новая кнопка для быстрого доступа к функциям.</p>
+            <p><strong>Рассрочка 0%</strong> на 10 месяцев без переплаты. Trade-in со скидкой до 70%. Доставка по Казани бесплатная.</p>
           </div>
         </section>
 
         <ModelPageSeoBlock modelName="iPhone 16" reviews={reviews} relatedModels={relatedModels}
           additionalContent={
             <>
-              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 — самый доступный новый iPhone в Казани</h3>
-              <p>iPhone 16 от 56 400 ₽ — это лучшая точка входа в экосистему Apple. В М.Видео, DNS и Связном аналогичная модель стоит на 10–20 тысяч дороже. На Авито вы рискуете купить б/у устройство без гарантии.</p>
-              <p>В ЭПЛ-КОЛЛЕКЦИЯ — только оригинальные iPhone 16 с полной диагностикой. <strong>Гарантия на новые — 1 год, на б/у — 60 дней.</strong></p>
-              <p><strong>Бесплатная доставка</strong> по всем районам Казани в день заказа. Оплата после проверки устройства при получении.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 в Казани — дешевле, чем в сетях</h3>
+              <p>Цена iPhone 16 в ЭПЛ-КОЛЛЕКЦИЯ от 56 400 ₽ — на 15–25% ниже, чем в М.Видео, DNS или Связном. На Авито цены ниже, но без гарантии.</p>
+              <p><strong>Гарантия на новые — 1 год, на б/у — 60 дней.</strong> Оплата при получении после проверки устройства.</p>
+              <p><strong>Бесплатная доставка</strong> по всем районам Казани.</p>
               <h3 className="text-xl font-bold text-foreground mb-4 mt-6">iPhone 16 или iPhone 17?</h3>
-              <p><Link to="/iphone-17" className="text-primary hover:underline">iPhone 17</Link> получил чип A19 (на ~15% быстрее), но стоит от 64 500 ₽. Если бюджет ограничен — iPhone 16 даёт 90% возможностей за меньшие деньги.</p>
+              <p>iPhone 16 доступнее от 56 400 ₽. <Link to="/iphone-17" className="text-primary hover:underline">iPhone 17</Link> от 64 500 ₽ — новее, с чипом A19. Для большинства задач iPhone 16 — отличный выбор.</p>
             </>
           }
         />
@@ -128,27 +152,6 @@ const IPhone16Page = () => {
           </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org", "@graph": [
-            { "@type": "Product", "name": "iPhone 16", "image": "https://apple-collecty.ru/iphone-16.avif",
-              "description": "iPhone 16 в Казани. Чип A18, камера 48MP, Action Button. Рассрочка 0%, гарантия.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "56400", "highPrice": "77700", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "58", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Эльвира" }, "datePublished": "2026-02-06", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "iPhone 16 за 56 400 — дешевле нигде не нашла!" },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Рустам" }, "datePublished": "2026-01-08", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Рассрочка 0% — платим всего 5 640 в месяц. Отлично!" }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 16", "item": "https://apple-collecty.ru/iphone-16" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };

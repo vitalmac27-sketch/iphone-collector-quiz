@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
 import iPhone16Pro from "@/assets/iphone-16-pro-new.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
+import { localBusinessSchema, createProductSchema, createBreadcrumbSchema } from "@/lib/schema";
 
 const IPhone16ProPage = () => {
   const specs = {
@@ -40,6 +41,27 @@ const IPhone16ProPage = () => {
     { name: "iPhone 17 Air", path: "/iphone-17-air", label: "Самый тонкий" },
   ];
 
+  const productSchema = createProductSchema({
+    name: "iPhone 16 Pro",
+    description: "iPhone 16 Pro в Казани. A18 Pro, титан, 5x зум. Рассрочка 0%, гарантия.",
+    image: "https://apple-collecty.ru/iphone-16-pro.avif",
+    url: "https://apple-collecty.ru/iphone-16-pro",
+    lowPrice: "80700",
+    highPrice: "110400",
+    offerCount: "3",
+    reviewCount: "41",
+    reviews: [
+      { name: "Азат", date: "2026-02-03", text: "Лучший компактный флагман! Камера с 5x зумом снимает потрясающе." },
+      { name: "Наталья", date: "2026-01-10", text: "Сдала iPhone 13 Pro по Trade-in и доплатила совсем немного." },
+      { name: "Олег", date: "2025-12-05", text: "Третий раз покупаю — всегда отличные цены и честная гарантия." },
+    ],
+  });
+
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Главная", url: "https://apple-collecty.ru/" },
+    { name: "iPhone 16 Pro", url: "https://apple-collecty.ru/iphone-16-pro" },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -50,6 +72,9 @@ const IPhone16ProPage = () => {
         <meta property="og:title" content="iPhone 16 Pro в Казани — ЭПЛ-КОЛЛЕКЦИЯ" />
         <meta property="og:description" content="iPhone 16 Pro в Казани. A18 Pro, титан. Рассрочка 0%, Trade-in, гарантия." />
         <meta property="og:url" content="https://apple-collecty.ru/iphone-16-pro" />
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -64,12 +89,12 @@ const IPhone16ProPage = () => {
           <Link to="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-6"><ArrowLeft className="w-4 h-4" />Вернуться в каталог</Link>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
-              <Badge className="absolute top-4 left-4 bg-secondary text-secondary-foreground z-10">Выбор покупателей</Badge>
-              <img src={iPhone16Pro} alt="Купить iPhone 16 Pro в Казани недорого - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
+              <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Pro-флагман</Badge>
+              <img src={iPhone16Pro} alt="Купить iPhone 16 Pro в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro в Казани — купить с Trade-in</h1>
-              <p className="text-xl text-muted-foreground mb-6">Компактный Pro с мощью A18 Pro в титановом корпусе</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro в Казани — Pro по лучшей цене</h1>
+              <p className="text-xl text-muted-foreground mb-6">A18 Pro, титановый корпус, 5x зум — компактный Pro-флагман</p>
               <div className="space-y-3 mb-8">
                 {Object.entries(prices).map(([storage, price]) => (
                   <Card key={storage} className="border-primary/20"><CardContent className="flex items-center justify-between p-4"><span className="font-medium">{storage}</span><div className="text-right"><div className="text-2xl font-bold text-primary">{price.toLocaleString("ru-RU")} ₽</div><div className="text-sm text-muted-foreground">от {Math.round(price / 10).toLocaleString("ru-RU")} ₽/мес</div></div></CardContent></Card>
@@ -98,22 +123,22 @@ const IPhone16ProPage = () => {
         </section>
 
         <section className="container mx-auto px-4 py-12 max-w-4xl">
-          <h2 className="text-2xl font-bold mb-6">iPhone 16 Pro — компактный флагман в Казани</h2>
+          <h2 className="text-2xl font-bold mb-6">iPhone 16 Pro — компактный Pro в Казани</h2>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p><strong>Купить iPhone 16 Pro в Казани</strong> — идеальный выбор для ценителей компактных флагманов. В магазине ЭПЛ-КОЛЛЕКЦИЯ доступны все цвета и конфигурации.</p>
-            <p>iPhone 16 Pro сочетает мощь чипа A18 Pro с компактным 6.3-дюймовым дисплеем. Титановый корпус обеспечивает премиальный вид и отличную прочность.</p>
-            <p>Система камер с 5-кратным оптическим зумом позволяет снимать профессиональные фото и видео. Action Button даёт быстрый доступ к камере и другим функциям.</p>
-            <p><strong>iPhone 16 Pro в рассрочку 0%</strong> — отличная возможность приобрести флагман без переплаты. Trade-in позволяет сэкономить до 70% при сдаче старого устройства.</p>
+            <p><strong>Купить iPhone 16 Pro в Казани</strong> по лучшей цене — в ЭПЛ-КОЛЛЕКЦИЯ. A18 Pro, титановый корпус, камера с 5x оптическим зумом — всё это в компактном формате 6.3".</p>
+            <p>ProMotion 120Hz обеспечивает плавность интерфейса. Action Button даёт быстрый доступ к нужным функциям. Батарея до 27 часов видео.</p>
+            <p><strong>Рассрочка 0%</strong> на 10 месяцев. Trade-in со скидкой до 70%. Бесплатная доставка по Казани.</p>
           </div>
         </section>
 
         <ModelPageSeoBlock modelName="iPhone 16 Pro" reviews={reviews} relatedModels={relatedModels}
           additionalContent={
             <>
-              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 Pro — оптимальный Pro для большинства</h3>
-              <p>Если вам не нужен огромный экран 6.9", <strong>iPhone 16 Pro</strong> — идеальный выбор. Те же Pro-возможности (A18 Pro, 5x зум, титан) в компактном корпусе, который удобно держать одной рукой.</p>
-              <p>В ЭПЛ-КОЛЛЕКЦИЯ iPhone 16 Pro от 80 700 ₽. Для сравнения: <Link to="/iphone-17-pro" className="text-primary hover:underline">iPhone 17 Pro</Link> от 88 700 ₽. Разница в производительности минимальна.</p>
-              <p><strong>Гарантия:</strong> на новые — 1 год, на б/у — 60 дней. Бесплатная доставка по всей Казани в день заказа.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4">iPhone 16 Pro — выгоднее, чем в крупных сетях</h3>
+              <p>Цена от 80 700 ₽ — на 15–25% ниже М.Видео и DNS. <strong>Гарантия на новые — 1 год, на б/у — 60 дней.</strong></p>
+              <p><strong>Бесплатная доставка</strong> по всем районам Казани.</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 mt-6">iPhone 16 Pro или iPhone 17 Pro?</h3>
+              <p><Link to="/iphone-17-pro" className="text-primary hover:underline">iPhone 17 Pro</Link> от 88 700 ₽ — новее, с A19 Pro. iPhone 16 Pro — выгоднее при сопоставимых возможностях.</p>
             </>
           }
         />
@@ -126,27 +151,6 @@ const IPhone16ProPage = () => {
           </CardContent></Card>
         </section>
       </div>
-
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org", "@graph": [
-            { "@type": "Product", "name": "iPhone 16 Pro", "image": "https://apple-collecty.ru/iphone-16-pro.avif",
-              "description": "iPhone 16 Pro в Казани. A18 Pro, титан, 5x зум. Рассрочка 0%, гарантия.",
-              "brand": { "@type": "Brand", "name": "Apple" },
-              "offers": { "@type": "AggregateOffer", "lowPrice": "80700", "highPrice": "110400", "priceCurrency": "RUB", "offerCount": "3", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "name": "ЭПЛ-КОЛЛЕКЦИЯ" } },
-              "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "41", "bestRating": "5" },
-              "review": [
-                { "@type": "Review", "author": { "@type": "Person", "name": "Азат" }, "datePublished": "2026-02-03", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Лучший компактный флагман! Камера с 5x зумом снимает потрясающе." },
-                { "@type": "Review", "author": { "@type": "Person", "name": "Наталья" }, "datePublished": "2026-01-10", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "reviewBody": "Сдала iPhone 13 Pro по Trade-in и доплатила совсем немного." }
-              ]
-            },
-            { "@type": "BreadcrumbList", "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://apple-collecty.ru/" },
-              { "@type": "ListItem", "position": 2, "name": "iPhone 16 Pro", "item": "https://apple-collecty.ru/iphone-16-pro" }
-            ]}
-          ]
-        })}
-      </script>
     </>
   );
 };
