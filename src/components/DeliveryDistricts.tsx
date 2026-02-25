@@ -43,6 +43,26 @@ const DeliveryDistricts = () => {
       <p className="text-sm text-muted-foreground mt-4">
         Также доставляем в пригороды: Высокая Гора, Лаишево, Зеленодольск. Уточняйте стоимость у менеджера.
       </p>
+
+      {/* Yandex Map */}
+      <div className="mt-6">
+        <p className="text-sm font-medium text-foreground mb-3">Наш магазин в Казани — самовывоз и консультации</p>
+        <div className="rounded-xl overflow-hidden border border-border/50">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=49.134648%2C55.814578&z=15&pt=49.134648%2C55.814578%2Cpm2rdm&size=650%2C400"
+            width="100%"
+            height="350"
+            frameBorder="0"
+            allowFullScreen
+            style={{ display: 'block' }}
+            title="Магазин ЭПЛ-КОЛЛЕКЦИЯ на карте Казани — ул. Сибгата Хакима, 40а"
+            loading="lazy"
+          />
+        </div>
+        <p className="text-xs text-muted-foreground mt-2">
+          📍 г. Казань, ул. Сибгата Хакима, 40а, Офис 7 · Ежедневно 13:00–20:00 · 15 мин от метро «Козья слобода»
+        </p>
+      </div>
     </section>
   );
 };

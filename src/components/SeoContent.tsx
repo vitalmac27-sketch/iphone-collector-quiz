@@ -145,7 +145,60 @@ const SeoContent = () => {
             Если вы ищете, <strong className="text-foreground">где купить iPhone в Казани недорого</strong> и надежно — приезжайте в наш магазин в Ново-Савиновском районе или оформите заказ онлайн с бесплатной доставкой. Мы работаем для вас каждый день с 13:00 до 20:00.
           </p>
 
-          <div className="flex items-center gap-2 pt-4 border-t border-border">
+          <h3 className="text-2xl font-bold text-foreground pt-6">Почему покупать iPhone у нас, а не на Авито или в М.Видео?</h3>
+
+          <p>
+            На <strong className="text-foreground">Авито</strong> велик риск нарваться на подделку, залоченный или краденый iPhone. Проверить состояние аккумулятора, оригинальность экрана и отсутствие «утопленника» без специального оборудования сложно. В <strong className="text-foreground">ЭПЛ-КОЛЛЕКЦИЯ</strong> каждый iPhone проходит полную диагностику на 30+ пунктов: от проверки серийного номера до тестирования Face ID, динамиков и влагоиндикаторов. Вы получаете <strong className="text-foreground">гарантию 1 год</strong> — чего ни один продавец на Авито предложить не может.
+          </p>
+
+          <p>
+            По сравнению с <strong className="text-foreground">М.Видео и DNS</strong>, наши цены на iPhone ниже на 15–30%. Это возможно благодаря прямым поставкам и отсутствию наценки крупных торговых сетей. При этом вы получаете тот же оригинальный Apple iPhone, ту же гарантию, но экономите от 10 000 до 40 000 ₽ в зависимости от модели.
+          </p>
+
+          <h3 className="text-2xl font-bold text-foreground pt-4">Как выбрать iPhone в Казани: советы от экспертов</h3>
+
+          <p>
+            При выборе iPhone обратите внимание на три ключевых фактора: <strong className="text-foreground">объём памяти</strong> (для фото и видео рекомендуем от 256 ГБ), <strong className="text-foreground">состояние аккумулятора</strong> (для б/у моделей — не ниже 85%) и <strong className="text-foreground">поколение процессора</strong> (чип A17 Pro и новее обеспечат актуальность на 5+ лет). В нашем калькуляторе на главной странице вы можете подобрать оптимальный вариант за 1 минуту.
+          </p>
+
+          <p>
+            <strong className="text-foreground">Рассрочка 0% без переплат</strong> — ещё одно весомое преимущество покупки в ЭПЛ-КОЛЛЕКЦИЯ. Оформление онлайн за 5 минут, без похода в банк. Просто выберите iPhone, укажите срок рассрочки (до 10 месяцев) и получите одобрение в тот же день. Первоначальный взнос — 0 ₽.
+          </p>
+
+          <p>
+            Мы доставляем iPhone <strong className="text-foreground">бесплатно по всей Казани в день заказа</strong>: от Вахитовского района и Баумана до Азино, Горок, Юдино и Залесного. Курьер привезёт устройство в удобное время — вы проверяете и только потом оплачиваете. Также доступен самовывоз из магазина на Сибгата Хакима 40а (15 минут пешком от метро «Козья слобода»).
+          </p>
+        </div>
+
+        {/* Cross-linking to model pages */}
+        <div className="mt-8 p-6 rounded-xl border border-border/50 bg-card/50">
+          <h3 className="text-lg font-semibold mb-4">Популярные модели iPhone в Казани</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <a href="/iphone-17-pro-max" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 17 Pro Max в Казани
+            </a>
+            <a href="/iphone-17-pro" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 17 Pro в Казани
+            </a>
+            <a href="/iphone-17-air" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 17 Air в Казани
+            </a>
+            <a href="/iphone-17" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 17 в Казани
+            </a>
+            <a href="/iphone-16-pro-max" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 16 Pro Max в Казани
+            </a>
+            <a href="/iphone-16-pro" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 16 Pro в Казани
+            </a>
+            <a href="/iphone-16" className="flex items-center gap-2 p-3 rounded-lg hover:bg-accent/50 transition-colors text-sm font-medium text-primary hover:underline">
+              → iPhone 16 в Казани
+            </a>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 pt-4 border-t border-border">
             <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
             <p className="text-sm">
               <strong className="text-foreground">Адрес магазина iPhone в Казани:</strong> г. Казань, Ново-Савиновский район, ул. Сибгата Хакима, 40а, Офис 7
@@ -155,7 +208,6 @@ const SeoContent = () => {
           <p className="text-sm">
             <strong className="text-foreground">Телефон:</strong> <a href="tel:+79992673933" className="text-primary hover:underline">+7 (999) 267-39-33</a>
           </p>
-        </div>
       </section>
 
       {/* Schema.org Structured Data - LocalBusiness + Products + FAQ */}
