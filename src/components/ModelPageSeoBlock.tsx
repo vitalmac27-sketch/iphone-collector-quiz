@@ -39,16 +39,21 @@ const ModelPageSeoBlock = ({ modelName, reviews, relatedModels, additionalConten
           {reviews.map((review, i) => (
             <Card key={i} className="hover:border-primary/20 transition-colors">
               <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-2">
-                  {Array.from({ length: review.rating }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${["bg-blue-500","bg-emerald-500","bg-violet-500","bg-rose-500","bg-amber-500","bg-cyan-500","bg-indigo-500","bg-pink-500","bg-teal-500"][i % 9]}`}>
+                    {review.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="flex-1">
+                    <span className="font-medium text-foreground text-sm">{review.name}</span>
+                    <span className="block text-xs text-muted-foreground">{review.date}</span>
+                  </div>
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: review.rating }).map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">{review.text}</p>
-                <div className="flex justify-between items-center text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">{review.name}</span>
-                  <span>{review.date}</span>
-                </div>
+                <p className="text-sm text-muted-foreground">{review.text}</p>
               </CardContent>
             </Card>
           ))}
