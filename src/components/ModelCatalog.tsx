@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import iphone17ProMax from "@/assets/iphone-17-pro-max.avif";
 import iphone17Pro from "@/assets/iphone-17-pro.avif";
 import iphone17Air from "@/assets/iphone-17-air.avif";
-import iphone17 from "@/assets/iphone-17.webp";
+import iphone17 from "@/assets/iphone-17.avif";
 import iphone16ProMax from "@/assets/iphone-16-pro-max.avif";
 import iphone16Pro from "@/assets/iphone-16-pro-new.avif";
 import iphone16 from "@/assets/iphone-16.avif";

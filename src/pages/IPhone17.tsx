@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, Smartphone, Battery, Camera, Cpu, Monitor, Shield } from "lucide-react";
-import iPhone17 from "@/assets/iphone-17.webp";
+import iPhone17 from "@/assets/iphone-17.avif";
 import ModelPageSeoBlock from "@/components/ModelPageSeoBlock";
 
 const IPhone17Page = () => {
