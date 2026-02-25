@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import iPhone17ProMax from "@/assets/iphone-17-pro-max.avif";
 import iPhone17Pro from "@/assets/iphone-17-pro.avif";
 import iPhone17Air from "@/assets/iphone-17-air.avif";
-import iPhone17 from "@/assets/iphone-17.webp";
+import iPhone17 from "@/assets/iphone-17.avif";
 import iPhone16ProMax from "@/assets/iphone-16-pro-max.avif";
 import iPhone16Pro from "@/assets/iphone-16-pro-new.avif";
 import iPhone16Plus from "@/assets/iphone-16-plus.avif";
