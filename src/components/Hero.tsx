@@ -49,7 +49,7 @@ const Hero = () => {
           <div className="flex-shrink-0">
             <img 
               src={heroIphone} 
-              alt="Купить iPhone в Казани недорого - iPhone 13, 14, 15, 16, 17 Pro Max с гарантией 1 год и бесплатной доставкой" 
+              alt="Купить Айфон iPhone Казань выгодно — iPhone 13, 14, 15, 16, 17 Pro Max в магазине ЭПЛ-КОЛЛЕКЦИЯ" 
               className="w-96 lg:w-[500px] h-auto object-contain rounded-3xl bg-white"
             />
           </div>

@@ -131,7 +131,7 @@ const getModelImage = (model: string) => {
 };
 
 const getModelAlt = (model: string) => {
-  return modelAltTexts[model] || `Купить ${model} в Казани - ЭПЛ-КОЛЛЕКЦИЯ`;
+  return modelAltTexts[model] || `Купить Айфон ${model} Казань выгодно — ЭПЛ-КОЛЛЕКЦИЯ`;
 };
 
 const ModelSelector = ({ value, onChange }: ModelSelectorProps) => {
