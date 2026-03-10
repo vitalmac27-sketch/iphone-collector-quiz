@@ -90,7 +90,7 @@ const IPhone17Page = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
               <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Хит продаж</Badge>
-              <img src={iPhone17} alt="Купить iPhone 17 в Казани недорого - магазин ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
+              <img src={iPhone17} alt="Купить Айфон iPhone 17 Казань дешево — рассрочка 0% доставка бесплатно ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 17 в Казани — купить недорого</h1>
