@@ -45,7 +45,7 @@ const SeoContent = () => {
         
         <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
           <p>
-            <strong className="text-foreground">ЭПЛ-КОЛЛЕКЦИЯ</strong> — это официальный магазин iPhone в Казани, который предлагает самый широкий ассортимент оригинальных смартфонов Apple по выгодным ценам. Мы находимся в Ново-Савиновском районе по адресу: <strong className="text-foreground">Сибгата Хакима 40а, Офис 7</strong> и работаем для вас с 13:00 до 20:00 каждый день.
+            <strong className="text-foreground">Купить Айфон iPhone Казань выгодно</strong> — легко в магазине <strong className="text-foreground">ЭПЛ-КОЛЛЕКЦИЯ</strong>. Это официальный магазин iPhone в Казани, который предлагает самый широкий ассортимент оригинальных смартфонов Apple по выгодным ценам. Мы находимся в Ново-Савиновском районе по адресу: <strong className="text-foreground">Сибгата Хакима 40а, Офис 7</strong> и работаем для вас с 13:00 до 20:00 каждый день.
           </p>
           
           <p>
