@@ -90,7 +90,7 @@ const IPhone16ProPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
               <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground z-10">Pro-флагман</Badge>
-              <img src={iPhone16Pro} alt="Купить iPhone 16 Pro в Казани - ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
+              <img src={iPhone16Pro} alt="Купить Айфон iPhone 16 Pro Казань дешево — рассрочка 0% доставка бесплатно ЭПЛ-КОЛЛЕКЦИЯ" className="w-full max-w-md mx-auto rounded-2xl" />
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">iPhone 16 Pro в Казани — Pro по лучшей цене</h1>
