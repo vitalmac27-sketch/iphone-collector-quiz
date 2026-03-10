@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="flex justify-center">
             <img 
               src={heroIphone} 
-              alt="Купить iPhone в Казани - новые и б/у модели iPhone 13, 14, 15, 16, 17 Pro Max с гарантией" 
+              alt="Купить Айфон iPhone Казань выгодно — iPhone 13, 14, 15, 16, 17 Pro Max в магазине ЭПЛ-КОЛЛЕКЦИЯ" 
               className="w-80 h-auto object-contain rounded-2xl bg-white"
             />
           </div>
